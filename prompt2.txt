@@ -1,0 +1,812 @@
+The previous experiment established an important baseline:
+
+* One-hidden-layer ReLU networks with concatenated one-hot inputs can exactly implement multiplication mod 13 from the complete 169-entry table.
+* Exact multiplication first appears at width 3, although extremely rarely.
+* Width 4 produces exact solvers at low but measurable frequency; width 16 solves reliably.
+* These networks do NOT generalize modular multiplication from partial tables.
+* Structured holdouts also fail.
+* Multiplication embeddings strongly resemble Fourier structure over discrete-log coordinates.
+* Addition embeddings instead resemble Fourier structure over residue coordinates.
+* These correlations are real and task-specific.
+* However, replacing the learned embeddings by their best sinusoidal fits destroys exactness.
+* Therefore the clean group-theoretic component is not itself the learned algorithm.
+* Small residuals around the group-theoretic fit are load-bearing.
+* The best current interpretation is "symmetry-organized memorization," not algorithm discovery.
+
+The next research question is:
+
+```
+What is the MINIMAL change in architecture, objective, or training
+setup that causes a transition from symmetry-organized memorization
+to genuine compositional rule learning?
+```
+
+This should now become the central research objective.
+
+# 1. Define algorithm discovery operationally
+
+Do not call something "algorithm discovery" merely because:
+
+* embeddings correlate with Fourier/dlog coordinates,
+* the network achieves exact full-table accuracy,
+* weights look mathematically structured,
+* or a low-dimensional PCA representation appears.
+
+For this project, require substantially stronger evidence.
+
+A candidate algorithmic solver should satisfy as many as possible of:
+
+A. STRUCTURED GENERALIZATION
+
+Train while withholding a mathematically meaningful part of the operation table.
+
+The network should correctly infer the missing entries.
+
+B. COMPOSITIONAL GENERALIZATION
+
+Its performance should indicate that it learned a relationship such as
+
+```
+log_g(ab) = log_g(a) + log_g(b) mod (p-1)
+```
+
+rather than independently encoding pairwise answers.
+
+C. MECHANISTIC EXTRACTION
+
+We should be able to identify an explicit internal computation corresponding to the mathematical operation.
+
+D. SUBSTITUTION
+
+Replacing the learned representation with the extracted mathematical representation should preserve, or nearly preserve, the computation.
+
+Ideally the resulting symbolic/extracted system should become exact after refitting only a small number of downstream parameters.
+
+E. COUNTERFACTUAL TESTING
+
+Interventions predicted by the hypothesized algorithm should have predictable effects.
+
+F. TRANSFER
+
+Ideally a learned mechanism should transfer to related domains or primes with limited retraining.
+
+These criteria should be treated as progressively stronger evidence.
+
+# 2. Preserve the current ReLU architecture as the control
+
+Do not discard the existing network.
+
+It is now the CONTROL condition.
+
+Call it approximately:
+
+```
+Model A: additive-ReLU MLP
+```
+
+with hidden units:
+
+```
+h_j(a,b) = ReLU(u_j[a] + v_j[b] + c_j).
+```
+
+Repeat enough existing experiments to establish stable baseline statistics.
+
+We already know this architecture can compress the complete table while failing structured generalization.
+
+All new architectures must be compared directly against this baseline using identical train/test splits where possible.
+
+# 3. First new architecture: bilinear interaction
+
+The most important immediate experiment is to give the network a minimal multiplicative interaction.
+
+Implement:
+
+```
+Model B: bilinear/product network.
+```
+
+For example, allow hidden units containing terms such as:
+
+```
+h_j(a,b) = phi(u_j[a] * v_j[b] + c_j)
+```
+
+or another minimal bilinear form.
+
+Do NOT immediately build a large sophisticated architecture.
+
+The purpose is to change ONE primitive:
+
+```
+additive combination:
+    u[a] + v[b]
+```
+
+versus
+
+```
+multiplicative interaction:
+    u[a] * v[b].
+```
+
+Keep parameter counts comparable where possible.
+
+Ask whether this single architectural change produces structured generalization.
+
+# 4. Fourier/complex composition architecture
+
+Implement a second highly constrained architecture motivated by the group structure.
+
+For nonzero residues modulo 13:
+
+```
+F_13^*
+```
+
+is cyclic of order 12.
+
+If g is a primitive root, then:
+
+```
+a = g^r
+b = g^s
+```
+
+and:
+
+```
+ab = g^(r+s mod 12).
+```
+
+A natural representation is therefore:
+
+```
+z(a) = exp(2*pi*i*r/12).
+```
+
+Then:
+
+```
+z(ab) = z(a) z(b).
+```
+
+Implement a tiny architecture capable of discovering something equivalent to this without hard-coding the discrete logarithm.
+
+For example, learn a 2D embedding:
+
+```
+e(a) = [x_a, y_a]
+```
+
+and provide a complex-multiplication-like interaction:
+
+```
+[x_a*x_b - y_a*y_b,
+ x_a*y_b + y_a*x_b].
+```
+
+Call this:
+
+```
+Model C: complex-composition network.
+```
+
+IMPORTANT:
+
+Do not initialize the embeddings to the known dlog solution.
+
+The network must discover useful embeddings through training.
+
+The architecture supplies the compositional primitive but not the mapping from residues to group coordinates.
+
+# 5. Tensor/bilinear architecture
+
+Also consider a slightly more general model:
+
+```
+score_c(a,b)
+    =
+e(a)^T M_c e(b)
+```
+
+for output class c.
+
+Call this:
+
+```
+Model D: bilinear classifier.
+```
+
+Sweep very small embedding dimensions:
+
+```
+d = 1, 2, 3, 4, 6, 8.
+```
+
+This provides interaction without explicitly imposing complex multiplication.
+
+Determine whether gradient descent discovers group representations.
+
+# 6. Do NOT use full-table training as the main test
+
+Full-table exactness is now secondary.
+
+The primary tests must involve missing information.
+
+Use the SAME held-out structures across architectures.
+
+Include:
+
+## Random holdout
+
+70/30.
+
+## Held row
+
+Never show one value of a.
+
+## Held column
+
+Never show one value of b.
+
+## Product-class holdout
+
+Hold out examples whose product belongs to specified residues.
+
+## Discrete-log parity holdout
+
+For nonzero a,b, hold out combinations according to parity or another structured condition on:
+
+```
+log_g(a), log_g(b).
+```
+
+## Checkerboard in dlog coordinates
+
+Train only where, for example:
+
+```
+(r+s) mod 2 = 0
+```
+
+and test the complementary set.
+
+## Rectangular hole in dlog coordinates
+
+Withhold a contiguous region of the:
+
+```
+(log_g a, log_g b)
+```
+
+table.
+
+Design at least one holdout for which memorizing rows/columns cannot plausibly solve the test set.
+
+# 7. Separate zero
+
+Because multiplication by zero introduces a special absorbing element outside the cyclic multiplicative group, initially run:
+
+```
+F_13^* x F_13^*
+```
+
+separately.
+
+That gives:
+
+```
+12 x 12 = 144
+```
+
+nonzero pairs.
+
+This isolates the actual group.
+
+Once genuine compositional learning is demonstrated there, restore zero and determine how the architecture learns the absorbing element.
+
+# 8. Critical representation experiment
+
+For each architecture, ask:
+
+```
+Does the learned representation itself carry the rule?
+```
+
+For multiplication, fit embeddings to:
+
+```
+cos(2*pi*k*log_g(a)/12)
+sin(2*pi*k*log_g(a)/12)
+```
+
+as before.
+
+But go beyond R^2.
+
+Perform functional replacement.
+
+Replace learned embeddings with the best-fit exact sinusoidal representation.
+
+Then:
+
+1. freeze downstream computation;
+2. measure accuracy;
+3. refit only downstream linear/readout parameters;
+4. measure accuracy;
+5. optionally fine-tune only a very small number of scalar parameters.
+
+The central question is:
+
+```
+Can the clean group representation replace the learned one without
+destroying the computation?
+```
+
+This is much stronger evidence than correlation.
+
+# 9. Residual information experiment
+
+Investigate the load-bearing residual discovered in the previous experiment.
+
+Write:
+
+```
+learned_embedding(a)
+    =
+group_fit(a) + residual(a).
+```
+
+Quantify how much information resides in residual(a).
+
+Perform:
+
+## Residual removal
+
+Set residual = 0.
+
+## Residual scaling
+
+Use:
+
+```
+group_fit + lambda*residual
+```
+
+for:
+
+```
+lambda = 0, .1, .2, ..., 1.
+```
+
+Plot exact accuracy versus lambda.
+
+## Residual quantization
+
+Quantize only the residual to:
+
+```
+8
+7
+6
+5
+4
+3
+2
+1
+```
+
+bits.
+
+## Residual permutation
+
+Keep the group component fixed but randomly permute residuals among residues.
+
+## Residual scrambling within symmetry classes
+
+Where meaningful, scramble residuals while preserving selected statistics.
+
+Measure how rapidly exactness disappears.
+
+Estimate how many effective bits of residue-specific information are required beyond the clean group representation.
+
+This will help distinguish:
+
+```
+group representation + tiny correction
+```
+
+from:
+
+```
+group-organized lookup table.
+```
+
+# 10. Information/compression analysis
+
+Compare models not only by parameter count but by effective information content.
+
+For exact solvers measure:
+
+* minimum successful quantization precision;
+* pruning tolerance;
+* effective rank;
+* compressibility;
+* entropy or complexity of residue-specific residuals.
+
+Ask:
+
+```
+How many bits are actually required to specify an exact solver?
+```
+
+Compare that with the information required to encode the 13x13 operation table directly.
+
+This may tell us whether the network has discovered genuine algorithmic compression.
+
+# 11. Addition remains an essential control
+
+Run the same architectural experiments on:
+
+```
+(a+b) mod 13.
+```
+
+For addition, the relevant group coordinate is the residue itself.
+
+We previously observed:
+
+```
+multiplication -> dlog Fourier
+addition       -> residue Fourier.
+```
+
+Determine whether architectures that encourage composition improve structured generalization for both operations.
+
+The multiplication/addition comparison is scientifically important because it distinguishes general architectural effects from multiplication-specific phenomena.
+
+# 12. Architecture × operation matrix
+
+Ultimately produce a table approximately like:
+
+```
+                 FULL     RANDOM     ROW     STRUCTURED    SYMBOLIC
+                 EXACT    HOLDOUT    HOLE    HOLE          EXTRACTABLE
+
+ReLU add
+ReLU multiply
+
+Product add
+Product multiply
+
+Bilinear add
+Bilinear multiply
+
+Complex add
+Complex multiply
+```
+
+Do not assume the more mathematically appropriate architecture will win.
+
+Let the experiment decide.
+
+# 13. Minimum-width transition
+
+For every promising architecture, sweep capacity downward.
+
+Find:
+
+```
+smallest architecture capable of exact full-table solution
+```
+
+and separately:
+
+```
+smallest architecture capable of exact structured generalization.
+```
+
+These may be very different.
+
+That difference itself is interesting.
+
+Plot:
+
+```
+P(full-table exact)
+    vs capacity
+```
+
+and:
+
+```
+P(structured generalization)
+    vs capacity.
+```
+
+We are looking for a possible phase transition from:
+
+```
+insufficient capacity
+    ↓
+compressed memorization
+    ↓
+compositional solution
+    ↓
+excessive capacity / easy memorization.
+```
+
+It is entirely possible that MORE capacity hurts algorithm discovery.
+
+Test this.
+
+# 14. Population analysis
+
+Continue treating the population as scientifically important.
+
+For every architecture train many independent initializations.
+
+Measure:
+
+```
+P(memorizer)
+P(partial generalizer)
+P(exact generalizer).
+```
+
+If only rare networks generalize, preserve them.
+
+Compare successful versus failed initializations.
+
+Look for early predictors of eventual algorithmic generalization.
+
+# 15. Clone-and-perturb experiment
+
+If a rare genuine generalizer appears, investigate its training trajectory.
+
+At selected checkpoints:
+
+```
+t = 0
+t = 10
+t = 50
+t = 100
+...
+```
+
+clone the network thousands of times.
+
+Apply tiny perturbations:
+
+```
+theta' = theta + epsilon.
+```
+
+Continue training.
+
+Estimate:
+
+```
+P(generalizer | checkpoint t).
+```
+
+This may identify a "commitment point" where the network enters the basin of a compositional algorithm.
+
+This is directly relevant to the broader tiny-population research question:
+
+```
+How does gradient descent select an algorithm?
+```
+
+# 16. Cross-prime generalization
+
+Only after we obtain convincing structured generalization mod 13, test whether the discovered principle transfers.
+
+Try:
+
+```
+p = 7
+11
+13
+17
+19
+23
+29
+31.
+```
+
+Do NOT expect the raw learned embedding table to transfer.
+
+Instead ask whether the architecture and learned REPRESENTATIONAL PRINCIPLE transfer.
+
+For example:
+
+```
+Does a 2D complex representation repeatedly emerge?
+
+Does embedding geometry converge toward roots of unity?
+
+Does the required width remain approximately constant as p grows?
+```
+
+This is a much stronger test of algorithmic structure.
+
+# 17. Scaling law
+
+If a candidate architecture genuinely learns modular multiplication, increase p.
+
+Measure required parameters versus p.
+
+A lookup-table-like solution should grow rapidly with domain size.
+
+A genuine group-theoretic solution might exhibit dramatically better scaling.
+
+Plot:
+
+```
+minimum parameters for generalization
+    vs p
+```
+
+and:
+
+```
+minimum description length
+    vs p.
+```
+
+This could provide quantitative evidence distinguishing memorization from algorithm discovery.
+
+# 18. Falsification protocol
+
+Whenever we believe we have discovered an algorithm:
+
+STOP and try to disprove that interpretation.
+
+Construct a specific counterfactual prediction from the proposed mechanism.
+
+Examples:
+
+If the representation is genuinely dlog/Fourier, predict exactly what should happen under:
+
+```
+a -> c*a mod p.
+```
+
+If the representation is genuinely residue Fourier, predict what should happen under:
+
+```
+a -> a+k mod p.
+```
+
+If a representation claims compositionality, construct inputs never jointly observed during training whose answer follows directly from the claimed composition rule.
+
+Test those predictions.
+
+Do not accept visual similarity or high R^2 as mechanistic evidence.
+
+# 19. Definition of success
+
+Classify results:
+
+LEVEL 0 — TABLE FITTING
+
+Exact full-table solution.
+
+Already achieved.
+
+LEVEL 1 — STRUCTURED REPRESENTATION
+
+Embeddings correlate strongly with the algebraic group.
+
+Already achieved.
+
+LEVEL 2 — STRUCTURED GENERALIZATION
+
+Network correctly solves mathematically meaningful unseen regions.
+
+Not yet achieved.
+
+LEVEL 3 — MECHANISTIC GENERALIZATION
+
+Interventions and substitutions behave as predicted by an explicit learned representation.
+
+LEVEL 4 — SYMBOLIC EXTRACTION
+
+The neural network can be replaced by an explicit mathematical algorithm that reproduces its generalizing behavior.
+
+LEVEL 5 — ALGORITHM-DISCOVERY PLATFORM
+
+The same methodology can recover different known algorithms without being told their solutions and can distinguish algorithmic solutions from memorization.
+
+
+# 20. Most important scientific question
+
+Do not treat this as:
+
+```
+"Can we make modular multiplication generalize?"
+```
+
+The broader question is:
+
+```
+What primitive operations and inductive biases are necessary for
+gradient descent to discover a compositional algorithm rather than
+an efficient encoding of its training examples?
+```
+
+The mod-13 multiplication table is our microscope for studying that question.
+
+# 21. First implementation
+
+Do not rewrite the entire existing project.
+
+First inspect the current implementation and reuse its:
+
+* vectorized population machinery;
+* datasets;
+* evaluation;
+* exact-solver criteria;
+* representation analysis;
+* plotting;
+* experiment logging.
+
+Then implement only the minimum required additions for the next experiment.
+
+The FIRST comparison should be:
+
+```
+Model A:
+    existing additive-ReLU network
+```
+
+versus
+
+```
+Model B:
+    minimal bilinear/product interaction network
+```
+
+on:
+
+```
+multiplication mod 13 over F_13^*
+```
+
+with:
+
+```
+full-table training
+random 70/30
+one structured dlog-coordinate holdout.
+```
+
+Use comparable parameter budgets.
+
+Run enough independent networks to obtain meaningful success probabilities.
+
+If Model B still memorizes and fails structured generalization, report that plainly before adding more architectural complexity.
+
+If Model B generalizes, STOP scaling and analyze the smallest successful networks mechanistically before proceeding.
+
+# 22. First response
+
+Before running anything, tell me:
+
+1. The exact mathematical distinction between what the existing ReLU network learned and what we hope the bilinear network will learn.
+2. The precise Model B equations.
+3. Parameter counts compared with the existing width-4 network.
+4. The structured holdout you recommend as the strongest first test.
+5. What test accuracy would be expected from memorization/chance.
+6. What result would constitute convincing compositional generalization.
+7. What intervention would distinguish a genuine dlog-based algorithm from another clever interpolation strategy.
+8. Whether there is an even simpler architectural modification than Model B that should be tested first.
+
+Then implement that minimal experiment and run the smallest useful population before expanding the sweep.
+
+Be skeptical. A prettier embedding is not success. A higher R^2 is not success. Full-table exactness is not success.
+
+The result we are seeking is a tiny network that correctly computes cases it was never shown because it has learned a reusable compositional rule.
+

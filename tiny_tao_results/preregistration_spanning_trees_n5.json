@@ -1,0 +1,41 @@
+{
+  "status": "preregistered",
+  "written_before_training": true,
+  "hypothesis": "τ(G) on all labeled simple graphs with n=5 vertices is enumerable (1024 graphs). Kirchhoff: any Laplacian cofactor. Deletion-contraction is an independent label oracle, not a second SGD architecture. Model K supplies the cofactor of a learned weighted Laplacian; SGD must learn 0-1 edge weights. Model A is the unstacked ReLU control on the same split.",
+  "n": 5,
+  "n_edges": 10,
+  "n_graphs": 1024,
+  "tau_max": 125,
+  "output_classes": "0..125 inclusive (126-way). Observed τ values are 17 integers; unused bins stay in the readout.",
+  "architecture_K": "w_e = scale_e x_e + bias_e, L from w, ĥ=det(L[1:,1:]), logits_k = -(ĥ-k)^2. Fixed readout. Xavier on scale, bias 0. No 0-1 init.",
+  "params_K": "2*10 = 20",
+  "architecture_A": "one-hidden ReLU MLP, width 8, input 10 edge bits, 126-way CE. No Laplacian.",
+  "protocol": "held_edge e=(0,1) (graphs containing that edge are test). P=1024, 8000 Adam steps, lr=3e-3, seed=0, float32 domain_acc>=1.0. Do not relax the gate. K_5 is the unique graph with τ=125 and contains every edge, so class 125 is test-only; that is allowed. Do not raise n to 6. Do not train 3n+1.",
+  "tables": {
+    "spanning_tau": "y=τ(G) by Kirchhoff (rounded cofactor). Positive.",
+    "spanning_tau_destroyed": "same graphs, labels a seed-20260910 permutation of the τ vector. Destroys Kirchhoff."
+  },
+  "not_this_type": [
+    "U(1) characters / Model C.",
+    "Valuation-min gcd / Model T.",
+    "A recursive deletion-contraction network (not built; DC is a label check only)."
+  ],
+  "certificate": {
+    "C0_dc_equals_kirchhoff": "Before training: deletion-contraction equals Kirchhoff on all 1024 graphs.",
+    "C1_domain_exact": "float32 domain accuracy 1 on all 1024 graphs",
+    "C2_binarize_weights": "w=scale x + bias, then w_bin=(w>=0.5). Cofactor of that 0-1 Laplacian equals τ on every graph, including the held edge. (Not a global (1,0) substitution: that would be Kirchhoff's theorem, independent of the net.)",
+    "C3_drop_one_edge": "After snap, replace one edge's weights by independent {0,1} draws. Decoder must fail.",
+    "C4_adjacency_minor": "det(A[1:,1:]) must not equal τ on all graphs. Wrong matrix."
+  },
+  "predictions": {
+    "P1_K_exact_exists": "Model K on spanning_tau produces at least one domain-exact net (capacity).",
+    "P2_K_certified_not_guaranteed": "Binarized-weight Kirchhoff may certify some exact K nets and may not. Presence is the measurement.",
+    "P3_destroyed_zero_certified": "Model K on destroyed labels: n_certified=0. Exact nets there would not be Kirchhoff.",
+    "P4_A_not_kirchhoff": "Model A on spanning_tau: n_certified=0 (no cofactor to snap). Exactness on the held-edge domain is not guaranteed.",
+    "P5_do_not_raise_n": "If K n_certified=0, do not raise n to 6, do not add a recursive DC net, do not 0-1-init, do not loosen exactness.",
+    "P6_not_collatz": "Do not train 3n+1.",
+    "P7_not_model_c": "Do not score windings or CRT."
+  },
+  "success_gate": "The run completes under the locked protocol and scores P1–P5. Scientific Kirchhoff claim requires n_certified>0 on spanning_tau for Model K and n_certified=0 on destroyed. Zero on the genuine table is a valid miss.",
+  "decoder_sanity_before_training": "C0 holds. Synthetic scale=1,bias=0 binarizes to x and certifies on spanning_tau; fails C2 on destroyed. C4 fails on the genuine table."
+}

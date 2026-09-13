@@ -1,0 +1,92 @@
+[
+  {
+    "name": "trivial_plus_one",
+    "verified": true,
+    "modulus": 32,
+    "n_lemmas": 16,
+    "n_failures": 0,
+    "horizons": [
+      1
+    ],
+    "path": "tiny_tao_results/bridge_oracle_hidden/trivial_plus_one.json"
+  },
+  {
+    "name": "easy_half_collatz",
+    "verified": true,
+    "modulus": 32,
+    "n_lemmas": 16,
+    "n_failures": 0,
+    "horizons": [
+      1
+    ],
+    "path": "tiny_tao_results/bridge_oracle_hidden/easy_half_collatz.json"
+  },
+  {
+    "name": "medium_three_on_1_mod_8",
+    "verified": true,
+    "modulus": 256,
+    "n_lemmas": 128,
+    "n_failures": 0,
+    "horizons": [
+      1
+    ],
+    "path": "tiny_tao_results/bridge_oracle_hidden/medium_three_on_1_mod_8.json"
+  },
+  {
+    "name": "hard_five_on_1_mod_16",
+    "verified": false,
+    "modulus": 65536,
+    "n_lemmas": 28672,
+    "n_failures": 4096,
+    "horizons": [
+      1
+    ],
+    "path": "tiny_tao_results/bridge_oracle_hidden/hard_five_on_1_mod_16.json"
+  },
+  {
+    "name": "control_five_on_1_mod_4",
+    "verified": false,
+    "modulus": 32,
+    "n_lemmas": 11,
+    "n_failures": 81,
+    "horizons": [
+      1,
+      2
+    ],
+    "path": "tiny_tao_results/bridge_oracle_hidden/control_five_on_1_mod_4.json"
+  },
+  {
+    "name": "prospective_seven_on_1_mod_32",
+    "verified": true,
+    "modulus": 32,
+    "n_lemmas": 16,
+    "n_failures": 0,
+    "horizons": [
+      1
+    ],
+    "path": "tiny_tao_results/bridge_oracle_hidden/prospective_seven_on_1_mod_32.json"
+  },
+  {
+    "name": "prospective_seven_and_three_mod_32",
+    "verified": true,
+    "modulus": 32,
+    "n_lemmas": 16,
+    "n_failures": 0,
+    "horizons": [
+      1
+    ],
+    "path": "tiny_tao_results/bridge_oracle_hidden/prospective_seven_and_three_mod_32.json"
+  },
+  {
+    "name": "prospective_seven_on_1_mod_64",
+    "verified": true,
+    "modulus": 64,
+    "n_lemmas": 32,
+    "n_failures": 0,
+    "horizons": [
+      1
+    ],
+    "path": "tiny_tao_results/bridge_oracle_hidden/prospective_seven_on_1_mod_64.json",
+    "written_after_discovery": true
+  }
+]

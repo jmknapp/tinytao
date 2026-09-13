@@ -1,0 +1,475 @@
+{
+  "status": "exploratory",
+  "preregistration": "tiny_tao_results/bridge_preregistration_neural_lemmas_exact_fill.json",
+  "map": "control_five_on_1_mod_4",
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "pop": 256,
+  "steps": 800,
+  "exact_affine_leftover": true,
+  "feature_moduli": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    15,
+    16,
+    24,
+    32
+  ],
+  "fits": [
+    {
+      "M": 2,
+      "loss": 39948572.0,
+      "cover": 0.0,
+      "uncovered": [
+        1
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 3,
+      "loss": 39943876.0,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 4,
+      "loss": 34768892.0,
+      "cover": 0.5,
+      "uncovered": [
+        1
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 1
+    },
+    {
+      "M": 5,
+      "loss": 39938756.0,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 6,
+      "loss": 39945384.0,
+      "cover": 0.0,
+      "uncovered": [
+        1,
+        3,
+        5
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 7,
+      "loss": 39930656.0,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 8,
+      "loss": 31791488.0,
+      "cover": 0.5,
+      "uncovered": [
+        1,
+        5
+      ],
+      "n_affine": 1,
+      "n_neural_round": 1,
+      "n_exact_affine": 0,
+      "n_odd_part": 1
+    },
+    {
+      "M": 9,
+      "loss": 39971236.0,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 10,
+      "loss": 40025424.0,
+      "cover": 0.0,
+      "uncovered": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 12,
+      "loss": 36870356.0,
+      "cover": 0.5,
+      "uncovered": [
+        1,
+        5,
+        9
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 3
+    },
+    {
+      "M": 15,
+      "loss": 40367740.0,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 16,
+      "loss": 36601144.0,
+      "cover": 0.625,
+      "uncovered": [
+        5,
+        9,
+        13
+      ],
+      "n_affine": 4,
+      "n_neural_round": 3,
+      "n_exact_affine": 1,
+      "n_odd_part": 1
+    },
+    {
+      "M": 24,
+      "loss": 39535312.0,
+      "cover": 0.5,
+      "uncovered": [
+        1,
+        5,
+        9,
+        13,
+        17,
+        21
+      ],
+      "n_affine": 3,
+      "n_neural_round": 2,
+      "n_exact_affine": 1,
+      "n_odd_part": 3
+    },
+    {
+      "M": 32,
+      "loss": 40819488.0,
+      "cover": 0.6875,
+      "uncovered": [
+        5,
+        13,
+        21,
+        25,
+        29
+      ],
+      "n_affine": 10,
+      "n_neural_round": 6,
+      "n_exact_affine": 4,
+      "n_odd_part": 1
+    }
+  ],
+  "chosen_M": 32,
+  "lemmas": [
+    {
+      "M": 32,
+      "r": 1,
+      "k": 2,
+      "A": 20,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 3,
+      "k": 1,
+      "A": 8,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 7,
+      "k": 1,
+      "A": 4,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63,
+      "source": "neural_round"
+    },
+    {
+      "M": 32,
+      "r": 9,
+      "k": 2,
+      "A": 10,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 11,
+      "k": 1,
+      "A": 8,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63,
+      "source": "neural_round"
+    },
+    {
+      "M": 32,
+      "r": 15,
+      "k": 1,
+      "A": 2,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63,
+      "source": "neural_round"
+    },
+    {
+      "M": 32,
+      "r": 17,
+      "k": 2,
+      "A": 20,
+      "B": 11,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 19,
+      "k": 1,
+      "A": 8,
+      "B": 5,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "neural_round"
+    },
+    {
+      "M": 32,
+      "r": 23,
+      "k": 1,
+      "A": 4,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "neural_round"
+    },
+    {
+      "M": 32,
+      "r": 27,
+      "k": 1,
+      "A": 8,
+      "B": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "neural_round"
+    },
+    {
+      "M": 32,
+      "r": 31,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "kind": "odd_part",
+      "a": 1,
+      "b": 1,
+      "n_train": 62,
+      "source": "odd_part"
+    }
+  ],
+  "uncovered": [
+    5,
+    13,
+    21,
+    25,
+    29
+  ],
+  "verifier": {
+    "level": "LEVEL_1_survives_finite_testing",
+    "passed_falsifier": false,
+    "n_checked": 26,
+    "n_hits": 8,
+    "hits": [
+      {
+        "r": 5,
+        "k": 0,
+        "n": 5,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 13,
+        "k": 0,
+        "n": 13,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 21,
+        "k": 0,
+        "n": 21,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 25,
+        "k": 0,
+        "n": 25,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 29,
+        "k": 0,
+        "n": 29,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 5,
+        "k": 0,
+        "n": 37,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 13,
+        "k": 0,
+        "n": 45,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 21,
+        "k": 0,
+        "n": 53,
+        "reason": "uncovered residue",
+        "observed": null
+      }
+    ],
+    "cover_frac": 0.6875,
+    "uncovered": [
+      5,
+      13,
+      21,
+      25,
+      29
+    ],
+    "M": 32,
+    "n_lemmas": 11,
+    "universal": null
+  },
+  "falsifier_attempts": [],
+  "level5_gate": false,
+  "oracle": {
+    "oracle_verified": false,
+    "oracle_M": 32,
+    "relation": "agreed_negative"
+  }
+}

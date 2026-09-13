@@ -1,0 +1,264 @@
+{
+  "status": "exploratory",
+  "map": "prospective_seven_on_1_mod_32",
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "pop": 1024,
+  "steps": 1500,
+  "feature_moduli": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    15,
+    16,
+    24,
+    32
+  ],
+  "neural_shortlist": [
+    2,
+    4,
+    6,
+    8,
+    12,
+    10,
+    3,
+    16
+  ],
+  "neural": {
+    "loss": 1.0691879026580864e-07,
+    "frac_decrease": 1.0,
+    "logn_energy": 0.03362642601132393,
+    "top_M": 2,
+    "ranked_moduli": [
+      {
+        "M": 2,
+        "energy": 0.006345013622194529
+      },
+      {
+        "M": 4,
+        "energy": 0.006334423087537289
+      },
+      {
+        "M": 6,
+        "energy": 0.0059320940636098385
+      },
+      {
+        "M": 8,
+        "energy": 0.005924191325902939
+      },
+      {
+        "M": 12,
+        "energy": 0.005766930524259806
+      },
+      {
+        "M": 10,
+        "energy": 0.005614630877971649
+      },
+      {
+        "M": 3,
+        "energy": 0.005586123559623957
+      },
+      {
+        "M": 16,
+        "energy": 0.00552223389968276
+      },
+      {
+        "M": 24,
+        "energy": 0.005500173196196556
+      },
+      {
+        "M": 32,
+        "energy": 0.0050238873809576035
+      },
+      {
+        "M": 5,
+        "energy": 0.004540025256574154
+      },
+      {
+        "M": 15,
+        "energy": 0.0035825311206281185
+      },
+      {
+        "M": 7,
+        "energy": 0.0026221666485071182
+      },
+      {
+        "M": 9,
+        "energy": 0.0023294775746762753
+      }
+    ],
+    "top_M_residue_profile": {
+      "0": 0.0625518336892128,
+      "1": 0.06398262083530426
+    },
+    "device": "cuda",
+    "pop": 1024,
+    "steps": 1500
+  },
+  "chosen_M": 16,
+  "lemmas": [
+    {
+      "M": 16,
+      "r": 3,
+      "k": 1,
+      "A": 4,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125
+    },
+    {
+      "M": 16,
+      "r": 5,
+      "k": 1,
+      "A": 8,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125
+    },
+    {
+      "M": 16,
+      "r": 7,
+      "k": 1,
+      "A": 2,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125
+    },
+    {
+      "M": 16,
+      "r": 9,
+      "k": 1,
+      "A": 8,
+      "B": 5,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125
+    },
+    {
+      "M": 16,
+      "r": 11,
+      "k": 1,
+      "A": 4,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125
+    },
+    {
+      "M": 16,
+      "r": 13,
+      "k": 1,
+      "A": 8,
+      "B": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125
+    },
+    {
+      "M": 16,
+      "r": 15,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "kind": "odd_part",
+      "a": 1,
+      "b": 1,
+      "n_train": 125
+    }
+  ],
+  "uncovered": [
+    1
+  ],
+  "verifier": {
+    "level": "LEVEL_1_survives_finite_testing",
+    "passed_falsifier": false,
+    "n_checked": 64,
+    "n_hits": 8,
+    "hits": [
+      {
+        "r": 1,
+        "k": 0,
+        "n": 17,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 33,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 49,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 65,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 81,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 97,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 113,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 129,
+        "reason": "uncovered residue",
+        "observed": null
+      }
+    ],
+    "cover_frac": 0.875,
+    "uncovered": [
+      1
+    ],
+    "M": 16,
+    "n_lemmas": 7,
+    "universal": null
+  },
+  "falsifier_attempts": [],
+  "level5_gate": false,
+  "preregistered_gate": false,
+  "preregistration": "tiny_tao_results/bridge_preregistration_seven_on_1_mod_32.json"
+}

@@ -1,0 +1,39 @@
+{
+  "status": "scored",
+  "preregistration": "tiny_tao_results/bridge_preregistration_neural_lemmas_exact_fill.json",
+  "run": "tiny_tao_results/bridge_neural_lemmas_exact_fill_20260910_014058",
+  "scored_after_training": true,
+  "changed_protocol_after_result": false,
+  "parent_15_4_P2_remains_miss": true,
+  "preregistered_gate": true,
+  "predictions": {
+    "P1_thicker_still_level5": {
+      "verdict": "hold",
+      "chosen_M": 32,
+      "level": "LEVEL_5_universal_descent",
+      "note": "Heads still miss r=1 and r=17. Exact leftover supplies F=28q+1 and F=24q+13, matching the 15.4 P1 affine prediction. r=31 remains odd_part(n+1)."
+    },
+    "P2_medium_level5_via_exact_fill": {
+      "verdict": "hold",
+      "chosen_M": 16,
+      "r1": {"k": 2, "A": 10, "B": 1, "source": "exact_affine"},
+      "note": "Heads still miss residue 1. Exact leftover recovers F^2=10q+1. 15.4 P2 stays a miss."
+    },
+    "P3_control_still_fails": {
+      "verdict": "hold",
+      "chosen_M": 32,
+      "uncovered": [5, 13, 21, 25, 29],
+      "level5_gate": false,
+      "relation": "agreed_negative"
+    },
+    "P4_hard_level5": {
+      "verdict": "hold",
+      "chosen_M": 16,
+      "r9": {"k": 1, "A": 12, "B": 7, "source": "exact_affine"},
+      "oracle_relation": "discoverer_covered_oracle_did_not"
+    },
+    "P5_not_a_rescore": {"verdict": "hold"},
+    "P6_no_bank_no_topk": {"verdict": "applied"}
+  },
+  "lesson": "Rounded Adam heads recover the n+1 majority affines. Expanding classes (medium r=1, hard r=9, thicker r=1 and r=17) still need the exact two-point leftover. Neural contribution is covering search over the locked bank, not the integers A,B on exceptional residues."
+}

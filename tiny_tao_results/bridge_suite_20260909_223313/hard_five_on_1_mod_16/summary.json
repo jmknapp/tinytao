@@ -1,0 +1,247 @@
+{
+  "status": "exploratory",
+  "map": "hard_five_on_1_mod_16",
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "best_M": 16,
+  "best_cover": 1.0,
+  "uncovered": [],
+  "lemmas": [
+    {
+      "M": 16,
+      "r": 1,
+      "k": 2,
+      "A": 10,
+      "B": 1,
+      "n_train": 124,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 16,
+      "r": 3,
+      "k": 1,
+      "A": 4,
+      "B": 1,
+      "n_train": 125,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 16,
+      "r": 5,
+      "k": 1,
+      "A": 8,
+      "B": 3,
+      "n_train": 125,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 16,
+      "r": 7,
+      "k": 1,
+      "A": 2,
+      "B": 1,
+      "n_train": 125,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 16,
+      "r": 9,
+      "k": 1,
+      "A": 12,
+      "B": 7,
+      "n_train": 125,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 16,
+      "r": 11,
+      "k": 1,
+      "A": 4,
+      "B": 3,
+      "n_train": 125,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 16,
+      "r": 13,
+      "k": 1,
+      "A": 8,
+      "B": 7,
+      "n_train": 125,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 16,
+      "r": 15,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "n_train": 125,
+      "kind": "odd_part",
+      "a": 1,
+      "b": 1
+    }
+  ],
+  "verifier": {
+    "level": "LEVEL_4_transitions_verified_exact",
+    "passed_falsifier": true,
+    "n_checked": 10002,
+    "n_hits": 0,
+    "hits": [],
+    "cover_frac": 1.0,
+    "uncovered": [],
+    "M": 16,
+    "n_lemmas": 8
+  },
+  "neural_potential": {
+    "skipped": true,
+    "reason": "BRIDGE_NEURAL not set; login node has no GPU"
+  },
+  "top_moduli": [
+    {
+      "M": 16,
+      "cover": 1.0,
+      "n_lemmas": 8,
+      "uncovered": [],
+      "k_used": [
+        1,
+        2
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 32,
+      "cover": 1.0,
+      "n_lemmas": 16,
+      "uncovered": [],
+      "k_used": [
+        1,
+        2
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 48,
+      "cover": 1.0,
+      "n_lemmas": 24,
+      "uncovered": [],
+      "k_used": [
+        1,
+        2
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 64,
+      "cover": 1.0,
+      "n_lemmas": 32,
+      "uncovered": [],
+      "k_used": [
+        1,
+        2
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 128,
+      "cover": 1.0,
+      "n_lemmas": 64,
+      "uncovered": [],
+      "k_used": [
+        1,
+        2
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 256,
+      "cover": 1.0,
+      "n_lemmas": 128,
+      "uncovered": [],
+      "k_used": [
+        1,
+        2
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 8,
+      "cover": 0.75,
+      "n_lemmas": 3,
+      "uncovered": [
+        1
+      ],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 24,
+      "cover": 0.75,
+      "n_lemmas": 9,
+      "uncovered": [
+        1,
+        9,
+        17
+      ],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    }
+  ],
+  "minimality": {
+    "M": 16,
+    "cover": 1.0,
+    "n_lemmas": 8,
+    "uncovered": [],
+    "k_used": [
+      1,
+      2
+    ],
+    "kinds": [
+      "affine",
+      "odd_part"
+    ]
+  }
+}

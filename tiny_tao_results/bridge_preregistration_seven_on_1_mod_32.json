@@ -1,0 +1,29 @@
+{
+  "status": "preregistered",
+  "written_before_training": true,
+  "map": "prospective_seven_on_1_mod_32",
+  "protocol": "identical to the frozen neural bridge: POP=1024, STEPS=1500, LR=3e-3, SEED=20260909, N_TRAIN=2000, N_FALSIFY=20000, TOP_K_MODULI=8, FEATURE_MODULI=(2,3,4,5,6,7,8,9,10,12,15,16,24,32). Do not enlarge the bank. Do not raise TOP_K. Do not train Collatz.",
+  "law": {
+    "even": "T(n)=n/2",
+    "odd_expanding": "F(n)=odd_part(7n+1) iff n ≡ 1 (mod 32)",
+    "odd_else": "F(n)=odd_part(n+1)"
+  },
+  "why_not_a_remix": "Medium/hard expand on a mod-16 class with multiplier 5 (and 3). This map uses multiplier 7 on a strictly thinner class. At M=16 the residue n≡1 (mod 16) mixes 7n+1 (n≡1 mod 32) with n+1 (n≡17 mod 32), so a complete M=16 covering is not expected.",
+  "hand_analysis_before_code": {
+    "M32_r1": "n=32q+1, 7n+1=224q+8=8(28q+1), F=28q+1, A=28<32, k=1 descent for q≥1",
+    "M16_r1": "n=16q'+1 is two subclasses; no single affine or odd_part (a,b) fits both",
+    "M32_r31": "odd_part(n+1) has q-dependent v2; mixed extractor should use odd_part, affine-only oracle may fail"
+  },
+  "predictions": {
+    "P1_M16_incomplete": "No complete covering at M=16.",
+    "P2_M32_mixed_covering": "A mixed covering exists at M=32: affine k=1 on r=1 with F=28q+1; odd_part(n+1) on r=31; other odd residues one-step n+1 affine or odd_part.",
+    "P3_shortlist_includes_32": "The neural top-8 shortlist includes 32.",
+    "P4_level5_if_32_shortlisted": "If P3 holds, extracted M=32, Level 5 gate True, universal descent proved for every q.",
+    "P5_top_M_need_not_be_32": "Neural top_M by energy need not be 32 (may still be 4). That is not the gate.",
+    "P6_missed_shortlist_is_a_stop": "If 32 is not in the top 8, Level 5 gate is False. Do not raise TOP_K. Do not add moduli. Record a neural-shortlist miss.",
+    "P7_oracle_affine_may_fail": "Hidden affine-only oracle may fail on r=31 at M=32. That does not change P4. Do not retune the Discoverer from oracle JSON.",
+    "P8_not_collatz": "Do not train 3n+1. This map is not Collatz."
+  },
+  "success_gate": "P3 and P4: shortlist contains 32 AND extracted covering is LEVEL_5_universal_descent at M=32 with no uncovered class.",
+  "feature_bank_locked": [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 16, 24, 32]
+}

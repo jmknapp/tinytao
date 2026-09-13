@@ -1,0 +1,26 @@
+{
+  "status": "scored",
+  "preregistration": "tiny_tao_results/bridge_preregistration_seven_on_1_mod_32.json",
+  "run": "tiny_tao_results/bridge_neural_prospective_seven_on_1_mod_32_20260910_012136",
+  "scored_after_training": true,
+  "changed_protocol_after_result": false,
+  "neural_shortlist": [2, 4, 6, 8, 12, 10, 3, 16],
+  "rank_of_32": 10,
+  "energy_32": 0.00502,
+  "top_M": 2,
+  "chosen_M": 16,
+  "uncovered_at_chosen": [1],
+  "level5_gate": false,
+  "preregistered_gate": false,
+  "predictions": {
+    "P1_M16_incomplete": {"verdict": "hold", "note": "fallback M=16 uncovered {1}"},
+    "P2_M32_mixed_covering": {"verdict": "not_tested_by_neural_shortlist", "note": "32 was not in top 8; hidden affine oracle verified a k=1 covering at M=32 independently"},
+    "P3_shortlist_includes_32": {"verdict": "miss", "note": "32 ranked 10th; shortlist cut at 16"},
+    "P4_level5_if_32_shortlisted": {"verdict": "vacuous", "note": "antecedent P3 false"},
+    "P5_top_M_need_not_be_32": {"verdict": "hold", "note": "top_M=2"},
+    "P6_missed_shortlist_is_a_stop": {"verdict": "applied", "note": "gate False. Do not raise TOP_K. Do not add moduli."},
+    "P7_oracle_affine_may_fail": {"verdict": "oracle_verified", "note": "affine oracle verified at M=32, k=1, 0 failures. 'May fail' is not a miss."},
+    "P8_not_collatz": {"verdict": "hold"}
+  },
+  "lesson": "A 1/32 expanding class is invisible to this Lyapunov on n≤2000. Loss went to ~1e-7 and V(F)<V(n) on the whole sample using small M. Energy ranking is a finite-sample hint, not a covering finder for thin classes."
+}

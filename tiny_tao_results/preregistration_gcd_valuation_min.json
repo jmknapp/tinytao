@@ -1,0 +1,39 @@
+{
+  "status": "preregistered",
+  "written_before_training": true,
+  "hypothesis": "Model C finds characters of tori because the interaction is complex multiply. A different compositional slot — coordinatewise min of real heads — can express the valuation-meet formula gcd(a,b)=product p^min(v_p(a),v_p(b)). That is a lattice/tropical algorithm, not a U(1)-homomorphism. SGD must learn the embeddings; min is fixed and not initialized from valuations.",
+  "architecture": "Model T: shared table E in R^{N x H}, H=number of locked primes, h=min(E[a],E[b]) coordinatewise, linear readout W,b. Xavier, no valuation init.",
+  "params": "N*H + H*N + N = 12*5 + 5*12 + 12 = 132",
+  "N": 12,
+  "primes_locked": [2, 3, 5, 7, 11],
+  "H": 5,
+  "protocol": "held_row a0=6 (largest a with 2a<=N, so every gcd class including 7..12 still appears in train; a0=N would drop gcd=N). P=1024, 8000 Adam steps, lr=3e-3, seed=0, float32 domain_acc>=1.0. Do not relax the gate. Do not initialize from v_p. Do not train Model C on this table in this run.",
+  "tables": {
+    "gcd_meet": "T(a,b)=gcd(a,b) on {1..12}. Positive: the lattice meet.",
+    "gcd_destroyed": "Symmetric shuffle of off-diagonal gcd entries, diagonal gcd(a,a)=a kept, seed 20260910. Preserves commutativity and off-diagonal frequencies. Destroys the valuation-meet law."
+  },
+  "not_this_type": [
+    "A faithful complex character of (Z/pZ)* (Family F).",
+    "Class-2 quotient+radial.",
+    "CRT torus of cyclic factors.",
+    "Euclid-mod traces or Stein binary GCD as a state machine (not in the decoder list; do not add them after a miss)."
+  ],
+  "certificate": {
+    "C1_domain_exact": "float32 domain accuracy 1 on all 144 pairs",
+    "C2_valuation_assignment": "Hungarian match of H heads to the locked primes by affine R^2 of E[:,h] vs v_p; every scale α>0",
+    "C3_min_decoder": "neural-free: snap each head to α v_p+β, take min per prime, round exponents, reconstruct product. Must be 100% exact on the task table",
+    "C4_drop_one_prime": "Permute one snapped head across residues. Decoder must fail.",
+    "C5_sum_is_wrong_algebra": "Replace min by sum on the snapped table. Decoder must fail. Distinguishes tropical meet from an additive character-like rule on the same coordinates."
+  },
+  "predictions": {
+    "P1_exact_exists_meet": "On gcd_meet, at least one domain-exact net (capacity).",
+    "P2_certified_not_guaranteed": "A certified valuation-min family may appear and may not. Presence is the measurement. Do not treat a high exact rate as the lattice algorithm.",
+    "P3_sum_never_certifies_min_nets": "No net that passes C3 also passes C5 (sum). Vacuous if n_certified=0.",
+    "P4_destroyed_zero_certified": "On gcd_destroyed, n_certified=0. Exact nets there are Class 1 interpolation.",
+    "P5_do_not_add_primes": "If n_certified=0 on gcd_meet, do not add primes (13), do not raise H, do not valuation-init, do not add Euclid/Stein decoders, do not loosen exactness.",
+    "P6_not_collatz": "Do not train 3n+1.",
+    "P7_not_model_c": "Do not score this run with a dlog-circle / CRT certificate."
+  },
+  "success_gate": "The run completes under the locked protocol and scores P1–P5. Scientific valuation-min claim requires n_certified>0 on gcd_meet and n_certified=0 on gcd_destroyed. Zero on the meet table is a valid miss.",
+  "decoder_sanity_before_training": "C3–C5 must hold on synthetic E[a,p]=v_p(a) against gcd_meet. The same synthetic E must fail C3 against gcd_destroyed."
+}

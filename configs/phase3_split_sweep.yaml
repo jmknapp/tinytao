@@ -1,0 +1,42 @@
+# Same capacity sweep, but trained on a random 70% split.
+# Exact = correct on every pair in the 169-element domain, including
+# the 30% the network never saw. Distinguishes interpolation of the
+# training table from learning the multiplication rule.
+task:
+  name: modular_multiplication
+  p: 13
+  split: random
+  train_frac: 0.7
+  split_seed: 0
+
+model:
+  hidden_dims: [8]
+  activation: relu
+  use_bias: true
+  init: xavier_uniform
+  init_scale: 1.0
+
+population:
+  size: 1024
+  min_size: 64
+
+train:
+  epochs: 8000
+  batch_size: 0
+  lr: 0.003
+  optimizer: adam
+  weight_decay: 0.0
+  log_every: 50
+  eval_every: 50
+
+sweep:
+  hidden_widths: [2, 3, 4, 5, 6, 8, 12, 16, 24, 32]
+  protocol: split
+  depths: [1]
+
+seed: 0
+device: cuda
+run_name: phase3_split_sweep
+notes: >
+  Generalization sweep. Same optimizer and widths as the full-domain
+  capacity sweep; only the training subset changes.

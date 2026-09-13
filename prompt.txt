@@ -1,0 +1,392 @@
+I want to build an experimental system inspired by Terence Tao's idea of studying large populations of very small neural networks as "experimental organisms." The goal is not simply to solve a machine-learning benchmark. I want to investigate what different computational strategies tiny neural networks discover when trained independently on the same exactly defined problem.
+
+Please design and implement this as a serious research-style Python/PyTorch project.
+
+## Hardware and environment
+
+I have an NVIDIA RTX 5060 Ti with 16 GB VRAM.
+
+Design the implementation to exploit the GPU efficiently. In particular, DO NOT train thousands of networks using a Python loop if the population can instead be represented as an additional tensor dimension.
+
+For example, a population of P networks might have weights shaped approximately like:
+
+```
+W1: [P, input_dim, hidden_dim]
+b1: [P, hidden_dim]
+W2: [P, hidden_dim, output_dim]
+```
+
+Use batched tensor operations, einsum, bmm, torch.func/vmap, or another efficient approach so that thousands or tens of thousands of tiny networks can be evaluated and trained simultaneously.
+
+## Scientific objective
+
+The central question is:
+
+```
+When many independently initialized tiny neural networks are trained on exactly the same discrete computational problem, what different algorithms or internal representations emerge?
+```
+
+I want to study:
+
+1. Whether independently trained networks converge on qualitatively different solutions.
+2. Whether some solutions are substantially simpler than others.
+3. Whether certain internal representations repeatedly emerge.
+4. Whether network size creates phase transitions in learnability.
+5. Whether training produces sudden "grokking"-like transitions.
+6. Whether successful networks generalize compositionally rather than merely memorize.
+7. Whether we can reverse-engineer successful networks sufficiently to describe their computation as an understandable algorithm.
+
+Think of each tiny neural network as an experimental organism and the population as an artificial evolutionary/ecological experiment.
+
+## Initial task
+
+Choose a very small arithmetic problem for the first experiment.
+
+A good candidate is modular arithmetic, such as:
+
+```
+y = (a * b) mod p
+```
+
+for a small prime p.
+
+However, before implementing it, briefly compare several possible toy problems:
+
+* addition
+* multiplication
+* modular addition
+* modular multiplication
+* parity/XOR
+* small finite-state algorithms
+* binary arithmetic
+
+Choose a task that is:
+
+* exactly enumerable,
+* small enough that the complete input space can be tested,
+* difficult enough that networks can potentially discover different strategies,
+* and simple enough that successful tiny networks can potentially be reverse-engineered.
+
+Explain why you chose it.
+
+## Population experiment
+
+Create a population of many independently initialized networks.
+
+Start with perhaps:
+
+```
+P = 10,000
+```
+
+but make this configurable and automatically reduce batch/population size if VRAM becomes limiting.
+
+Every network should initially have the same architecture but independent parameters.
+
+The implementation should support sweeps over architectures such as:
+
+```
+hidden width = 2, 3, 4, 5, 6, 8, 12, 16, 24, 32
+```
+
+and preferably different depths.
+
+I am particularly interested in determining the MINIMUM network capacity at which reliable solutions begin to appear.
+
+Record the fraction of networks that:
+
+* fail completely,
+* partially learn,
+* memorize training examples,
+* generalize,
+* and achieve exact accuracy over the complete domain.
+
+## Training diversity
+
+Networks should have independent random initialization.
+
+Also make it possible to vary:
+
+* random seed
+* learning rate
+* optimizer
+* weight decay
+* activation function
+* architecture
+* training subset
+* initialization scale
+
+Do not vary everything initially. Establish a controlled baseline first.
+
+## Complete-domain evaluation
+
+Because the arithmetic domain is small, enumerate every possible input combination.
+
+Separate:
+
+```
+training accuracy
+held-out accuracy
+complete-domain accuracy
+```
+
+A network should only count as an exact solver if it produces the correct answer for EVERY possible input.
+
+This distinction is important.
+
+## Track learning dynamics
+
+Do not merely save final networks.
+
+Record enough information to reconstruct learning trajectories.
+
+For each network, or at least selected representative networks, track:
+
+* loss versus epoch
+* training accuracy
+* test accuracy
+* complete-domain accuracy
+* parameter norm
+* gradient norm
+* important activation statistics
+
+Detect sudden transitions in performance.
+
+If a network remains mediocre for thousands of steps and then abruptly becomes an exact solver, flag that event.
+
+## Analyze the population
+
+Once training finishes, characterize the distribution of solutions.
+
+For successful networks calculate things such as:
+
+* parameter norms
+* activation patterns
+* hidden-unit correlations
+* effective rank
+* sparsity
+* symmetry
+* sensitivity to perturbations
+* margins/confidence
+* representation similarity
+
+Cluster successful networks according to their internal behavior rather than simply their raw weights.
+
+Remember that hidden units can be permuted, so naive Euclidean distance between parameter vectors is not necessarily meaningful.
+
+Look for equivalence classes of solutions.
+
+## Reverse engineering
+
+This is one of the most important parts of the project.
+
+Select representative successful networks from different clusters and attempt to determine WHAT COMPUTATION THEY HAVE LEARNED.
+
+Use techniques such as:
+
+* exhaustive activation inspection
+* activation heatmaps over the complete input domain
+* probing hidden units
+* PCA/SVD
+* Fourier analysis over the modular domain where appropriate
+* ablation of individual neurons
+* pruning
+* weight perturbation
+* symbolic simplification
+* fitting simple mathematical functions to neuron activations
+
+For modular arithmetic, specifically investigate whether networks develop sinusoidal/Fourier-like representations or other structures related to the cyclic group.
+
+The desired final result is not:
+
+```
+"network #1837 got 100% accuracy."
+```
+
+It is something closer to:
+
+```
+"There appear to be three recurring computational strategies. Strategy A represents residues geometrically on a circle; Strategy B decomposes the problem into these intermediate quantities; Strategy C uses a different representation..."
+```
+
+Do not claim an interpretation unless the evidence supports it.
+
+## Minimal-network search
+
+Develop a systematic procedure for finding very small exact solvers.
+
+For each architecture, estimate:
+
+```
+probability(random training run produces exact solver)
+```
+
+Plot this probability against parameter count.
+
+Look for a threshold where exact solutions suddenly become common.
+
+Once exact solvers exist, try shrinking them further through:
+
+* narrower architectures
+* pruning
+* parameter quantization
+* neuron removal
+* retraining
+
+Determine the smallest exact solver discovered.
+
+## Generalization experiments
+
+Do not rely only on random train/test splits.
+
+Design structured holdouts that distinguish memorization from learning a genuine rule.
+
+For example, with modular multiplication, hold out structured subsets of operand combinations.
+
+Test whether a learned representation interpolates or extrapolates according to the mathematical structure.
+
+Explain what each holdout experiment tells us.
+
+## Visualization
+
+Create useful plots including:
+
+1. Fraction of exact solvers vs network size.
+2. Distribution of final accuracies across the population.
+3. Training trajectories for representative networks.
+4. Time/epoch at which exact solutions emerge.
+5. Hidden activation heatmaps.
+6. PCA or other embeddings of successful network behaviors.
+7. Cluster visualization of discovered solution types.
+8. Parameter-count vs probability-of-success curve.
+
+Use matplotlib.
+
+## Storage
+
+Do not save every training checkpoint for every network if that produces enormous files.
+
+Design an efficient storage strategy.
+
+Save:
+
+* experiment configuration
+* aggregate statistics
+* final metrics for every network
+* parameters for successful networks
+* parameters/checkpoints for selected representative networks
+* learning trajectories at sensible intervals
+
+Use a reproducible directory structure.
+
+## Reproducibility
+
+Every experiment must record:
+
+* random seeds
+* PyTorch version
+* CUDA version
+* GPU model
+* architecture
+* optimizer configuration
+* dataset definition
+* training parameters
+* git commit if available
+
+Results should be reproducible from configuration files.
+
+## Code organization
+
+Do not put the entire experiment in one notebook.
+
+Create a clean project structure, for example:
+
+```
+tiny-nn-lab/
+    README.md
+    requirements.txt
+    configs/
+    src/
+        tasks/
+        population/
+        training/
+        analysis/
+        visualization/
+    experiments/
+    results/
+    notebooks/
+```
+
+Notebooks should primarily be used for exploratory analysis and visualization.
+
+Core training and analysis code should live in reusable Python modules.
+
+## Performance
+
+Benchmark the population-vectorized implementation.
+
+Report approximately:
+
+* networks trained simultaneously
+* examples/sec
+* network-evaluations/sec
+* GPU memory consumption
+* GPU utilization
+* time per training step
+
+Try to keep the computation GPU-bound rather than Python-bound.
+
+Use mixed precision only if it does not materially interfere with tiny-network behavior or exact-solver detection.
+
+For these tiny mathematical systems, numerical precision may itself be scientifically interesting, so default to float32 initially.
+
+## Development approach
+
+Build this incrementally.
+
+Phase 1:
+Implement one task and prove that hundreds or thousands of tiny networks can be trained simultaneously.
+
+Phase 2:
+Scale toward ~10,000 networks and benchmark the RTX 5060 Ti.
+
+Phase 3:
+Run architecture sweeps and identify exact solvers.
+
+Phase 4:
+Cluster successful solutions.
+
+Phase 5:
+Reverse-engineer representative networks.
+
+Phase 6:
+Search for minimal exact networks and test robustness/generalization.
+
+At each phase, verify correctness before adding complexity.
+
+## Important methodological point
+
+Treat this as a computational science experiment, not an ML demo.
+
+Keep raw observations separate from interpretation.
+
+When we believe a network has discovered a particular algorithm, devise an experiment that could falsify that interpretation.
+
+Actively look for surprising or anomalous networks rather than averaging them away.
+
+Outliers may be the most interesting part of the experiment.
+
+## First response
+
+Before writing large amounts of code, give me:
+
+1. Your recommended first mathematical task and why.
+2. A proposed encoding of inputs and outputs.
+3. The exact tiny-network architecture to start with.
+4. How you would vectorize 10,000 independent networks on the GPU.
+5. A rough VRAM/computational estimate.
+6. The first 3–5 experiments you would run.
+7. What observations would constitute evidence that different networks have actually discovered different algorithms rather than merely different parameterizations of the same algorithm.
+
+Then propose the initial project structure and begin implementing Phase 1.
+

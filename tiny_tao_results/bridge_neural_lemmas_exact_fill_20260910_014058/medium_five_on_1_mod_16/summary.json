@@ -1,0 +1,428 @@
+{
+  "status": "exploratory",
+  "preregistration": "tiny_tao_results/bridge_preregistration_neural_lemmas_exact_fill.json",
+  "map": "medium_five_on_1_mod_16",
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "pop": 256,
+  "steps": 800,
+  "exact_affine_leftover": true,
+  "feature_moduli": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    15,
+    16,
+    24,
+    32
+  ],
+  "fits": [
+    {
+      "M": 2,
+      "loss": 212004.34375,
+      "cover": 0.0,
+      "uncovered": [
+        1
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 3,
+      "loss": 211989.390625,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 4,
+      "loss": 151608.765625,
+      "cover": 0.5,
+      "uncovered": [
+        1
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 1
+    },
+    {
+      "M": 5,
+      "loss": 211964.890625,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 6,
+      "loss": 211989.359375,
+      "cover": 0.0,
+      "uncovered": [
+        1,
+        3,
+        5
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 7,
+      "loss": 211943.328125,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 8,
+      "loss": 102562.8515625,
+      "cover": 0.75,
+      "uncovered": [
+        1
+      ],
+      "n_affine": 2,
+      "n_neural_round": 2,
+      "n_exact_affine": 0,
+      "n_odd_part": 1
+    },
+    {
+      "M": 9,
+      "loss": 211832.71875,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 10,
+      "loss": 211963.953125,
+      "cover": 0.0,
+      "uncovered": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 12,
+      "loss": 151589.765625,
+      "cover": 0.5,
+      "uncovered": [
+        1,
+        5,
+        9
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 3
+    },
+    {
+      "M": 15,
+      "loss": 211612.3125,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "n_affine": 0,
+      "n_neural_round": 0,
+      "n_exact_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 16,
+      "loss": 29602.45703125,
+      "cover": 1.0,
+      "uncovered": [],
+      "n_affine": 7,
+      "n_neural_round": 6,
+      "n_exact_affine": 1,
+      "n_odd_part": 1
+    },
+    {
+      "M": 24,
+      "loss": 110495.1796875,
+      "cover": 0.75,
+      "uncovered": [
+        1,
+        9,
+        17
+      ],
+      "n_affine": 6,
+      "n_neural_round": 3,
+      "n_exact_affine": 3,
+      "n_odd_part": 3
+    },
+    {
+      "M": 32,
+      "loss": 88656.03125,
+      "cover": 1.0,
+      "uncovered": [],
+      "n_affine": 15,
+      "n_neural_round": 12,
+      "n_exact_affine": 3,
+      "n_odd_part": 1
+    }
+  ],
+  "chosen_M": 16,
+  "lemmas": [
+    {
+      "M": 16,
+      "r": 1,
+      "k": 2,
+      "A": 10,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 124,
+      "source": "exact_affine"
+    },
+    {
+      "M": 16,
+      "r": 3,
+      "k": 1,
+      "A": 4,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "neural_round"
+    },
+    {
+      "M": 16,
+      "r": 5,
+      "k": 2,
+      "A": 2,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "neural_round"
+    },
+    {
+      "M": 16,
+      "r": 7,
+      "k": 1,
+      "A": 2,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "neural_round"
+    },
+    {
+      "M": 16,
+      "r": 9,
+      "k": 1,
+      "A": 8,
+      "B": 5,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "neural_round"
+    },
+    {
+      "M": 16,
+      "r": 11,
+      "k": 1,
+      "A": 4,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "neural_round"
+    },
+    {
+      "M": 16,
+      "r": 13,
+      "k": 1,
+      "A": 8,
+      "B": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "neural_round"
+    },
+    {
+      "M": 16,
+      "r": 15,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "kind": "odd_part",
+      "a": 1,
+      "b": 1,
+      "n_train": 125,
+      "source": "odd_part"
+    }
+  ],
+  "uncovered": [],
+  "verifier": {
+    "level": "LEVEL_5_universal_descent",
+    "passed_falsifier": true,
+    "n_checked": 10002,
+    "n_hits": 0,
+    "hits": [],
+    "cover_frac": 1.0,
+    "uncovered": [],
+    "M": 16,
+    "n_lemmas": 8,
+    "universal": {
+      "proven": true,
+      "level": "LEVEL_5_universal_descent",
+      "theorem": "If n is even and n>1 then T(n)=n/2<n. If n is odd and n>1 then some F^k(n)<n by a covering lemma proved for every q. A strictly decreasing chain of positive integers is finite, so every trajectory reaches 1. A cycle of integers all >1 is impossible.",
+      "failures": [],
+      "lemmas": [
+        {
+          "r": 1,
+          "kind": "affine",
+          "k": 2,
+          "ok": true,
+          "note": "F^2=10q+1 locked at lift 32; A=10<M=16: worst n=17 maps to 11"
+        },
+        {
+          "r": 3,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=4q+1 locked at lift 16; A=4<M=16: worst n=3 maps to 1"
+        },
+        {
+          "r": 5,
+          "kind": "affine",
+          "k": 2,
+          "ok": true,
+          "note": "F^2=2q+1 locked at lift 32; A=2<M=16: worst n=5 maps to 1"
+        },
+        {
+          "r": 7,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=2q+1 locked at lift 16; A=2<M=16: worst n=7 maps to 1"
+        },
+        {
+          "r": 9,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=8q+5 locked at lift 16; A=8<M=16: worst n=9 maps to 5"
+        },
+        {
+          "r": 11,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=4q+3 locked at lift 16; A=4<M=16: worst n=11 maps to 3"
+        },
+        {
+          "r": 13,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=8q+7 locked at lift 16; A=8<M=16: worst n=13 maps to 7"
+        },
+        {
+          "r": 15,
+          "kind": "odd_part",
+          "k": 1,
+          "ok": true,
+          "note": "F=odd_part(1n+1) on class; worst-case 1q+1; A=1<M=16: worst n=15 maps to 1"
+        }
+      ],
+      "even_step": "even n>1: T(n)=n/2<n by definition",
+      "M": 16,
+      "map": "medium_five_on_1_mod_16"
+    }
+  },
+  "falsifier_attempts": [
+    {
+      "M": 16,
+      "passed": true,
+      "level": "LEVEL_5_universal_descent"
+    }
+  ],
+  "level5_gate": true,
+  "oracle": {
+    "oracle_verified": true,
+    "oracle_M": 32,
+    "relation": "smaller_covering"
+  }
+}

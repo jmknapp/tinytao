@@ -1,0 +1,94 @@
+{
+  "status": "exploratory",
+  "run": "tiny_tao_results/bridge_seven_on_1_mod_64_20260910_123215",
+  "preregistration": "tiny_tao_results/bridge_preregistration_seven_on_1_mod_64.json",
+  "neural": false,
+  "feature_moduli": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    15,
+    16,
+    24,
+    32
+  ],
+  "score": {
+    "P1_out_of_bank_fails": true,
+    "P2_medium_still_level5": true,
+    "P3_control_still_fails": true,
+    "P4_oracle_verifies_at_64": true,
+    "P5_bank_still_locked": true,
+    "preregistered_gate": true,
+    "out_chosen_M": 32,
+    "out_uncovered": [
+      1
+    ],
+    "M32_uncovered": [
+      1
+    ]
+  },
+  "maps": [
+    {
+      "map": "prospective_seven_on_1_mod_64",
+      "chosen_M": 32,
+      "level": "LEVEL_1_survives_finite_testing",
+      "level5_gate": false,
+      "uncovered": [
+        1
+      ],
+      "M32_uncovered": [
+        1
+      ],
+      "oracle": {
+        "oracle_verified": true,
+        "oracle_M": 64,
+        "relation": "discoverer_failed_oracle_verified"
+      }
+    },
+    {
+      "map": "medium_five_on_1_mod_16",
+      "chosen_M": 16,
+      "level": "LEVEL_5_universal_descent",
+      "level5_gate": true,
+      "uncovered": [],
+      "M32_uncovered": [],
+      "oracle": {
+        "oracle_verified": true,
+        "oracle_M": 32,
+        "relation": "smaller_covering"
+      }
+    },
+    {
+      "map": "control_five_on_1_mod_4",
+      "chosen_M": 32,
+      "level": "LEVEL_1_survives_finite_testing",
+      "level5_gate": false,
+      "uncovered": [
+        5,
+        13,
+        21,
+        25,
+        29
+      ],
+      "M32_uncovered": [
+        5,
+        13,
+        21,
+        25,
+        29
+      ],
+      "oracle": {
+        "oracle_verified": false,
+        "oracle_M": 32,
+        "relation": "agreed_negative"
+      }
+    }
+  ]
+}

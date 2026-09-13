@@ -1,0 +1,37 @@
+# Restore zero: Model C on the full Z/13Z multiplication table.
+# Domain 169, 13-way labels. Held row 12 = missing nonzero factor.
+# Held row 0 = missing absorbing factor (e(0) still trained as b).
+task:
+  name: modular_multiplication
+  p: 13
+  split: random
+  train_frac: 0.7
+  split_seed: 0
+  held_operands: [12]
+
+model:
+  hidden_dims: [1]
+  activation: identity
+  use_bias: true
+  init: xavier_uniform
+  init_scale: 1.0
+  interaction: complex
+
+population:
+  size: 1024
+  min_size: 64
+
+train:
+  epochs: 8000
+  batch_size: 0
+  lr: 0.003
+  optimizer: adam
+  weight_decay: 0.0
+  log_every: 50
+  eval_every: 50
+
+seed: 0
+device: cuda
+run_name: restore_zero
+notes: >
+  Full 13x13 multiplication after F_13* composition. How is 0 learned?

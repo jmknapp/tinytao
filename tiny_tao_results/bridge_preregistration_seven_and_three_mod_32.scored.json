@@ -1,0 +1,27 @@
+{
+  "status": "scored",
+  "preregistration": "tiny_tao_results/bridge_preregistration_seven_and_three_mod_32.json",
+  "run": "tiny_tao_results/bridge_neural_prospective_seven_and_three_mod_32_20260910_012529",
+  "scored_after_training": true,
+  "changed_protocol_after_result": false,
+  "neural_shortlist": [4, 2, 8, 6, 12, 10, 3, 24],
+  "rank_of_32": 10,
+  "energy_32": 0.00503,
+  "rank_of_16": 9,
+  "top_M": 4,
+  "chosen_M": 8,
+  "uncovered_at_chosen": [1],
+  "level5_gate": false,
+  "preregistered_gate": false,
+  "predictions": {
+    "P1_M16_incomplete": {"verdict": "not_selected", "note": "16 ranked 9th, not in shortlist; chosen M=8 uncovered {1}"},
+    "P2_M32_mixed_covering": {"verdict": "not_tested_by_neural_shortlist", "note": "hidden affine oracle verified k=1 covering at M=32"},
+    "P3_shortlist_includes_32": {"verdict": "miss", "note": "32 ranked 10th again; energy 0.00503 vs 0.00502 on the 1/32 map"},
+    "P4_level5_if_32_shortlisted": {"verdict": "vacuous"},
+    "P5_top_M_need_not_be_32": {"verdict": "hold", "note": "top_M=4"},
+    "P6_missed_shortlist_is_a_stop": {"verdict": "applied"},
+    "P7_oracle_affine_may_fail": {"verdict": "oracle_verified"},
+    "P8_not_collatz": {"verdict": "hold"}
+  },
+  "lesson": "Doubling the expanding set to density 1/16 (same as medium) did not move M=32 into the top 8. Energy ranking still prefers small 2-adic M that fit the n+1 majority. Medium put 32 in the shortlist because 16 was a real covering, not because expanding density alone lights up 32. This potential is not a covering finder for exceptional 2-adic classes on n≤2000."
+}

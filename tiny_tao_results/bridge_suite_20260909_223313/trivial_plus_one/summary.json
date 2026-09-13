@@ -1,0 +1,154 @@
+{
+  "status": "exploratory",
+  "map": "trivial_plus_one",
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "best_M": 2,
+  "best_cover": 1.0,
+  "uncovered": [],
+  "lemmas": [
+    {
+      "M": 2,
+      "r": 1,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "n_train": 999,
+      "kind": "odd_part",
+      "a": 1,
+      "b": 1
+    }
+  ],
+  "verifier": {
+    "level": "LEVEL_4_transitions_verified_exact",
+    "passed_falsifier": true,
+    "n_checked": 10002,
+    "n_hits": 0,
+    "hits": [],
+    "cover_frac": 1.0,
+    "uncovered": [],
+    "M": 2,
+    "n_lemmas": 1
+  },
+  "neural_potential": {
+    "skipped": true,
+    "reason": "BRIDGE_NEURAL not set; login node has no GPU"
+  },
+  "top_moduli": [
+    {
+      "M": 2,
+      "cover": 1.0,
+      "n_lemmas": 1,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "odd_part"
+      ]
+    },
+    {
+      "M": 3,
+      "cover": 1.0,
+      "n_lemmas": 3,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "odd_part"
+      ]
+    },
+    {
+      "M": 4,
+      "cover": 1.0,
+      "n_lemmas": 2,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 5,
+      "cover": 1.0,
+      "n_lemmas": 5,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "odd_part"
+      ]
+    },
+    {
+      "M": 6,
+      "cover": 1.0,
+      "n_lemmas": 3,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "odd_part"
+      ]
+    },
+    {
+      "M": 7,
+      "cover": 1.0,
+      "n_lemmas": 7,
+      "uncovered": [],
+      "k_used": [
+        1,
+        8
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 8,
+      "cover": 1.0,
+      "n_lemmas": 4,
+      "uncovered": [],
+      "k_used": [
+        1,
+        8
+      ],
+      "kinds": [
+        "affine"
+      ]
+    },
+    {
+      "M": 9,
+      "cover": 1.0,
+      "n_lemmas": 9,
+      "uncovered": [],
+      "k_used": [
+        1,
+        8
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    }
+  ],
+  "minimality": {
+    "M": 2,
+    "cover": 1.0,
+    "n_lemmas": 1,
+    "uncovered": [],
+    "k_used": [
+      1
+    ],
+    "kinds": [
+      "odd_part"
+    ]
+  }
+}

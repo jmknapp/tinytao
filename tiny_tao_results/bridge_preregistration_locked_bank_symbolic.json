@@ -1,0 +1,29 @@
+{
+  "status": "preregistered",
+  "written_before_training": true,
+  "parent": "tiny_tao_results/bridge_preregistration_neural_lemmas_exact_fill.scored.json",
+  "protocol_change": "No neural stage. Exact propose_for_modulus + odd-part on the locked feature bank only, k_max=4. Same Falsifier and Level 5. Tests whether 15.5 certificates are load-bearing-neural or just the exact leftover. TOP_K unused. Bank unchanged. Not Collatz.",
+  "feature_bank_locked": [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 16, 24, 32],
+  "k_max": 4,
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "neural": false,
+  "predictions": {
+    "P1_thicker_level5": "On prospective_seven_and_three_mod_32, Level 5 at M=32 with r=1 F=28q+1.",
+    "P2_medium_level5": "On medium_five_on_1_mod_16, Level 5 at M=16 with r=1 F^2=10q+1.",
+    "P3_hard_level5": "On hard_five_on_1_mod_16, Level 5 at M=16 with r=9 F=12q+7.",
+    "P4_control_fails": "On control_five_on_1_mod_4, Level 5 gate is False.",
+    "P5_thin_level5": "On prospective_seven_on_1_mod_32, M=16 is incomplete (residue 1 uncovered) and Level 5 at M=32 with r=1 F=28q+1. This closes the 15.2 energy-shortlist miss without raising TOP_K.",
+    "P6_heads_not_required": "If P1-P5 hold, 15.5 neural heads were not required for these certificates. Exact sweep on the locked bank is sufficient. Do not treat Adam+round as the extractor.",
+    "P7_no_bank_no_topk": "Do not add moduli. Do not raise TOP_K. Do not train Collatz. Do not loosen exactness."
+  },
+  "success_gate": "P1 and P2 and P3 and P4 and P5.",
+  "maps": [
+    "prospective_seven_and_three_mod_32",
+    "medium_five_on_1_mod_16",
+    "hard_five_on_1_mod_16",
+    "control_five_on_1_mod_4",
+    "prospective_seven_on_1_mod_32"
+  ]
+}

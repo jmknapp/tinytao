@@ -1,0 +1,32 @@
+{
+  "status": "preregistered",
+  "written_before_training": true,
+  "parent_miss": "tiny_tao_results/bridge_preregistration_seven_on_1_mod_32.scored.json",
+  "map": "prospective_seven_and_three_mod_32",
+  "protocol": "identical frozen neural bridge: POP=1024, STEPS=1500, LR=3e-3, SEED=20260909, N_TRAIN=2000, N_FALSIFY=20000, TOP_K_MODULI=8, FEATURE_MODULI=(2,3,4,5,6,7,8,9,10,12,15,16,24,32). Do not enlarge the bank. Do not raise TOP_K. Do not rerun the 1/32 map. Do not train Collatz.",
+  "law": {
+    "even": "T(n)=n/2",
+    "odd_r1": "F(n)=odd_part(7n+1) iff n ≡ 1 (mod 32)",
+    "odd_r17": "F(n)=odd_part(3n+1) iff n ≡ 17 (mod 32)",
+    "odd_else": "F(n)=odd_part(n+1)"
+  },
+  "why_this_map": "The 1/32 map missed P3 because a single expanding class was invisible on n≤2000. This map doubles the expanding set (n≡1 or 17 mod 32, density 1/16 of odds, matching medium) while keeping M=16 incomplete: residue 1 mod 16 mixes 7n+1 with 3n+1. Not a rerun with higher K.",
+  "hand_analysis_before_code": {
+    "M32_r1": "n=32q+1, 7n+1=224q+8=8(28q+1), F=28q+1, A=28<32, k=1",
+    "M32_r17": "n=32q+17, 3n+1=96q+52=4(24q+13), F=24q+13, A=24<32, k=1",
+    "M16_r1": "n=16q'+1 mixes the two expanding laws; no single affine or odd_part pair fits both",
+    "sample_expanding": "about 124 of 999 odd n≤2000 vs about 62 on the 1/32 miss"
+  },
+  "predictions": {
+    "P1_M16_incomplete": "No complete covering at M=16.",
+    "P2_M32_mixed_covering": "A mixed covering exists at M=32: F=28q+1 on r=1; F=24q+13 on r=17; odd_part(n+1) on r=31; other odd residues one-step n+1.",
+    "P3_shortlist_includes_32": "The neural top-8 shortlist includes 32 (the expanding set is as thick as medium's).",
+    "P4_level5_if_32_shortlisted": "If P3 holds, extracted M=32, Level 5 gate True.",
+    "P5_top_M_need_not_be_32": "Neural top_M by energy need not be 32. That is not the gate.",
+    "P6_missed_shortlist_is_a_stop": "If 32 is not in the top 8, gate False. Do not raise TOP_K. Do not add moduli.",
+    "P7_oracle_affine_may_fail": "Hidden affine-only oracle may fail on r=31. Do not retune the Discoverer from oracle JSON.",
+    "P8_not_collatz": "Do not train 3n+1."
+  },
+  "success_gate": "P3 and P4: shortlist contains 32 AND extracted covering is LEVEL_5_universal_descent at M=32 with no uncovered class.",
+  "feature_bank_locked": [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 16, 24, 32]
+}

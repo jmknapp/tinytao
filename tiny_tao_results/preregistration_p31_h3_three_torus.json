@@ -1,0 +1,34 @@
+{
+  "status": "preregistered",
+  "written_before_training": true,
+  "hypothesis": "C_30 ≅ C_2 × C_3 × C_5 is algebraically available at p=31. H=1 Model C has one phase register and can realize F (30-gon) or Q (C_15 × C_2), not three independent clocks. H=3 supplies three complex heads. A 3-torus attractor is three heads whose windings have gcd(k,30) a permutation of {15,10,6} (image orders 2,3,5), decoded by CRT with no neural readout.",
+  "architecture": "Model C, H=3, Xavier, no dlog init. Same interaction as H=1; three independent 2-D embedding tables concatenated before W.",
+  "params": "30*3*2 + 6*30 + 30 = 390",
+  "protocol": "held_row a0=p-1, P=1024, 8000 Adam steps, lr=3e-3, seed=0, float32 domain_acc>=1.0. Do not relax the gate. Do not initialize from discrete log.",
+  "p": 31,
+  "n": 30,
+  "factors": [2, 3, 5],
+  "gcd_for_order": {"2": 15, "3": 10, "5": 6},
+  "not_3_torus": [
+    "A faithful 30-gon (gcd=1) is Family F, including when other heads are unused.",
+    "Class-2 C_15 × C_2 (gcd=2 plus radius) is Q, already found at H=1.",
+    "Packing C_3 × C_5 as one 15-clock is not T^3."
+  ],
+  "certificate": {
+    "C1_domain_exact": "float32 domain accuracy 1 on all 900 pairs",
+    "C2_winding_triple": "the three heads have gcd(k_eff,30) a permutation of {15,10,6}",
+    "C3_crt_decoder": "neural-free: read j mod 2,3,5 from the three snapped phases, CRT to j in 0..29, output g^j mod 31. Product uses addition of the three coordinates. Must be 100% exact.",
+    "C4_drop_one_factor": "Replace any one factor's per-residue coordinates by independent uniform draws in that Z/dZ (not a global translation: on C_2 a global +1 cancels in the product). CRT must fail.",
+    "C5_snap": "replacing each head by its fitted cyclotomic circle (exact roots at k_eff, fitted phi and mean radius) keeps C3 exact"
+  },
+  "predictions": {
+    "P1_exact_exists": "H=3 held-row at p=31 produces at least one domain-exact net (capacity).",
+    "P2_f_like_present": "Some exact nets have at least one faithful head (gcd=1). Those are F-like, not 3-torus.",
+    "P3_torus_not_guaranteed": "A certified 3-torus family may appear and may not. Presence is the measurement. Do not treat a high H=3 exact rate as a 3-torus.",
+    "P4_h1_cannot": "H=1 cannot satisfy C2 (only one gcd). Already observed at p=31: 271 F + 48 Q. No retrain.",
+    "P5_do_not_add_heads": "If n_certified=0, do not raise H to 4, do not dlog-init, do not loosen exactness or R^2.",
+    "P6_not_collatz": "Do not train 3n+1."
+  },
+  "success_gate": "The run completes under the locked protocol and scores P1–P5. Scientific 3-torus claim requires n_certified>0. Zero is a valid miss.",
+  "decoder_sanity_before_training": "CRT decoder must be 100% on synthetic embeddings e_h(a)=exp(2πi k_h log_g(a)/30) for (k2,k3,k5)=(15,10,6) before any SGD."
+}

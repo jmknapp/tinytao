@@ -1,0 +1,149 @@
+{
+  "status": "scored",
+  "preregistration": "/home/jmknapp/tao/tiny_tao_results/preregistration_spanning_trees_n5.json",
+  "run": "/home/jmknapp/tao/results/runs/20260910_141019_spanning_trees_n5",
+  "scored_after_training": true,
+  "protocol": "Model K n=5, held_edge=0, P=1024, 8000 Adam steps, lr=0.003, seed=0, Xavier scale, bias 0",
+  "params_K": 20,
+  "k_meet": {
+    "task": "spanning_tau",
+    "interaction": "kirchhoff",
+    "n": 5,
+    "held_edge": 0,
+    "params": 20,
+    "population": 1024,
+    "epochs": 8000,
+    "seconds": 712.9160625,
+    "coverage": {
+      "n": 5,
+      "held_edge": 0,
+      "held_pair": [
+        0,
+        1
+      ],
+      "n_train": 512,
+      "n_test": 512,
+      "n_domain": 1024,
+      "n_train_classes": 16,
+      "n_all_classes": 17,
+      "missing_classes_in_train": [
+        125
+      ],
+      "complete_graph_class_test_only": true,
+      "train_sees_zero": true
+    },
+    "frac_exact": 0.0,
+    "frac_exact_lo": 0.0,
+    "frac_exact_hi": 0.003737540881785676,
+    "n_exact": 0,
+    "n_certified": 0,
+    "breaks": {},
+    "certified_nets": []
+  },
+  "k_destroyed": {
+    "task": "spanning_tau_destroyed",
+    "interaction": "kirchhoff",
+    "n": 5,
+    "held_edge": 0,
+    "params": 20,
+    "population": 1024,
+    "epochs": 8000,
+    "seconds": 713.469625,
+    "coverage": {
+      "n": 5,
+      "held_edge": 0,
+      "held_pair": [
+        0,
+        1
+      ],
+      "n_train": 512,
+      "n_test": 512,
+      "n_domain": 1024,
+      "n_train_classes": 16,
+      "n_all_classes": 17,
+      "missing_classes_in_train": [
+        125
+      ],
+      "complete_graph_class_test_only": true,
+      "train_sees_zero": true
+    },
+    "frac_exact": 0.0,
+    "frac_exact_lo": 0.0,
+    "frac_exact_hi": 0.003737540881785676,
+    "n_exact": 0,
+    "n_certified": 0,
+    "breaks": {},
+    "certified_nets": []
+  },
+  "a_meet": {
+    "task": "spanning_tau",
+    "interaction": "add",
+    "n": 5,
+    "held_edge": 0,
+    "params": 1222,
+    "population": 1024,
+    "epochs": 8000,
+    "seconds": 98.505078125,
+    "coverage": {
+      "n": 5,
+      "held_edge": 0,
+      "held_pair": [
+        0,
+        1
+      ],
+      "n_train": 512,
+      "n_test": 512,
+      "n_domain": 1024,
+      "n_train_classes": 16,
+      "n_all_classes": 17,
+      "missing_classes_in_train": [
+        125
+      ],
+      "complete_graph_class_test_only": true,
+      "train_sees_zero": true
+    },
+    "frac_exact": 0.0,
+    "frac_exact_lo": 0.0,
+    "frac_exact_hi": 0.003737540881785676,
+    "n_exact": 0,
+    "n_certified": 0,
+    "breaks": {
+      "no_cofactor": 0
+    },
+    "certified_nets": []
+  },
+  "predictions": {
+    "P1_K_exact_exists": {
+      "verdict": "miss",
+      "n_exact": 0
+    },
+    "P2_K_certified_not_guaranteed": {
+      "verdict": "hold",
+      "n_certified": 0,
+      "note": "Did not appear; valid miss"
+    },
+    "P3_destroyed_zero_certified": {
+      "verdict": "hold",
+      "n_certified": 0,
+      "n_exact": 0
+    },
+    "P4_A_not_kirchhoff": {
+      "verdict": "hold",
+      "n_certified": 0,
+      "n_exact": 0
+    },
+    "P5_do_not_raise_n": {
+      "verdict": "applied",
+      "note": "n_certified=0: do not raise n, add a recursive DC net, 0-1-init, or loosen exactness"
+    },
+    "P6_not_collatz": {
+      "verdict": "applied"
+    },
+    "P7_not_model_c": {
+      "verdict": "applied"
+    }
+  },
+  "scientific_kirchhoff": false,
+  "p5_vacuous": true,
+  "lesson": "Model K is a Laplacian cofactor of learned edge weights, not a character. Certified means binarized weights recover \u03c4, drop-one-edge fails, adjacency minor fails. Destroyed-law control must not certify. Do not raise n."
+}

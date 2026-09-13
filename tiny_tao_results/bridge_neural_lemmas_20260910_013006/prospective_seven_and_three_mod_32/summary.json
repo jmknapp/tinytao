@@ -1,0 +1,537 @@
+{
+  "status": "exploratory",
+  "preregistration": "tiny_tao_results/bridge_preregistration_neural_lemmas.json",
+  "map": "prospective_seven_and_three_mod_32",
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "pop": 256,
+  "steps": 800,
+  "feature_moduli": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    15,
+    16,
+    24,
+    32
+  ],
+  "fits": [
+    {
+      "M": 2,
+      "loss": 26494.193359375,
+      "cover": 0.0,
+      "uncovered": [
+        1
+      ],
+      "n_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 3,
+      "loss": 26492.529296875,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2
+      ],
+      "n_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 4,
+      "loss": 10351.453125,
+      "cover": 0.5,
+      "uncovered": [
+        1
+      ],
+      "n_affine": 0,
+      "n_odd_part": 1
+    },
+    {
+      "M": 5,
+      "loss": 26491.03125,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 6,
+      "loss": 26492.408203125,
+      "cover": 0.0,
+      "uncovered": [
+        1,
+        3,
+        5
+      ],
+      "n_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 7,
+      "loss": 26490.46484375,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "n_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 8,
+      "loss": 5030.37890625,
+      "cover": 0.75,
+      "uncovered": [
+        1
+      ],
+      "n_affine": 2,
+      "n_odd_part": 1
+    },
+    {
+      "M": 9,
+      "loss": 26475.34765625,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "n_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 10,
+      "loss": 26491.0390625,
+      "cover": 0.0,
+      "uncovered": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "n_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 12,
+      "loss": 10350.146484375,
+      "cover": 0.5,
+      "uncovered": [
+        1,
+        5,
+        9
+      ],
+      "n_affine": 0,
+      "n_odd_part": 3
+    },
+    {
+      "M": 15,
+      "loss": 26462.455078125,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "n_affine": 0,
+      "n_odd_part": 0
+    },
+    {
+      "M": 16,
+      "loss": 1515.810791015625,
+      "cover": 0.875,
+      "uncovered": [
+        1
+      ],
+      "n_affine": 6,
+      "n_odd_part": 1
+    },
+    {
+      "M": 24,
+      "loss": 5029.5224609375,
+      "cover": 0.75,
+      "uncovered": [
+        1,
+        9,
+        17
+      ],
+      "n_affine": 3,
+      "n_odd_part": 6
+    },
+    {
+      "M": 32,
+      "loss": 1069.332275390625,
+      "cover": 1.0,
+      "uncovered": [],
+      "n_affine": 12,
+      "n_odd_part": 4
+    }
+  ],
+  "chosen_M": 32,
+  "lemmas": [
+    {
+      "M": 32,
+      "r": 1,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "kind": "odd_part",
+      "a": 7,
+      "b": 1,
+      "n_train": 62
+    },
+    {
+      "M": 32,
+      "r": 3,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "kind": "odd_part",
+      "a": 1,
+      "b": 1,
+      "n_train": 63
+    },
+    {
+      "M": 32,
+      "r": 5,
+      "k": 2,
+      "A": 4,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63
+    },
+    {
+      "M": 32,
+      "r": 7,
+      "k": 1,
+      "A": 4,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63
+    },
+    {
+      "M": 32,
+      "r": 9,
+      "k": 3,
+      "A": 2,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63
+    },
+    {
+      "M": 32,
+      "r": 11,
+      "k": 1,
+      "A": 8,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63
+    },
+    {
+      "M": 32,
+      "r": 13,
+      "k": 2,
+      "A": 2,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63
+    },
+    {
+      "M": 32,
+      "r": 15,
+      "k": 1,
+      "A": 2,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63
+    },
+    {
+      "M": 32,
+      "r": 17,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "kind": "odd_part",
+      "a": 3,
+      "b": 1,
+      "n_train": 62
+    },
+    {
+      "M": 32,
+      "r": 19,
+      "k": 1,
+      "A": 8,
+      "B": 5,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62
+    },
+    {
+      "M": 32,
+      "r": 21,
+      "k": 2,
+      "A": 4,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62
+    },
+    {
+      "M": 32,
+      "r": 23,
+      "k": 1,
+      "A": 4,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62
+    },
+    {
+      "M": 32,
+      "r": 25,
+      "k": 1,
+      "A": 16,
+      "B": 13,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62
+    },
+    {
+      "M": 32,
+      "r": 27,
+      "k": 1,
+      "A": 8,
+      "B": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62
+    },
+    {
+      "M": 32,
+      "r": 29,
+      "k": 1,
+      "A": 16,
+      "B": 15,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62
+    },
+    {
+      "M": 32,
+      "r": 31,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "kind": "odd_part",
+      "a": 1,
+      "b": 1,
+      "n_train": 62
+    }
+  ],
+  "uncovered": [],
+  "verifier": {
+    "level": "LEVEL_5_universal_descent",
+    "passed_falsifier": true,
+    "n_checked": 10002,
+    "n_hits": 0,
+    "hits": [],
+    "cover_frac": 1.0,
+    "uncovered": [],
+    "M": 32,
+    "n_lemmas": 16,
+    "universal": {
+      "proven": true,
+      "level": "LEVEL_5_universal_descent",
+      "theorem": "If n is even and n>1 then T(n)=n/2<n. If n is odd and n>1 then some F^k(n)<n by a covering lemma proved for every q. A strictly decreasing chain of positive integers is finite, so every trajectory reaches 1. A cycle of integers all >1 is impossible.",
+      "failures": [],
+      "lemmas": [
+        {
+          "r": 1,
+          "kind": "odd_part",
+          "k": 1,
+          "ok": true,
+          "note": "F=odd_part(7n+1) on class; worst-case 28q+1; A=28<M=32: worst n=33 maps to 29"
+        },
+        {
+          "r": 3,
+          "kind": "odd_part",
+          "k": 1,
+          "ok": true,
+          "note": "F=odd_part(1n+1) on class; worst-case 8q+1; A=8<M=32: worst n=3 maps to 1"
+        },
+        {
+          "r": 5,
+          "kind": "affine",
+          "k": 2,
+          "ok": true,
+          "note": "F^2=4q+1 locked at lift 64; A=4<M=32: worst n=5 maps to 1"
+        },
+        {
+          "r": 7,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=4q+1 locked at lift 32; A=4<M=32: worst n=7 maps to 1"
+        },
+        {
+          "r": 9,
+          "kind": "affine",
+          "k": 3,
+          "ok": true,
+          "note": "F^3=2q+1 locked at lift 128; A=2<M=32: worst n=9 maps to 1"
+        },
+        {
+          "r": 11,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=8q+3 locked at lift 32; A=8<M=32: worst n=11 maps to 3"
+        },
+        {
+          "r": 13,
+          "kind": "affine",
+          "k": 2,
+          "ok": true,
+          "note": "F^2=2q+1 locked at lift 64; A=2<M=32: worst n=13 maps to 1"
+        },
+        {
+          "r": 15,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=2q+1 locked at lift 32; A=2<M=32: worst n=15 maps to 1"
+        },
+        {
+          "r": 17,
+          "kind": "odd_part",
+          "k": 1,
+          "ok": true,
+          "note": "F=odd_part(3n+1) on class; worst-case 24q+13; A=24<M=32: worst n=17 maps to 13"
+        },
+        {
+          "r": 19,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=8q+5 locked at lift 32; A=8<M=32: worst n=19 maps to 5"
+        },
+        {
+          "r": 21,
+          "kind": "affine",
+          "k": 2,
+          "ok": true,
+          "note": "F^2=4q+3 locked at lift 64; A=4<M=32: worst n=21 maps to 3"
+        },
+        {
+          "r": 23,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=4q+3 locked at lift 32; A=4<M=32: worst n=23 maps to 3"
+        },
+        {
+          "r": 25,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=16q+13 locked at lift 32; A=16<M=32: worst n=25 maps to 13"
+        },
+        {
+          "r": 27,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=8q+7 locked at lift 32; A=8<M=32: worst n=27 maps to 7"
+        },
+        {
+          "r": 29,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=16q+15 locked at lift 32; A=16<M=32: worst n=29 maps to 15"
+        },
+        {
+          "r": 31,
+          "kind": "odd_part",
+          "k": 1,
+          "ok": true,
+          "note": "F=odd_part(1n+1) on class; worst-case 1q+1; A=1<M=32: worst n=31 maps to 1"
+        }
+      ],
+      "even_step": "even n>1: T(n)=n/2<n by definition",
+      "M": 32,
+      "map": "prospective_seven_and_three_mod_32"
+    }
+  },
+  "falsifier_attempts": [
+    {
+      "M": 32,
+      "passed": true,
+      "level": "LEVEL_5_universal_descent"
+    }
+  ],
+  "level5_gate": true,
+  "oracle": {
+    "oracle_verified": true,
+    "oracle_M": 32,
+    "relation": "covering_found"
+  }
+}

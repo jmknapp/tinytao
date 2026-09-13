@@ -1,0 +1,1501 @@
+{
+  "status": "exploratory",
+  "map": "control_five_on_1_mod_4",
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "best_M": 256,
+  "best_cover": 0.84375,
+  "uncovered": [
+    5,
+    13,
+    21,
+    37,
+    53,
+    61,
+    69,
+    77,
+    85,
+    117,
+    133,
+    141,
+    149,
+    153,
+    165,
+    173,
+    181,
+    213,
+    229,
+    245
+  ],
+  "lemmas": [
+    {
+      "M": 256,
+      "r": 1,
+      "k": 2,
+      "A": 160,
+      "B": 1,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 3,
+      "k": 1,
+      "A": 64,
+      "B": 1,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 7,
+      "k": 1,
+      "A": 32,
+      "B": 1,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 9,
+      "k": 2,
+      "A": 80,
+      "B": 3,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 11,
+      "k": 1,
+      "A": 64,
+      "B": 3,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 15,
+      "k": 1,
+      "A": 16,
+      "B": 1,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 17,
+      "k": 2,
+      "A": 160,
+      "B": 11,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 19,
+      "k": 1,
+      "A": 64,
+      "B": 5,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 23,
+      "k": 1,
+      "A": 32,
+      "B": 3,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 25,
+      "k": 2,
+      "A": 10,
+      "B": 1,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 27,
+      "k": 1,
+      "A": 64,
+      "B": 7,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 29,
+      "k": 3,
+      "A": 200,
+      "B": 23,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 31,
+      "k": 1,
+      "A": 8,
+      "B": 1,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 33,
+      "k": 2,
+      "A": 160,
+      "B": 21,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 35,
+      "k": 1,
+      "A": 64,
+      "B": 9,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 39,
+      "k": 1,
+      "A": 32,
+      "B": 5,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 41,
+      "k": 2,
+      "A": 80,
+      "B": 13,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 43,
+      "k": 1,
+      "A": 64,
+      "B": 11,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 45,
+      "k": 4,
+      "A": 50,
+      "B": 9,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 47,
+      "k": 1,
+      "A": 16,
+      "B": 3,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 49,
+      "k": 2,
+      "A": 160,
+      "B": 31,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 51,
+      "k": 1,
+      "A": 64,
+      "B": 13,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 55,
+      "k": 1,
+      "A": 32,
+      "B": 7,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 57,
+      "k": 2,
+      "A": 40,
+      "B": 9,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 59,
+      "k": 1,
+      "A": 64,
+      "B": 15,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 63,
+      "k": 1,
+      "A": 4,
+      "B": 1,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 65,
+      "k": 2,
+      "A": 160,
+      "B": 41,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 67,
+      "k": 1,
+      "A": 64,
+      "B": 17,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 71,
+      "k": 1,
+      "A": 32,
+      "B": 9,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 73,
+      "k": 2,
+      "A": 80,
+      "B": 23,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 75,
+      "k": 1,
+      "A": 64,
+      "B": 19,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 79,
+      "k": 1,
+      "A": 16,
+      "B": 5,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 81,
+      "k": 2,
+      "A": 160,
+      "B": 51,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 83,
+      "k": 1,
+      "A": 64,
+      "B": 21,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 87,
+      "k": 1,
+      "A": 32,
+      "B": 11,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 89,
+      "k": 2,
+      "A": 20,
+      "B": 7,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 91,
+      "k": 1,
+      "A": 64,
+      "B": 23,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 93,
+      "k": 3,
+      "A": 200,
+      "B": 73,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 95,
+      "k": 1,
+      "A": 8,
+      "B": 3,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 97,
+      "k": 2,
+      "A": 160,
+      "B": 61,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 99,
+      "k": 1,
+      "A": 64,
+      "B": 25,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 101,
+      "k": 4,
+      "A": 250,
+      "B": 99,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 103,
+      "k": 1,
+      "A": 32,
+      "B": 13,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 105,
+      "k": 2,
+      "A": 80,
+      "B": 33,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 107,
+      "k": 1,
+      "A": 64,
+      "B": 27,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 109,
+      "k": 4,
+      "A": 100,
+      "B": 43,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 111,
+      "k": 1,
+      "A": 16,
+      "B": 7,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 113,
+      "k": 2,
+      "A": 160,
+      "B": 71,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 115,
+      "k": 1,
+      "A": 64,
+      "B": 29,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 119,
+      "k": 1,
+      "A": 32,
+      "B": 15,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 121,
+      "k": 2,
+      "A": 40,
+      "B": 19,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 123,
+      "k": 1,
+      "A": 64,
+      "B": 31,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 125,
+      "k": 3,
+      "A": 100,
+      "B": 49,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 127,
+      "k": 1,
+      "A": 2,
+      "B": 1,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 129,
+      "k": 2,
+      "A": 160,
+      "B": 81,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 131,
+      "k": 1,
+      "A": 64,
+      "B": 33,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 135,
+      "k": 1,
+      "A": 32,
+      "B": 17,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 137,
+      "k": 2,
+      "A": 80,
+      "B": 43,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 139,
+      "k": 1,
+      "A": 64,
+      "B": 35,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 143,
+      "k": 1,
+      "A": 16,
+      "B": 9,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 145,
+      "k": 2,
+      "A": 160,
+      "B": 91,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 147,
+      "k": 1,
+      "A": 64,
+      "B": 37,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 151,
+      "k": 1,
+      "A": 32,
+      "B": 19,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 155,
+      "k": 1,
+      "A": 64,
+      "B": 39,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 157,
+      "k": 3,
+      "A": 200,
+      "B": 123,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 159,
+      "k": 1,
+      "A": 8,
+      "B": 5,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 161,
+      "k": 2,
+      "A": 160,
+      "B": 101,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 163,
+      "k": 1,
+      "A": 64,
+      "B": 41,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 167,
+      "k": 1,
+      "A": 32,
+      "B": 21,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 169,
+      "k": 2,
+      "A": 80,
+      "B": 53,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 171,
+      "k": 1,
+      "A": 64,
+      "B": 43,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 175,
+      "k": 1,
+      "A": 16,
+      "B": 11,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 177,
+      "k": 2,
+      "A": 160,
+      "B": 111,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 179,
+      "k": 1,
+      "A": 64,
+      "B": 45,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 183,
+      "k": 1,
+      "A": 32,
+      "B": 23,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 185,
+      "k": 2,
+      "A": 40,
+      "B": 29,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 187,
+      "k": 1,
+      "A": 64,
+      "B": 47,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 189,
+      "k": 3,
+      "A": 50,
+      "B": 37,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 191,
+      "k": 1,
+      "A": 4,
+      "B": 3,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 193,
+      "k": 2,
+      "A": 160,
+      "B": 121,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 195,
+      "k": 1,
+      "A": 64,
+      "B": 49,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 197,
+      "k": 5,
+      "A": 250,
+      "B": 193,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 199,
+      "k": 1,
+      "A": 32,
+      "B": 25,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 201,
+      "k": 2,
+      "A": 80,
+      "B": 63,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 203,
+      "k": 1,
+      "A": 64,
+      "B": 51,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 205,
+      "k": 5,
+      "A": 250,
+      "B": 201,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 207,
+      "k": 1,
+      "A": 16,
+      "B": 13,
+      "n_train": 8,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 209,
+      "k": 2,
+      "A": 160,
+      "B": 131,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 211,
+      "k": 1,
+      "A": 64,
+      "B": 53,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 215,
+      "k": 1,
+      "A": 32,
+      "B": 27,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 217,
+      "k": 2,
+      "A": 20,
+      "B": 17,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 219,
+      "k": 1,
+      "A": 64,
+      "B": 55,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 221,
+      "k": 3,
+      "A": 200,
+      "B": 173,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 223,
+      "k": 1,
+      "A": 8,
+      "B": 7,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 225,
+      "k": 2,
+      "A": 160,
+      "B": 141,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 227,
+      "k": 1,
+      "A": 64,
+      "B": 57,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 231,
+      "k": 1,
+      "A": 32,
+      "B": 29,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 233,
+      "k": 2,
+      "A": 80,
+      "B": 73,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 235,
+      "k": 1,
+      "A": 64,
+      "B": 59,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 237,
+      "k": 4,
+      "A": 100,
+      "B": 93,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 239,
+      "k": 1,
+      "A": 16,
+      "B": 15,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 241,
+      "k": 2,
+      "A": 160,
+      "B": 151,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 243,
+      "k": 1,
+      "A": 64,
+      "B": 61,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 247,
+      "k": 1,
+      "A": 32,
+      "B": 31,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 249,
+      "k": 2,
+      "A": 40,
+      "B": 39,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 251,
+      "k": 1,
+      "A": 64,
+      "B": 63,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 253,
+      "k": 3,
+      "A": 100,
+      "B": 99,
+      "n_train": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 256,
+      "r": 255,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "n_train": 7,
+      "kind": "odd_part",
+      "a": 1,
+      "b": 1
+    }
+  ],
+  "verifier": {
+    "level": "LEVEL_1_survives_finite_testing",
+    "passed_falsifier": false,
+    "n_checked": 38,
+    "n_hits": 8,
+    "hits": [
+      {
+        "r": 5,
+        "k": 0,
+        "n": 5,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 13,
+        "k": 0,
+        "n": 13,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 21,
+        "k": 0,
+        "n": 21,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 37,
+        "k": 0,
+        "n": 37,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 53,
+        "k": 0,
+        "n": 53,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 61,
+        "k": 0,
+        "n": 61,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 69,
+        "k": 0,
+        "n": 69,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 77,
+        "k": 0,
+        "n": 77,
+        "reason": "uncovered residue",
+        "observed": null
+      }
+    ],
+    "cover_frac": 0.84375,
+    "uncovered": [
+      5,
+      13,
+      21,
+      37,
+      53,
+      61,
+      69,
+      77,
+      85,
+      117,
+      133,
+      141,
+      149,
+      153,
+      165,
+      173,
+      181,
+      213,
+      229,
+      245
+    ],
+    "M": 256,
+    "n_lemmas": 108
+  },
+  "neural_potential": {
+    "skipped": true,
+    "reason": "BRIDGE_NEURAL not set; login node has no GPU"
+  },
+  "top_moduli": [
+    {
+      "M": 256,
+      "cover": 0.84375,
+      "n_lemmas": 108,
+      "uncovered": [
+        5,
+        13,
+        21,
+        37,
+        53,
+        61,
+        69,
+        77,
+        85,
+        117,
+        133,
+        141,
+        149,
+        153,
+        165,
+        173,
+        181,
+        213,
+        229,
+        245
+      ],
+      "k_used": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 128,
+      "cover": 0.796875,
+      "n_lemmas": 51,
+      "uncovered": [
+        5,
+        13,
+        21,
+        25,
+        37,
+        45,
+        53,
+        61,
+        69,
+        77,
+        85,
+        101,
+        117
+      ],
+      "k_used": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 64,
+      "cover": 0.75,
+      "n_lemmas": 24,
+      "uncovered": [
+        5,
+        13,
+        21,
+        25,
+        37,
+        45,
+        53,
+        61
+      ],
+      "k_used": [
+        1,
+        2,
+        3
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 32,
+      "cover": 0.6875,
+      "n_lemmas": 11,
+      "uncovered": [
+        5,
+        13,
+        21,
+        25,
+        29
+      ],
+      "k_used": [
+        1,
+        2
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 16,
+      "cover": 0.625,
+      "n_lemmas": 5,
+      "uncovered": [
+        5,
+        9,
+        13
+      ],
+      "k_used": [
+        1,
+        2
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 48,
+      "cover": 0.625,
+      "n_lemmas": 15,
+      "uncovered": [
+        5,
+        9,
+        13,
+        21,
+        25,
+        29,
+        37,
+        41,
+        45
+      ],
+      "k_used": [
+        1,
+        2
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 4,
+      "cover": 0.5,
+      "n_lemmas": 1,
+      "uncovered": [
+        1
+      ],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "odd_part"
+      ]
+    },
+    {
+      "M": 8,
+      "cover": 0.5,
+      "n_lemmas": 2,
+      "uncovered": [
+        1,
+        5
+      ],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    }
+  ],
+  "minimality": null
+}

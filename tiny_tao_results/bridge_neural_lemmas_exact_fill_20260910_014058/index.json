@@ -1,0 +1,93 @@
+{
+  "status": "exploratory",
+  "run": "tiny_tao_results/bridge_neural_lemmas_exact_fill_20260910_014058",
+  "preregistration": "tiny_tao_results/bridge_preregistration_neural_lemmas_exact_fill.json",
+  "score": {
+    "P1_thicker_still_level5": true,
+    "P2_medium_level5_via_exact_fill": true,
+    "P3_control_still_fails": true,
+    "P4_hard_level5": true,
+    "P5_not_a_rescore": true,
+    "preregistered_gate": true,
+    "medium_r1": {
+      "M": 16,
+      "r": 1,
+      "k": 2,
+      "A": 10,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 124,
+      "source": "exact_affine"
+    },
+    "hard_r9": {
+      "M": 16,
+      "r": 9,
+      "k": 1,
+      "A": 12,
+      "B": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "exact_affine"
+    }
+  },
+  "maps": [
+    {
+      "map": "prospective_seven_and_three_mod_32",
+      "chosen_M": 32,
+      "level": "LEVEL_5_universal_descent",
+      "level5_gate": true,
+      "uncovered": [],
+      "oracle": {
+        "oracle_verified": true,
+        "oracle_M": 32,
+        "relation": "covering_found"
+      }
+    },
+    {
+      "map": "medium_five_on_1_mod_16",
+      "chosen_M": 16,
+      "level": "LEVEL_5_universal_descent",
+      "level5_gate": true,
+      "uncovered": [],
+      "oracle": {
+        "oracle_verified": true,
+        "oracle_M": 32,
+        "relation": "smaller_covering"
+      }
+    },
+    {
+      "map": "hard_five_on_1_mod_16",
+      "chosen_M": 16,
+      "level": "LEVEL_5_universal_descent",
+      "level5_gate": true,
+      "uncovered": [],
+      "oracle": {
+        "oracle_verified": false,
+        "oracle_M": 65536,
+        "relation": "discoverer_covered_oracle_did_not"
+      }
+    },
+    {
+      "map": "control_five_on_1_mod_4",
+      "chosen_M": 32,
+      "level": "LEVEL_1_survives_finite_testing",
+      "level5_gate": false,
+      "uncovered": [
+        5,
+        13,
+        21,
+        25,
+        29
+      ],
+      "oracle": {
+        "oracle_verified": false,
+        "oracle_M": 32,
+        "relation": "agreed_negative"
+      }
+    }
+  ]
+}

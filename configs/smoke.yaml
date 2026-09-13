@@ -1,0 +1,31 @@
+task:
+  name: modular_multiplication
+  p: 13
+  split: random
+  train_frac: 0.7
+  split_seed: 0
+
+model:
+  hidden_dims: [8]
+  activation: relu
+  use_bias: true
+  init: xavier_uniform
+  init_scale: 1.0
+
+population:
+  size: 128
+  min_size: 16
+
+train:
+  epochs: 30
+  batch_size: 0
+  lr: 0.001
+  optimizer: adam
+  weight_decay: 0.0
+  log_every: 5
+  eval_every: 5
+
+seed: 0
+device: cuda
+run_name: smoke
+notes: Plumbing check only.

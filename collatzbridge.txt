@@ -1,0 +1,927 @@
+Continue the tiny-neural-network mathematical-discovery project.
+
+We have demonstrated on modular multiplication that populations of tiny neural networks can:
+
+* find exact solutions;
+* converge to multiple distinct mechanisms;
+* expose interpretable latent structure;
+* support causal interventions;
+* be replaced by compact symbolic programs;
+* and, in the strongest cases, disappear entirely from the final mathematical solution.
+
+The long-term target is Collatz.
+
+DO NOT attempt the actual Collatz conjecture yet.
+
+The next experiment is a bridge between finite modular multiplication tables and an infinite integer dynamical system.
+
+The central question is:
+
+```
+Can a population of tiny neural networks rediscover a
+finite symbolic certificate proving global termination
+of an unbounded Collatz-like dynamical system?
+```
+
+This is substantially harder than the modular-multiplication experiments because success must generalize from finite training data to ALL positive integers.
+
+============================================================
+
+1. SCIENTIFIC OBJECTIVE
+   ============================================================
+
+Construct one or more Collatz-like maps on the positive integers for which:
+
+1. trajectories are nontrivial;
+2. some trajectories initially increase;
+3. one-step descent is false;
+4. termination is nevertheless mathematically provable;
+5. the proof can ultimately be expressed as a compact finite-state
+   residue/valuation certificate;
+6. the discovery system is NOT given that certificate.
+
+Then ask a Discoverer–Falsifier population to rediscover enough structure to produce an exact universal proof.
+
+The final success criterion is NOT:
+
+```
+"the network predicts trajectories."
+```
+
+It is:
+
+```
+"the neural system generated a conjectured finite symbolic
+ certificate which an independent exact verifier proved for
+ every positive integer."
+```
+
+============================================================
+2. IMPORTANT EXPERIMENTAL SEPARATION
+====================================
+
+Separate the project into three components:
+
+A. MAP GENERATOR / ORACLE
+
+Knows the true mathematics and constructs calibration systems with known proofs.
+
+B. DISCOVERER
+
+Receives only the map definition and finite observations/training examples.
+
+It must NOT receive:
+
+```
+the known proof,
+correct residue modulus,
+correct potential,
+correct state partition,
+or proof certificate.
+```
+
+C. FALSIFIER / VERIFIER
+
+Receives proposed rules from the Discoverer and aggressively attempts to break them.
+
+Only after discovery is complete may the recovered certificate be compared with the hidden known proof.
+
+Prevent information leakage between these components.
+
+============================================================
+3. BUILD CALIBRATION MAPS
+=========================
+
+Do NOT arbitrarily pick a trivially decreasing map.
+
+Programmatically search for several maps with Collatz-like structure.
+
+Consider accelerated odd maps of the general form:
+
+```
+F(n) = (a*n + b) / 2^v2(a*n+b)
+```
+
+on appropriate odd states,
+
+or piecewise affine maps depending on residue classes.
+
+Prefer systems where:
+
+```
+a > 1
+```
+
+so that some branches expand before powers of two produce contraction.
+
+Require:
+
+* infinite state space;
+* deterministic integer dynamics;
+* significant transient growth;
+* variable stopping times;
+* multiple residue-dependent branches;
+* no obvious monotone n descent;
+* but a known finite symbolic proof of eventual descent/termination.
+
+Generate at least THREE candidate calibration systems:
+
+```
+EASY
+MEDIUM
+HARD.
+```
+
+The HARD system should require a genuinely nontrivial finite-state certificate.
+
+Before exposing any system to the Discoverer, independently prove its termination.
+
+Save that proof privately as the oracle certificate.
+
+============================================================
+4. TARGET THEOREM
+=================
+
+For the selected calibration system, target the theorem:
+
+```
+For every integer n > 1,
+there exists k >= 1 such that
+
+    F^k(n) < n.
+```
+
+This is the key "eventual descent below starting value" property.
+
+If this holds universally and the base case terminates, strong induction establishes global termination.
+
+This is deliberately analogous to a possible route to Collatz.
+
+============================================================
+5. DO NOT TRAIN A TRAJECTORY PREDICTOR
+======================================
+
+Avoid the easy but scientifically uninteresting task:
+
+```
+n -> future trajectory.
+```
+
+Do not reward merely predicting:
+
+```
+F(n),
+stopping time,
+maximum excursion,
+or eventual terminal state.
+```
+
+Those may be diagnostics only.
+
+The Discoverer should search for a compact CERTIFICATE.
+
+============================================================
+6. CANDIDATE CERTIFICATE FAMILY
+===============================
+
+A promising starting family is:
+
+```
+V(n) = alpha * log(n) + c_s(n)
+```
+
+where:
+
+```
+s(n)
+```
+
+is a small discrete state learned from properties such as:
+
+```
+n mod M
+v2(n)
+v2(a*n+b)
+residue combinations
+short transition history.
+```
+
+But DO NOT assume this is the answer.
+
+Allow the discovery system to test:
+
+```
+log potentials
+piecewise-linear potentials
+affine potentials
+lexicographic potentials
+weighted finite-state potentials
+multi-step potentials
+residue-dependent descent horizons.
+```
+
+The architecture should prefer simple certificates but remain capable of finding alternatives.
+
+============================================================
+7. LEARNED STATE DISCOVERY
+==========================
+
+The important challenge is discovering:
+
+```
+s(n).
+```
+
+Do not initially tell the network the correct modulus.
+
+Allow candidate moduli such as:
+
+```
+2^k
+3*2^k
+small composite M
+```
+
+over a controlled range.
+
+Alternatively allow learned embeddings of residues followed by clustering.
+
+Ask:
+
+```
+Which integers behave equivalently under the dynamics?
+```
+
+Search for the SMALLEST state partition sufficient for a universal certificate.
+
+============================================================
+8. POPULATION APPROACH
+======================
+
+Use populations of very small models rather than one large model.
+
+Target approximately:
+
+```
+10,000 candidates
+```
+
+when vectorization permits.
+
+Sweep tiny widths/capacities.
+
+The goal is diversity of discovered mechanisms.
+
+Different initializations should be allowed to discover different:
+
+```
+residue partitions
+potentials
+transition abstractions
+descent horizons.
+```
+
+Track the genealogy of successful candidates.
+
+============================================================
+9. COMPRESSIBILITY PRESSURE
+===========================
+
+Unlike ordinary ML, reward solutions that become mathematical objects.
+
+Penalize:
+
+```
+large networks
+high-precision parameters
+irregular state partitions
+large moduli
+many exceptional cases
+long certificates.
+```
+
+Reward:
+
+```
+few states
+sparse rules
+integer/rational coefficients
+small moduli
+repeated structure
+symmetry
+short symbolic descriptions.
+```
+
+Think in terms of:
+
+```
+proof description length.
+```
+
+============================================================
+10. DISCOVERER -> SYMBOLIC PROPOSAL
+===================================
+
+Periodically convert promising neural candidates into explicit conjectures.
+
+Examples:
+
+```
+"States are n mod 16."
+
+"Classes 3 and 11 mod 16 are equivalent."
+
+"For state S7, two accelerated iterations suffice."
+
+"Potential is log(n) + 0.137*c_s."
+
+"Every state reaches a lower-potential state within <= 4 transitions."
+```
+
+Do not leave discoveries in neural weights.
+
+Extract them.
+
+============================================================
+11. FALSIFIER
+=============
+
+Every symbolic conjecture must immediately be attacked.
+
+Use multiple falsification methods:
+
+A. exhaustive search over a large finite range;
+
+B. targeted search by residue class;
+
+C. arbitrary-precision trajectories;
+
+D. search near branch boundaries;
+
+E. search for unusually long stopping times;
+
+F. evolutionary/adversarial search;
+
+G. symbolic residue analysis;
+
+H. SMT/SAT or exact arithmetic when appropriate.
+
+When a counterexample is found:
+
+```
+return the smallest or structurally simplest counterexample
+to the Discoverer.
+```
+
+Then repeat:
+
+```
+DISCOVERER
+    ->
+CONJECTURE
+    ->
+FALSIFIER
+    ->
+COUNTEREXAMPLE
+    ->
+REFINED CONJECTURE.
+```
+
+Record the entire sequence.
+
+============================================================
+12. COUNTEREXAMPLES ARE DATA
+============================
+
+Do not simply add counterexamples to the training set.
+
+Analyze them structurally.
+
+Ask:
+
+```
+Do all failures share a residue class?
+
+Do they require a finer modulus?
+
+Do they correspond to a valuation condition?
+
+Is an assumed state actually two states?
+
+Does the descent horizon need to increase?
+
+Is there a recursive exceptional family?
+```
+
+The system should attempt to DESCRIBE the exception set.
+
+============================================================
+13. SYMBOLIC RESIDUE RULES
+==========================
+
+For candidate modulus M, write:
+
+```
+n = M*q + r.
+```
+
+For every state/residue r, symbolically derive the relevant iterate:
+
+```
+F^k(M*q+r)
+    =
+A_r*q + B_r
+```
+
+or the appropriate exact piecewise affine expression.
+
+Do not infer these coefficients numerically if exact arithmetic can derive them.
+
+============================================================
+14. UNIVERSAL DESCENT TEST
+==========================
+
+The crucial transition from experiment to proof occurs when a candidate rule becomes an exact inequality.
+
+For example, if:
+
+```
+n = M*q+r
+```
+
+and:
+
+```
+F^k(n) = A*q+B,
+```
+
+then test symbolically whether:
+
+```
+A*q+B < M*q+r
+```
+
+for ALL:
+
+```
+q >= 0
+```
+
+subject to the exact residue/valuation conditions defining the state.
+
+Reduce this to exact integer/rational inequalities wherever possible.
+
+Finite numerical testing is NOT proof.
+
+============================================================
+15. FINITE TRANSITION GRAPH
+===========================
+
+Try to reduce the infinite system to a finite directed graph.
+
+Nodes:
+
+```
+symbolic residue/valuation states.
+```
+
+Edges:
+
+```
+exact possible transitions.
+```
+
+Each edge should contain:
+
+```
+affine transformation
+potential change
+residue conditions
+valuation conditions.
+```
+
+Analyze:
+
+```
+strongly connected components
+cycles
+reachable components
+terminal states.
+```
+
+============================================================
+16. CYCLE CERTIFICATES
+======================
+
+If one-step potential decrease is impossible, search for cycle-average decrease.
+
+For a cycle C, calculate exact total potential change:
+
+```
+Delta V(C).
+```
+
+Seek a certificate:
+
+```
+Delta V(C) < 0
+```
+
+for every nonterminal cycle.
+
+Alternatively prove that every state has a bounded path to a lower state.
+
+The proof may therefore be:
+
+```
+local descent,
+```
+
+or:
+
+```
+bounded multi-step descent,
+```
+
+or:
+
+```
+negative cycle-average potential.
+```
+
+Do not require one particular form.
+
+============================================================
+17. PROOF EXTRACTION PIPELINE
+=============================
+
+Use the same philosophy that worked for modular multiplication:
+
+```
+neural solution
+    ->
+interpretable representation
+    ->
+simplified representation
+    ->
+discrete states
+    ->
+exact symbolic rules
+    ->
+finite transition system
+    ->
+exact inequalities
+    ->
+theorem.
+```
+
+At each stage ask:
+
+```
+What information is actually load-bearing?
+```
+
+Use interventions analogous to the modular multiplication work.
+
+============================================================
+18. INTERVENTIONS
+=================
+
+For a promising candidate:
+
+* replace learned state embeddings by cluster centroids;
+* quantize potential coefficients;
+* rationalize coefficients;
+* merge apparently equivalent states;
+* permute state labels;
+* remove residue features;
+* remove valuation features;
+* replace learned state assignment by symbolic residue rules;
+* replace learned potential by fitted exact formula.
+
+Measure which replacements preserve the certificate.
+
+The goal is to eliminate all nonessential neural detail.
+
+============================================================
+19. MINIMALITY
+==============
+
+Once a proof is found, search for a smaller one.
+
+Minimize:
+
+```
+modulus M
+number of states
+number of valuation predicates
+maximum descent horizon k
+number of coefficients
+coefficient bit complexity.
+```
+
+Ask whether states can be merged while preserving proof validity.
+
+The shortest proof may reveal more mathematical structure than the first proof.
+
+============================================================
+20. INDEPENDENT EXACT VERIFIER
+==============================
+
+Build a separate verifier that does NOT use:
+
+```
+PyTorch
+floating point
+learned weights.
+```
+
+Input:
+
+```
+symbolic certificate.
+```
+
+Output:
+
+```
+VERIFIED
+```
+
+or:
+
+```
+explicit counterexample / failed lemma.
+```
+
+Use exact integer and rational arithmetic.
+
+The final certificate must pass this verifier.
+
+============================================================
+21. PROOF STATUS LABELS
+=======================
+
+Every result must carry one of these labels:
+
+LEVEL 0 — empirical pattern
+
+LEVEL 1 — survives finite testing
+
+LEVEL 2 — compact symbolic conjecture extracted
+
+LEVEL 3 — all finite symbolic states enumerated
+
+LEVEL 4 — every transition/inequality verified exactly
+
+LEVEL 5 — universal termination theorem follows from the certificate
+
+Never call a finite numerical result a proof.
+
+============================================================
+22. BLIND RECOVERY TEST
+=======================
+
+The known oracle proof must remain hidden until the discovery experiment ends.
+
+After the Discoverer reaches Level 4 or 5, compare:
+
+```
+discovered certificate
+```
+
+with:
+
+```
+known oracle certificate.
+```
+
+Ask:
+
+```
+Did it rediscover the known proof?
+
+Did it find an equivalent proof in different coordinates?
+
+Did it find a smaller proof?
+
+Did it find a genuinely different proof?
+```
+
+This is an important test of mathematical discovery rather than supervised reconstruction.
+
+============================================================
+23. GENERALIZATION TEST
+=======================
+
+Once a certificate is discovered, deliberately train only on numbers:
+
+```
+n <= N.
+```
+
+Then prove the extracted symbolic certificate without imposing an upper bound.
+
+Test numerically at much larger scales:
+
+```
+10N
+100N
+10^6 N
+```
+
+but remember:
+
+```
+these tests are diagnostics;
+the symbolic verifier establishes universality.
+```
+
+A successful result should therefore make an infinite-domain statement from finite observations.
+
+============================================================
+24. CONTROL EXPERIMENT
+======================
+
+Create a matched control map with superficially similar trajectory statistics but without the same finite-state certificate.
+
+For example preserve approximately:
+
+```
+expansion frequency
+contraction frequency
+stopping-time distribution
+```
+
+while scrambling relevant residue structure.
+
+The discovery system should NOT manufacture a false proof.
+
+The Falsifier should eventually destroy proposed certificates.
+
+This tests whether the pipeline distinguishes mathematical structure from finite-sample regularity.
+
+============================================================
+25. WHAT COUNTS AS SUCCESS
+==========================
+
+Minimum interesting success:
+
+```
+The neural population discovers a residue/valuation organization
+not supplied by the experimenter.
+```
+
+Strong success:
+
+```
+That organization yields a compact symbolic descent certificate.
+```
+
+Full bridge success:
+
+```
+The network-generated certificate is independently verified
+to prove termination for every positive integer.
+```
+
+Exceptional success:
+
+```
+The discovered proof is materially different from or simpler
+than the hidden oracle proof.
+```
+
+============================================================
+26. WHAT DOES NOT COUNT
+=======================
+
+Do NOT count as success:
+
+* checking billions of integers;
+* predicting stopping times accurately;
+* predicting the next iterate;
+* obtaining a smooth latent embedding;
+* finding high correlation with residue classes;
+* observing average negative log drift;
+* finding no counterexamples below a huge N;
+* floating-point evidence that a potential decreases;
+* a neural classifier saying "terminates."
+
+We need an exact certificate.
+
+============================================================
+27. CONNECTION TO ACTUAL COLLATZ
+================================
+
+Only after achieving Level 4/5 on the HARD calibration system should we consider actual Collatz.
+
+The intended transfer is:
+
+```
+calibration:
+    NN discovers finite-state universal descent proof
+
+            ↓
+
+Collatz:
+    search for analogous state/potential structure.
+```
+
+For actual Collatz, a particularly valuable target would eventually be:
+
+```
+forall n > 1,
+exists k > 0:
+    F^k(n) < n
+```
+
+for the accelerated odd Collatz map:
+
+```
+F(n)
+    =
+(3n+1) / 2^v2(3n+1).
+```
+
+But DO NOT test this target yet.
+
+============================================================
+28. REQUIRED OUTPUTS
+====================
+
+Produce:
+
+1. candidate EASY/MEDIUM/HARD maps;
+
+2. explanation of why each is Collatz-like;
+
+3. hidden exact termination certificate for each, stored separately;
+
+4. selected map and reason for selection;
+
+5. neural population architecture;
+
+6. discovery objective;
+
+7. falsification strategy;
+
+8. extracted state partitions;
+
+9. extracted potentials;
+
+10. counterexample history;
+
+11. final finite transition graph;
+
+12. exact symbolic certificate;
+
+13. independent-verifier output;
+
+14. comparison against hidden oracle proof;
+
+15. certificate minimality analysis;
+
+16. control-map results.
+
+Save all artifacts under a new timestamped run directory.
+
+============================================================
+29. FIRST ACTION — DO NOT TRAIN YET
+===================================
+
+Before writing the full training pipeline, first perform ONLY the following:
+
+A. Construct 3–5 candidate Collatz-like calibration maps.
+
+B. Prove termination for each independently.
+
+C. Show the exact finite-state certificate for each to ME.
+
+D. Rate each map:
+
+```
+trivial
+easy
+medium
+hard
+```
+
+from the perspective of blind certificate rediscovery.
+
+E. Recommend ONE map for the bridge experiment.
+
+F. Explain exactly what information will be hidden from the Discoverer.
+
+G. Estimate computational cost on:
+
+```
+NVIDIA RTX 5060 Ti 16 GB.
+```
+
+STOP THERE.
+
+Do not begin neural training until I review and approve the calibration map.
+
+The purpose of this stop is to make sure we have chosen a problem that is neither trivial nor accidentally as hard as Collatz itself.
+

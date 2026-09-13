@@ -1,0 +1,138 @@
+{
+  "map_name": "easy_half_collatz",
+  "modulus": 32,
+  "halt": 1,
+  "small_checked_upto": 512,
+  "verified": true,
+  "failures": [],
+  "lemmas": [
+    {
+      "r": 1,
+      "k": 1,
+      "A": 24,
+      "B": 1,
+      "descends_for_all_q": true,
+      "note": "A=24<M=32: worst n=33 maps to 25"
+    },
+    {
+      "r": 3,
+      "k": 1,
+      "A": 8,
+      "B": 1,
+      "descends_for_all_q": true,
+      "note": "A=8<M=32: worst n=3 maps to 1"
+    },
+    {
+      "r": 5,
+      "k": 1,
+      "A": 6,
+      "B": 1,
+      "descends_for_all_q": true,
+      "note": "A=6<M=32: worst n=5 maps to 1"
+    },
+    {
+      "r": 7,
+      "k": 1,
+      "A": 4,
+      "B": 1,
+      "descends_for_all_q": true,
+      "note": "A=4<M=32: worst n=7 maps to 1"
+    },
+    {
+      "r": 9,
+      "k": 1,
+      "A": 24,
+      "B": 7,
+      "descends_for_all_q": true,
+      "note": "A=24<M=32: worst n=9 maps to 7"
+    },
+    {
+      "r": 11,
+      "k": 1,
+      "A": 8,
+      "B": 3,
+      "descends_for_all_q": true,
+      "note": "A=8<M=32: worst n=11 maps to 3"
+    },
+    {
+      "r": 13,
+      "k": 1,
+      "A": 12,
+      "B": 5,
+      "descends_for_all_q": true,
+      "note": "A=12<M=32: worst n=13 maps to 5"
+    },
+    {
+      "r": 15,
+      "k": 1,
+      "A": 2,
+      "B": 1,
+      "descends_for_all_q": true,
+      "note": "A=2<M=32: worst n=15 maps to 1"
+    },
+    {
+      "r": 17,
+      "k": 1,
+      "A": 24,
+      "B": 13,
+      "descends_for_all_q": true,
+      "note": "A=24<M=32: worst n=17 maps to 13"
+    },
+    {
+      "r": 19,
+      "k": 1,
+      "A": 8,
+      "B": 5,
+      "descends_for_all_q": true,
+      "note": "A=8<M=32: worst n=19 maps to 5"
+    },
+    {
+      "r": 21,
+      "k": 1,
+      "A": 3,
+      "B": 2,
+      "descends_for_all_q": true,
+      "note": "worst-case v2 (q-dependent valuation); A=3<M=32: worst n=21 maps to 2"
+    },
+    {
+      "r": 23,
+      "k": 1,
+      "A": 4,
+      "B": 3,
+      "descends_for_all_q": true,
+      "note": "A=4<M=32: worst n=23 maps to 3"
+    },
+    {
+      "r": 25,
+      "k": 1,
+      "A": 24,
+      "B": 19,
+      "descends_for_all_q": true,
+      "note": "A=24<M=32: worst n=25 maps to 19"
+    },
+    {
+      "r": 27,
+      "k": 1,
+      "A": 8,
+      "B": 7,
+      "descends_for_all_q": true,
+      "note": "A=8<M=32: worst n=27 maps to 7"
+    },
+    {
+      "r": 29,
+      "k": 1,
+      "A": 12,
+      "B": 11,
+      "descends_for_all_q": true,
+      "note": "A=12<M=32: worst n=29 maps to 11"
+    },
+    {
+      "r": 31,
+      "k": 1,
+      "A": 1,
+      "B": 1,
+      "descends_for_all_q": true,
+      "note": "worst-case v2 (q-dependent valuation); A=1<M=32: worst n=31 maps to 1"
+    }
+  ]
+}

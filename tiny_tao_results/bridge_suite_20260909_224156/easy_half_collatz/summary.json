@@ -1,0 +1,196 @@
+{
+  "status": "exploratory",
+  "map": "easy_half_collatz",
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "best_M": 4,
+  "best_cover": 1.0,
+  "uncovered": [],
+  "lemmas": [
+    {
+      "M": 4,
+      "r": 1,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "n_train": 499,
+      "kind": "odd_part",
+      "a": 3,
+      "b": 1
+    },
+    {
+      "M": 4,
+      "r": 3,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "n_train": 500,
+      "kind": "odd_part",
+      "a": 1,
+      "b": 1
+    }
+  ],
+  "verifier": {
+    "level": "LEVEL_5_universal_descent",
+    "passed_falsifier": true,
+    "n_checked": 10002,
+    "n_hits": 0,
+    "hits": [],
+    "cover_frac": 1.0,
+    "uncovered": [],
+    "M": 4,
+    "n_lemmas": 2,
+    "universal": {
+      "proven": true,
+      "level": "LEVEL_5_universal_descent",
+      "theorem": "If n is even and n>1 then T(n)=n/2<n. If n is odd and n>1 then some F^k(n)<n by a covering lemma proved for every q. A strictly decreasing chain of positive integers is finite, so every trajectory reaches 1. A cycle of integers all >1 is impossible.",
+      "failures": [],
+      "lemmas": [
+        {
+          "r": 1,
+          "kind": "odd_part",
+          "k": 1,
+          "ok": true,
+          "note": "F=odd_part(3n+1) on class; worst-case 3q+1; A=3<M=4: worst n=5 maps to 4"
+        },
+        {
+          "r": 3,
+          "kind": "odd_part",
+          "k": 1,
+          "ok": true,
+          "note": "F=odd_part(1n+1) on class; worst-case 1q+1; A=1<M=4: worst n=3 maps to 1"
+        }
+      ],
+      "even_step": "even n>1: T(n)=n/2<n by definition",
+      "M": 4,
+      "map": "easy_half_collatz"
+    }
+  },
+  "falsifier_attempts": [
+    {
+      "M": 4,
+      "max_k": 1,
+      "passed": true,
+      "level": "LEVEL_5_universal_descent"
+    }
+  ],
+  "neural_potential": {
+    "skipped": true,
+    "reason": "BRIDGE_NEURAL not set; login node has no GPU"
+  },
+  "top_moduli": [
+    {
+      "M": 4,
+      "cover": 1.0,
+      "n_lemmas": 2,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "odd_part"
+      ]
+    },
+    {
+      "M": 8,
+      "cover": 1.0,
+      "n_lemmas": 4,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 12,
+      "cover": 1.0,
+      "n_lemmas": 6,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "odd_part"
+      ]
+    },
+    {
+      "M": 16,
+      "cover": 1.0,
+      "n_lemmas": 8,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 20,
+      "cover": 1.0,
+      "n_lemmas": 10,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "odd_part"
+      ]
+    },
+    {
+      "M": 24,
+      "cover": 1.0,
+      "n_lemmas": 12,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 32,
+      "cover": 1.0,
+      "n_lemmas": 16,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 36,
+      "cover": 1.0,
+      "n_lemmas": 18,
+      "uncovered": [],
+      "k_used": [
+        1
+      ],
+      "kinds": [
+        "odd_part"
+      ]
+    }
+  ],
+  "minimality": {
+    "M": 4,
+    "cover": 1.0,
+    "n_lemmas": 2,
+    "uncovered": [],
+    "k_used": [
+      1
+    ],
+    "kinds": [
+      "odd_part"
+    ]
+  }
+}

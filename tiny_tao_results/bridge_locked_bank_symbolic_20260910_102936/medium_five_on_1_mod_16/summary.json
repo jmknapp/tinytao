@@ -1,0 +1,358 @@
+{
+  "status": "exploratory",
+  "preregistration": "tiny_tao_results/bridge_preregistration_locked_bank_symbolic.json",
+  "map": "medium_five_on_1_mod_16",
+  "neural": false,
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "k_max": 4,
+  "feature_moduli": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    15,
+    16,
+    24,
+    32
+  ],
+  "moduli_cover": [
+    {
+      "M": 16,
+      "cover": 1.0,
+      "uncovered": []
+    },
+    {
+      "M": 32,
+      "cover": 1.0,
+      "uncovered": []
+    },
+    {
+      "M": 8,
+      "cover": 0.75,
+      "uncovered": [
+        1
+      ]
+    },
+    {
+      "M": 24,
+      "cover": 0.75,
+      "uncovered": [
+        1,
+        9,
+        17
+      ]
+    },
+    {
+      "M": 4,
+      "cover": 0.5,
+      "uncovered": [
+        1
+      ]
+    },
+    {
+      "M": 12,
+      "cover": 0.5,
+      "uncovered": [
+        1,
+        5,
+        9
+      ]
+    },
+    {
+      "M": 2,
+      "cover": 0.0,
+      "uncovered": [
+        1
+      ]
+    },
+    {
+      "M": 3,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "M": 5,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "M": 6,
+      "cover": 0.0,
+      "uncovered": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "M": 7,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "M": 9,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "M": 10,
+      "cover": 0.0,
+      "uncovered": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ]
+    },
+    {
+      "M": 15,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    }
+  ],
+  "M16_uncovered": [],
+  "chosen_M": 16,
+  "lemmas": [
+    {
+      "M": 16,
+      "r": 1,
+      "k": 2,
+      "A": 10,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 124,
+      "source": "exact_affine"
+    },
+    {
+      "M": 16,
+      "r": 3,
+      "k": 1,
+      "A": 4,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "exact_affine"
+    },
+    {
+      "M": 16,
+      "r": 5,
+      "k": 1,
+      "A": 8,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "exact_affine"
+    },
+    {
+      "M": 16,
+      "r": 7,
+      "k": 1,
+      "A": 2,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "exact_affine"
+    },
+    {
+      "M": 16,
+      "r": 9,
+      "k": 1,
+      "A": 8,
+      "B": 5,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "exact_affine"
+    },
+    {
+      "M": 16,
+      "r": 11,
+      "k": 1,
+      "A": 4,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "exact_affine"
+    },
+    {
+      "M": 16,
+      "r": 13,
+      "k": 1,
+      "A": 8,
+      "B": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "exact_affine"
+    },
+    {
+      "M": 16,
+      "r": 15,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "kind": "odd_part",
+      "a": 1,
+      "b": 1,
+      "n_train": 125,
+      "source": "odd_part"
+    }
+  ],
+  "uncovered": [],
+  "verifier": {
+    "level": "LEVEL_5_universal_descent",
+    "passed_falsifier": true,
+    "n_checked": 10002,
+    "n_hits": 0,
+    "hits": [],
+    "cover_frac": 1.0,
+    "uncovered": [],
+    "M": 16,
+    "n_lemmas": 8,
+    "universal": {
+      "proven": true,
+      "level": "LEVEL_5_universal_descent",
+      "theorem": "If n is even and n>1 then T(n)=n/2<n. If n is odd and n>1 then some F^k(n)<n by a covering lemma proved for every q. A strictly decreasing chain of positive integers is finite, so every trajectory reaches 1. A cycle of integers all >1 is impossible.",
+      "failures": [],
+      "lemmas": [
+        {
+          "r": 1,
+          "kind": "affine",
+          "k": 2,
+          "ok": true,
+          "note": "F^2=10q+1 locked at lift 32; A=10<M=16: worst n=17 maps to 11"
+        },
+        {
+          "r": 3,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=4q+1 locked at lift 16; A=4<M=16: worst n=3 maps to 1"
+        },
+        {
+          "r": 5,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=8q+3 locked at lift 16; A=8<M=16: worst n=5 maps to 3"
+        },
+        {
+          "r": 7,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=2q+1 locked at lift 16; A=2<M=16: worst n=7 maps to 1"
+        },
+        {
+          "r": 9,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=8q+5 locked at lift 16; A=8<M=16: worst n=9 maps to 5"
+        },
+        {
+          "r": 11,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=4q+3 locked at lift 16; A=4<M=16: worst n=11 maps to 3"
+        },
+        {
+          "r": 13,
+          "kind": "affine",
+          "k": 1,
+          "ok": true,
+          "note": "F^1=8q+7 locked at lift 16; A=8<M=16: worst n=13 maps to 7"
+        },
+        {
+          "r": 15,
+          "kind": "odd_part",
+          "k": 1,
+          "ok": true,
+          "note": "F=odd_part(1n+1) on class; worst-case 1q+1; A=1<M=16: worst n=15 maps to 1"
+        }
+      ],
+      "even_step": "even n>1: T(n)=n/2<n by definition",
+      "M": 16,
+      "map": "medium_five_on_1_mod_16"
+    }
+  },
+  "falsifier_attempts": [
+    {
+      "M": 16,
+      "passed": true,
+      "level": "LEVEL_5_universal_descent"
+    }
+  ],
+  "level5_gate": true,
+  "oracle": {
+    "oracle_verified": true,
+    "oracle_M": 32,
+    "relation": "smaller_covering"
+  }
+}

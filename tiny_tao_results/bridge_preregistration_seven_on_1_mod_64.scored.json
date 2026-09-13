@@ -1,0 +1,39 @@
+{
+  "status": "scored",
+  "preregistration": "tiny_tao_results/bridge_preregistration_seven_on_1_mod_64.json",
+  "run": "tiny_tao_results/bridge_seven_on_1_mod_64_20260910_123215",
+  "scored_after_training": true,
+  "changed_protocol_after_result": false,
+  "neural": false,
+  "preregistered_gate": true,
+  "predictions": {
+    "P1_out_of_bank_fails": {
+      "verdict": "hold",
+      "chosen_M": 32,
+      "uncovered": [1],
+      "M32_uncovered": [1],
+      "level5_gate": false
+    },
+    "P2_medium_still_level5": {
+      "verdict": "hold",
+      "chosen_M": 16
+    },
+    "P3_control_still_fails": {
+      "verdict": "hold",
+      "relation": "agreed_negative"
+    },
+    "P4_oracle_verifies_at_64": {
+      "verdict": "hold",
+      "oracle_M": 64,
+      "oracle_verified": true,
+      "relation": "discoverer_failed_oracle_verified",
+      "oracle_written_after_discovery": true
+    },
+    "P5_not_a_reason_to_add_64": {
+      "verdict": "applied",
+      "note": "FEATURE_MODULI unchanged. 64 was not added."
+    },
+    "P6_not_collatz": {"verdict": "applied"}
+  },
+  "lesson": "Locked-bank failure splits in two: control is agreed_negative (no small covering). This map is discoverer_failed_oracle_verified (covering at M=64, bank stops at 32). Do not add 64. Do not start Collatz. Neural lemma heads remain not load-bearing on this bank."
+}

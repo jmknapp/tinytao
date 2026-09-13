@@ -1,0 +1,28 @@
+{
+  "status": "scored",
+  "preregistration": "tiny_tao_results/preregistration_p31_h3_three_torus.json",
+  "run": "results/runs/results/runs/20260910_125735_p31_h3_three_torus",
+  "scored_after_training": true,
+  "protocol": "Model C H=3, p=31, held_row a0=30, P=1024, 8000 Adam steps, lr=3e-3, seed=0, no dlog init",
+  "params": 390,
+  "seconds": 79.1,
+  "n_exact": 1022,
+  "n_certified": 3,
+  "n_candidate_triple": 3,
+  "n_with_faithful_head": 687,
+  "predictions": {
+    "P1_exact_exists": {"verdict": "hold", "n_exact": 1022},
+    "P2_f_like_present": {"verdict": "hold", "n_with_faithful_head": 687},
+    "P3_torus_not_guaranteed": {"verdict": "hold", "note": "Appeared as a rare attractor: 3/1022 exact nets. All 3 gcd-triple candidates certified."},
+    "P4_h1_cannot": {"verdict": "hold"},
+    "P5_do_not_add_heads": {"verdict": "not_triggered", "note": "n_certified=3; still do not raise H to hunt for more."},
+    "P6_not_collatz": {"verdict": "applied"}
+  },
+  "scientific_3_torus": true,
+  "certified_k_eff": [
+    [20, 15, 12],
+    [15, 24, 10],
+    [24, 15, 20]
+  ],
+  "lesson": "H=3 at p=31 is almost entirely exact, mostly by using at least one faithful head. The CRT 3-torus C_2×C_3×C_5 exists as a small basin (3 nets): each head is a character of one Sylow factor, neural-free CRT is 900/900, scrambling one factor breaks it, cyclotomic snap preserves it. Not the typical solution. Do not raise H."
+}

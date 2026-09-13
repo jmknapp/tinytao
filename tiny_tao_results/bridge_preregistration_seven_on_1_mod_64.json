@@ -1,0 +1,37 @@
+{
+  "status": "preregistered",
+  "written_before_training": true,
+  "parent": "tiny_tao_results/bridge_preregistration_locked_bank_symbolic.scored.json",
+  "protocol": "Same as 15.6: exact propose_for_modulus on the locked feature bank, k_max=4, no neural stage. Falsifier and Level 5 unchanged. Oracle JSON is written after discovery. Do not add 64 to the bank. Do not raise TOP_K. Not Collatz.",
+  "feature_bank_locked": [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 16, 24, 32],
+  "k_max": 4,
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "neural": false,
+  "map": "prospective_seven_on_1_mod_64",
+  "law": {
+    "even": "T(n)=n/2",
+    "odd_expanding": "F(n)=odd_part(7n+1) iff n ≡ 1 (mod 64)",
+    "odd_else": "F(n)=odd_part(n+1)"
+  },
+  "hand_analysis_before_code": {
+    "M64_r1": "n=64q+1, 7n+1=448q+8=8(56q+1), F=56q+1, A=56<64, k=1 descent for q≥1",
+    "M32_r1": "n=32q'+1 mixes n≡1 (mod 64) with n≡33 (mod 64); 7n+1 vs n+1; no single affine or odd_part (a,b) fits both",
+    "why_not_control": "A covering exists at M=64. The control has no small covering. This tests a too-small bank, not a non-terminating map."
+  },
+  "predictions": {
+    "P1_out_of_bank_fails": "On prospective_seven_on_1_mod_64, locked-bank Level 5 gate is False. Residue 1 is uncovered at every bank M, including 32.",
+    "P2_medium_still_level5": "On medium_five_on_1_mod_16, Level 5 still holds at M=16 (regression).",
+    "P3_control_still_fails": "On control_five_on_1_mod_4, Level 5 gate is False, agreed_negative.",
+    "P4_oracle_verifies_at_64": "After discovery, hidden affine oracle verifies at M=64. Relation: discoverer_failed_oracle_verified.",
+    "P5_not_a_reason_to_add_64": "Do not add 64 to FEATURE_MODULI after seeing P1. The miss is the result.",
+    "P6_not_collatz": "Do not train 3n+1. Do not raise TOP_K."
+  },
+  "success_gate": "P1 and P2 and P3 and P4.",
+  "maps": [
+    "prospective_seven_on_1_mod_64",
+    "medium_five_on_1_mod_16",
+    "control_five_on_1_mod_4"
+  ]
+}

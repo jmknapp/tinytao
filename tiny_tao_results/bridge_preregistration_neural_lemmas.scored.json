@@ -1,0 +1,67 @@
+{
+  "status": "scored",
+  "preregistration": "tiny_tao_results/bridge_preregistration_neural_lemmas.json",
+  "run": "tiny_tao_results/bridge_neural_lemmas_20260910_013006",
+  "scored_after_training": true,
+  "changed_protocol_after_result": false,
+  "preregistered_gate": true,
+  "predictions": {
+    "P1_thicker_level5": {
+      "verdict": "hold",
+      "chosen_M": 32,
+      "level": "LEVEL_5_universal_descent",
+      "note": "Covering at M=32, Falsifier clean, all-q Level 5. r=1 is odd_part(7n+1) (verifier worst-case 28q+1), r=17 is odd_part(3n+1) (worst-case 24q+13). Predicted affines, observed equivalent odd-part encoding."
+    },
+    "P2_medium_still_level5": {
+      "verdict": "miss",
+      "chosen_M": 16,
+      "uncovered": [1],
+      "level": "LEVEL_1_survives_finite_testing",
+      "note": "Energy+symbolic extractor previously covered r=1 by F^2=10q+1. Affine heads did not recover that lemma. odd_part(5n+1) does not descend, so leftover fill cannot save the class. Oracle still verified at M=32. Do not put algebraic _try_affine back in after seeing this miss."
+    },
+    "P3_control_still_fails": {
+      "verdict": "hold",
+      "chosen_M": 4,
+      "uncovered": [1],
+      "level5_gate": false,
+      "relation": "agreed_negative"
+    },
+    "P4_not_energy": {
+      "verdict": "hold",
+      "note": "No energy shortlist. TOP_K unused. Bank M=32 was proposed directly and selected on the thicker map."
+    },
+    "P5_exact_after_round": {
+      "verdict": "hold",
+      "note": "Accepted affine heads are rounded integers that match F^k exactly on the train class and descend. Residues the heads miss go to odd-part fill, not a loosened threshold."
+    },
+    "P6_no_bank_no_topk": {
+      "verdict": "applied",
+      "note": "Do not add moduli. Do not raise TOP_K. Do not train Collatz. Do not restore algebraic affine fit to erase P2."
+    }
+  },
+  "maps": {
+    "prospective_seven_and_three_mod_32": {
+      "chosen_M": 32,
+      "level5_gate": true,
+      "uncovered": [],
+      "n_affine": 12,
+      "n_odd_part": 4,
+      "oracle_relation": "covering_found"
+    },
+    "medium_five_on_1_mod_16": {
+      "chosen_M": 16,
+      "level5_gate": false,
+      "uncovered": [1],
+      "n_affine": 6,
+      "n_odd_part": 1,
+      "oracle_relation": "discoverer_failed_oracle_verified"
+    },
+    "control_five_on_1_mod_4": {
+      "chosen_M": 4,
+      "level5_gate": false,
+      "uncovered": [1],
+      "oracle_relation": "agreed_negative"
+    }
+  },
+  "lesson": "Dropping the energy shortlist lets the bank include 32, and odd-part fill recovers 7n+1 / 3n+1 on the thicker map. Replacing the exact two-point affine extractor with Adam+round loses medium's F^2=10q+1. Success on the new map is not a license to weaken the old extractor or to retune after the regression."
+}

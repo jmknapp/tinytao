@@ -1,0 +1,245 @@
+{
+  "status": "exploratory",
+  "map": "control_five_on_1_mod_4",
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "pop": 1024,
+  "steps": 1500,
+  "feature_moduli": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    15,
+    16,
+    24,
+    32
+  ],
+  "neural_shortlist": [
+    4,
+    10,
+    2,
+    8,
+    5,
+    6,
+    12,
+    16
+  ],
+  "neural": {
+    "loss": 0.022833826020359993,
+    "frac_decrease": 0.8865740895271301,
+    "logn_energy": 0.02552540972828865,
+    "top_M": 4,
+    "ranked_moduli": [
+      {
+        "M": 4,
+        "energy": 0.006632555276155472
+      },
+      {
+        "M": 10,
+        "energy": 0.0063486360013484955
+      },
+      {
+        "M": 2,
+        "energy": 0.006345013622194529
+      },
+      {
+        "M": 8,
+        "energy": 0.006300930865108967
+      },
+      {
+        "M": 5,
+        "energy": 0.005942663177847862
+      },
+      {
+        "M": 6,
+        "energy": 0.005901392083615065
+      },
+      {
+        "M": 12,
+        "energy": 0.005849129054695368
+      },
+      {
+        "M": 16,
+        "energy": 0.005803092382848263
+      },
+      {
+        "M": 32,
+        "energy": 0.00562509847804904
+      },
+      {
+        "M": 24,
+        "energy": 0.0055725425481796265
+      },
+      {
+        "M": 3,
+        "energy": 0.005553823430091143
+      },
+      {
+        "M": 15,
+        "energy": 0.004424008075147867
+      },
+      {
+        "M": 9,
+        "energy": 0.0021947654895484447
+      },
+      {
+        "M": 7,
+        "energy": 0.0013213183265179396
+      }
+    ],
+    "top_M_residue_profile": {
+      "0": 0.06454340368509293,
+      "1": 0.06716415286064148,
+      "2": 0.06447269767522812,
+      "3": 0.06368856877088547
+    },
+    "device": "cuda",
+    "pop": 1024,
+    "steps": 1500
+  },
+  "chosen_M": 16,
+  "lemmas": [
+    {
+      "M": 16,
+      "r": 1,
+      "k": 2,
+      "A": 10,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 124
+    },
+    {
+      "M": 16,
+      "r": 3,
+      "k": 1,
+      "A": 4,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125
+    },
+    {
+      "M": 16,
+      "r": 7,
+      "k": 1,
+      "A": 2,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125
+    },
+    {
+      "M": 16,
+      "r": 11,
+      "k": 1,
+      "A": 4,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125
+    },
+    {
+      "M": 16,
+      "r": 15,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "kind": "odd_part",
+      "a": 1,
+      "b": 1,
+      "n_train": 125
+    }
+  ],
+  "uncovered": [
+    5,
+    9,
+    13
+  ],
+  "verifier": {
+    "level": "LEVEL_1_survives_finite_testing",
+    "passed_falsifier": false,
+    "n_checked": 20,
+    "n_hits": 8,
+    "hits": [
+      {
+        "r": 5,
+        "k": 0,
+        "n": 5,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 9,
+        "k": 0,
+        "n": 9,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 13,
+        "k": 0,
+        "n": 13,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 5,
+        "k": 0,
+        "n": 21,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 9,
+        "k": 0,
+        "n": 25,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 13,
+        "k": 0,
+        "n": 29,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 5,
+        "k": 0,
+        "n": 37,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 9,
+        "k": 0,
+        "n": 41,
+        "reason": "uncovered residue",
+        "observed": null
+      }
+    ],
+    "cover_frac": 0.625,
+    "uncovered": [
+      5,
+      9,
+      13
+    ],
+    "M": 16,
+    "n_lemmas": 5,
+    "universal": null
+  },
+  "falsifier_attempts": []
+}

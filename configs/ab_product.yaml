@@ -1,0 +1,36 @@
+# Model A (additive ReLU) vs Model B (product) on F_13*.
+# Parameter-matched at hidden 4: 160 params each.
+task:
+  name: modular_multiplication_star
+  p: 13
+  split: random
+  train_frac: 0.7
+  split_seed: 0
+
+model:
+  hidden_dims: [4]
+  activation: relu
+  use_bias: true
+  init: xavier_uniform
+  init_scale: 1.0
+  interaction: add
+
+population:
+  size: 1024
+  min_size: 64
+
+train:
+  epochs: 8000
+  batch_size: 0
+  lr: 0.003
+  optimizer: adam
+  weight_decay: 0.0
+  log_every: 50
+  eval_every: 50
+
+seed: 0
+device: cuda
+run_name: ab_product
+notes: >
+  Minimal A vs B comparison. Full table, random 70/30, dlog checkerboard.
+  Success is domain-exact on F_13*, including held pairs.

@@ -1,0 +1,37 @@
+# Model T: tropical min on gcd tables. Preregistered before training.
+# Do not add primes, valuation-init, Euclid/Stein, or loosen exactness.
+task:
+  name: gcd_meet
+  p: 12
+  split: held_row
+  train_frac: 0.7
+  split_seed: 0
+  held_operands: [6]
+
+model:
+  hidden_dims: [5]
+  activation: identity
+  use_bias: true
+  init: xavier_uniform
+  init_scale: 1.0
+  interaction: tropical
+
+population:
+  size: 1024
+  min_size: 64
+
+train:
+  epochs: 8000
+  batch_size: 0
+  lr: 0.003
+  optimizer: adam
+  weight_decay: 0.0
+  log_every: 50
+  eval_every: 50
+
+seed: 0
+device: cuda
+run_name: gcd_valuation_min
+notes: >
+  Valuation-min probe. Fixed min, locked primes 2,3,5,7,11.
+  Companion destroyed-law table uses seed 20260910.

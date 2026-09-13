@@ -1,0 +1,29 @@
+{
+  "status": "preregistered",
+  "written_before_training": true,
+  "parent": "tiny_tao_results/bridge_preregistration_neural_lemmas.scored.json",
+  "protocol_change": "Same locked bank, same affine heads, same round-to-int exactness. Residues the heads miss now get the existing exact two-point _try_affine leftover (k=1..k_max), then odd-part. This is a new protocol, not a rescore of 15.4 P2. TOP_K unused. Bank unchanged. Not Collatz.",
+  "feature_bank_locked": [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 16, 24, 32],
+  "k_max": 4,
+  "pop": 256,
+  "steps": 800,
+  "lr": 0.05,
+  "seed": 20260909,
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "predictions": {
+    "P1_thicker_still_level5": "On prospective_seven_and_three_mod_32, Level 5 at M=32.",
+    "P2_medium_level5_via_exact_fill": "On medium_five_on_1_mod_16, Level 5 at M=16. Residue 1 is affine F^2=10q+1 from exact_affine leftover, not from rounded heads (15.4 already showed the heads miss this class).",
+    "P3_control_still_fails": "On control_five_on_1_mod_4, Level 5 gate is False.",
+    "P4_hard_level5": "On hard_five_on_1_mod_16, Level 5 at M=16. Residue 9 is F=12q+7, not medium's 8q+5.",
+    "P5_not_a_rescore": "15.4 P2 remains a miss. This file does not change that verdict.",
+    "P6_no_bank_no_topk": "Do not add moduli. Do not raise TOP_K. Do not train Collatz. Do not loosen exactness."
+  },
+  "success_gate": "P1 and P2 and P3. P4 is a locked extra, not required for the gate.",
+  "maps": [
+    "prospective_seven_and_three_mod_32",
+    "medium_five_on_1_mod_16",
+    "hard_five_on_1_mod_16",
+    "control_five_on_1_mod_4"
+  ]
+}

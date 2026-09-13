@@ -1,0 +1,31 @@
+{
+  "status": "preregistered",
+  "written_before_training": true,
+  "protocol_change": "Energy ranking is no longer the shortlist. Tiny affine heads propose integer (M,r,k,A,B) on the locked feature bank. Odd-part fill only for residues the heads miss. Falsifier + Level 5 unchanged. TOP_K unused. Bank unchanged.",
+  "feature_bank_locked": [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 16, 24, 32],
+  "k_max": 4,
+  "pop": 256,
+  "steps": 800,
+  "lr": 0.05,
+  "seed": 20260909,
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "parent_misses": [
+    "tiny_tao_results/bridge_preregistration_seven_on_1_mod_32.scored.json",
+    "tiny_tao_results/bridge_preregistration_seven_and_three_mod_32.scored.json"
+  ],
+  "predictions": {
+    "P1_thicker_level5": "On prospective_seven_and_three_mod_32, some bank M yields LEVEL_5_universal_descent. Predicted M=32 with r=1 F=28q+1 and r=17 F=24q+13.",
+    "P2_medium_still_level5": "On medium_five_on_1_mod_16, Level 5 still holds (regression). Predicted M=16.",
+    "P3_control_still_fails": "On control_five_on_1_mod_4, Level 5 gate is False (no complete covering in the bank).",
+    "P4_not_energy": "Success does not require 32 in an energy top-8.",
+    "P5_exact_after_round": "Proposed affines are integers that match F^k exactly on the train class before the Falsifier runs.",
+    "P6_no_bank_no_topk": "Do not add moduli. Do not raise TOP_K. Do not train Collatz."
+  },
+  "success_gate": "P1: Level 5 on the thicker prospective map from neural-proposed lemmas (bank only).",
+  "maps": [
+    "prospective_seven_and_three_mod_32",
+    "medium_five_on_1_mod_16",
+    "control_five_on_1_mod_4"
+  ]
+}

@@ -1,0 +1,41 @@
+# Phase 9: modular addition, same optimizer / protocol as Phase 3 multiplication.
+# Control: do exact adders show residue-Fourier embeddings the way multipliers
+# showed dlog, and does substituting that fit preserve exactness?
+task:
+  name: modular_addition
+  p: 13
+  split: random
+  train_frac: 0.7
+  split_seed: 0
+
+model:
+  hidden_dims: [8]
+  activation: relu
+  use_bias: true
+  init: xavier_uniform
+  init_scale: 1.0
+
+population:
+  size: 1024
+  min_size: 64
+
+train:
+  epochs: 8000
+  batch_size: 0
+  lr: 0.003
+  optimizer: adam
+  weight_decay: 0.0
+  log_every: 50
+  eval_every: 50
+
+sweep:
+  hidden_widths: [2, 3, 4, 8, 16]
+  protocol: full_domain
+  depths: [1]
+
+seed: 0
+device: cuda
+run_name: phase9_modadd
+notes: >
+  Matched control for the multiplication dlog measurement. Only the
+  task changes.

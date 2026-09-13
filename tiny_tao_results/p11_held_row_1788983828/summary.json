@@ -1,0 +1,18 @@
+{
+  "p": 11,
+  "population": 8192,
+  "steps": 8000,
+  "lr": 0.003,
+  "split": "held_row",
+  "held_a": 10,
+  "seed": 20260909,
+  "gpu": "Tesla V100-PCIE-16GB",
+  "torch": "2.7.1+cu126",
+  "cuda": "12.6",
+  "train_seconds": 256.04223446687683,
+  "exact_count": 4374,
+  "mean_train_accuracy": 0.9158108234405518,
+  "mean_test_accuracy": 0.8332397937774658,
+  "mean_domain_accuracy": 0.9075536727905273,
+  "peak_gpu_memory_gb": 0.193247232
+}

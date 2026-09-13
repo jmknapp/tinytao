@@ -1,0 +1,37 @@
+# Model C: complex composition on F_13*.
+# hidden_dims[0] is the number of independent 2-D heads.
+# H=1: 60 params. H=3: 156 params (matched to A/B 160).
+task:
+  name: modular_multiplication_star
+  p: 13
+  split: random
+  train_frac: 0.7
+  split_seed: 0
+
+model:
+  hidden_dims: [1]
+  activation: identity
+  use_bias: true
+  init: xavier_uniform
+  init_scale: 1.0
+  interaction: complex
+
+population:
+  size: 1024
+  min_size: 64
+
+train:
+  epochs: 8000
+  batch_size: 0
+  lr: 0.003
+  optimizer: adam
+  weight_decay: 0.0
+  log_every: 50
+  eval_every: 50
+
+seed: 0
+device: cuda
+run_name: complex_composition
+notes: >
+  Model C. Shared 2-D embeddings, complex multiply, linear readout.
+  No dlog initialization. Same splits as A vs B.

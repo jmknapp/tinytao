@@ -1,0 +1,251 @@
+{
+  "status": "exploratory",
+  "run": "tiny_tao_results/bridge_suite_20260909_223313",
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "neural": "skipped",
+  "maps": [
+    {
+      "map": "trivial_plus_one",
+      "best_M": 2,
+      "cover": 1.0,
+      "uncovered": [],
+      "level": "LEVEL_4_transitions_verified_exact",
+      "passed": true,
+      "minimality": {
+        "M": 2,
+        "cover": 1.0,
+        "n_lemmas": 1,
+        "uncovered": [],
+        "k_used": [
+          1
+        ],
+        "kinds": [
+          "odd_part"
+        ]
+      }
+    },
+    {
+      "map": "easy_half_collatz",
+      "best_M": 4,
+      "cover": 1.0,
+      "uncovered": [],
+      "level": "LEVEL_2_compact_symbolic_conjecture",
+      "passed": false,
+      "minimality": {
+        "M": 4,
+        "cover": 1.0,
+        "n_lemmas": 2,
+        "uncovered": [],
+        "k_used": [
+          1,
+          8
+        ],
+        "kinds": [
+          "affine",
+          "odd_part"
+        ]
+      }
+    },
+    {
+      "map": "medium_five_on_1_mod_16",
+      "best_M": 16,
+      "cover": 1.0,
+      "uncovered": [],
+      "level": "LEVEL_4_transitions_verified_exact",
+      "passed": true,
+      "minimality": {
+        "M": 16,
+        "cover": 1.0,
+        "n_lemmas": 8,
+        "uncovered": [],
+        "k_used": [
+          1,
+          2
+        ],
+        "kinds": [
+          "affine",
+          "odd_part"
+        ]
+      }
+    },
+    {
+      "map": "hard_five_on_1_mod_16",
+      "best_M": 16,
+      "cover": 1.0,
+      "uncovered": [],
+      "level": "LEVEL_4_transitions_verified_exact",
+      "passed": true,
+      "minimality": {
+        "M": 16,
+        "cover": 1.0,
+        "n_lemmas": 8,
+        "uncovered": [],
+        "k_used": [
+          1,
+          2
+        ],
+        "kinds": [
+          "affine",
+          "odd_part"
+        ]
+      }
+    },
+    {
+      "map": "control_five_on_1_mod_4",
+      "best_M": 256,
+      "cover": 0.84375,
+      "uncovered": [
+        5,
+        13,
+        21,
+        37,
+        53,
+        61,
+        69,
+        77,
+        85,
+        117,
+        133,
+        141,
+        149,
+        153,
+        165,
+        173,
+        181,
+        213,
+        229,
+        245
+      ],
+      "level": "LEVEL_1_survives_finite_testing",
+      "passed": false,
+      "minimality": null
+    }
+  ],
+  "oracle_comparison": [
+    {
+      "map": "trivial_plus_one",
+      "status": "compared",
+      "oracle_verified": true,
+      "oracle_M": 32,
+      "oracle_horizons": [
+        1
+      ],
+      "oracle_n_lemmas": 16,
+      "oracle_n_failures": 0,
+      "discovered_passed": true,
+      "discovered_M": 2,
+      "discovered_horizons": [
+        1
+      ],
+      "discovered_kinds": [
+        "odd_part"
+      ],
+      "discovered_n_lemmas": 1,
+      "relation": "smaller_covering",
+      "level": "LEVEL_4_transitions_verified_exact"
+    },
+    {
+      "map": "easy_half_collatz",
+      "status": "compared",
+      "oracle_verified": true,
+      "oracle_M": 32,
+      "oracle_horizons": [
+        1
+      ],
+      "oracle_n_lemmas": 16,
+      "oracle_n_failures": 0,
+      "discovered_passed": false,
+      "discovered_M": 4,
+      "discovered_horizons": [
+        1,
+        8
+      ],
+      "discovered_kinds": [
+        "affine",
+        "odd_part"
+      ],
+      "discovered_n_lemmas": 2,
+      "relation": "discoverer_failed_oracle_verified",
+      "level": "LEVEL_2_compact_symbolic_conjecture"
+    },
+    {
+      "map": "medium_five_on_1_mod_16",
+      "status": "compared",
+      "oracle_verified": true,
+      "oracle_M": 32,
+      "oracle_horizons": [
+        1,
+        2
+      ],
+      "oracle_n_lemmas": 16,
+      "oracle_n_failures": 0,
+      "discovered_passed": true,
+      "discovered_M": 16,
+      "discovered_horizons": [
+        1,
+        2
+      ],
+      "discovered_kinds": [
+        "affine",
+        "odd_part"
+      ],
+      "discovered_n_lemmas": 8,
+      "relation": "smaller_covering",
+      "level": "LEVEL_4_transitions_verified_exact"
+    },
+    {
+      "map": "hard_five_on_1_mod_16",
+      "status": "compared",
+      "oracle_verified": false,
+      "oracle_M": 65536,
+      "oracle_horizons": [
+        1
+      ],
+      "oracle_n_lemmas": 28672,
+      "oracle_n_failures": 4096,
+      "discovered_passed": true,
+      "discovered_M": 16,
+      "discovered_horizons": [
+        1,
+        2
+      ],
+      "discovered_kinds": [
+        "affine",
+        "odd_part"
+      ],
+      "discovered_n_lemmas": 8,
+      "relation": "discoverer_covered_oracle_did_not",
+      "level": "LEVEL_4_transitions_verified_exact"
+    },
+    {
+      "map": "control_five_on_1_mod_4",
+      "status": "compared",
+      "oracle_verified": false,
+      "oracle_M": 32,
+      "oracle_horizons": [
+        1,
+        2
+      ],
+      "oracle_n_lemmas": 11,
+      "oracle_n_failures": 81,
+      "discovered_passed": false,
+      "discovered_M": 256,
+      "discovered_horizons": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "discovered_kinds": [
+        "affine",
+        "odd_part"
+      ],
+      "discovered_n_lemmas": 108,
+      "relation": "agreed_negative",
+      "level": "LEVEL_1_survives_finite_testing"
+    }
+  ]
+}

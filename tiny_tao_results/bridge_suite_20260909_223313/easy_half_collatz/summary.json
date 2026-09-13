@@ -1,0 +1,239 @@
+{
+  "status": "exploratory",
+  "map": "easy_half_collatz",
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "best_M": 4,
+  "best_cover": 1.0,
+  "uncovered": [],
+  "lemmas": [
+    {
+      "M": 4,
+      "r": 3,
+      "k": 8,
+      "A": 0,
+      "B": 1,
+      "n_train": 500,
+      "kind": "affine",
+      "a": null,
+      "b": null
+    },
+    {
+      "M": 4,
+      "r": 1,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "n_train": 499,
+      "kind": "odd_part",
+      "a": 3,
+      "b": 1
+    }
+  ],
+  "verifier": {
+    "level": "LEVEL_2_compact_symbolic_conjecture",
+    "passed_falsifier": false,
+    "n_checked": 2737,
+    "n_hits": 8,
+    "hits": [
+      {
+        "r": 3,
+        "k": 8,
+        "n": 3651,
+        "reason": "affine mismatch pred=1",
+        "observed": 31
+      },
+      {
+        "r": 3,
+        "k": 8,
+        "n": 3715,
+        "reason": "affine mismatch pred=1",
+        "observed": 5
+      },
+      {
+        "r": 3,
+        "k": 8,
+        "n": 4099,
+        "reason": "affine mismatch pred=1",
+        "observed": 3
+      },
+      {
+        "r": 3,
+        "k": 8,
+        "n": 4867,
+        "reason": "affine mismatch pred=1",
+        "observed": 41
+      },
+      {
+        "r": 3,
+        "k": 8,
+        "n": 5043,
+        "reason": "affine mismatch pred=1",
+        "observed": 5
+      },
+      {
+        "r": 3,
+        "k": 8,
+        "n": 5123,
+        "reason": "affine mismatch pred=1",
+        "observed": 5
+      },
+      {
+        "r": 3,
+        "k": 8,
+        "n": 5251,
+        "reason": "affine mismatch pred=1",
+        "observed": 7
+      },
+      {
+        "r": 3,
+        "k": 8,
+        "n": 5475,
+        "reason": "affine mismatch pred=1",
+        "observed": 31
+      }
+    ],
+    "cover_frac": 1.0,
+    "uncovered": [],
+    "M": 4,
+    "n_lemmas": 2
+  },
+  "neural_potential": {
+    "skipped": true,
+    "reason": "BRIDGE_NEURAL not set; login node has no GPU"
+  },
+  "top_moduli": [
+    {
+      "M": 4,
+      "cover": 1.0,
+      "n_lemmas": 2,
+      "uncovered": [],
+      "k_used": [
+        1,
+        8
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 8,
+      "cover": 1.0,
+      "n_lemmas": 4,
+      "uncovered": [],
+      "k_used": [
+        1,
+        7,
+        8
+      ],
+      "kinds": [
+        "affine"
+      ]
+    },
+    {
+      "M": 12,
+      "cover": 1.0,
+      "n_lemmas": 6,
+      "uncovered": [],
+      "k_used": [
+        1,
+        7,
+        8
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 16,
+      "cover": 1.0,
+      "n_lemmas": 8,
+      "uncovered": [],
+      "k_used": [
+        1,
+        6,
+        7
+      ],
+      "kinds": [
+        "affine"
+      ]
+    },
+    {
+      "M": 20,
+      "cover": 1.0,
+      "n_lemmas": 10,
+      "uncovered": [],
+      "k_used": [
+        1,
+        7,
+        8
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    },
+    {
+      "M": 24,
+      "cover": 1.0,
+      "n_lemmas": 12,
+      "uncovered": [],
+      "k_used": [
+        1,
+        6,
+        7,
+        8
+      ],
+      "kinds": [
+        "affine"
+      ]
+    },
+    {
+      "M": 32,
+      "cover": 1.0,
+      "n_lemmas": 16,
+      "uncovered": [],
+      "k_used": [
+        1,
+        5,
+        6
+      ],
+      "kinds": [
+        "affine"
+      ]
+    },
+    {
+      "M": 36,
+      "cover": 1.0,
+      "n_lemmas": 18,
+      "uncovered": [],
+      "k_used": [
+        1,
+        6,
+        7,
+        8
+      ],
+      "kinds": [
+        "affine",
+        "odd_part"
+      ]
+    }
+  ],
+  "minimality": {
+    "M": 4,
+    "cover": 1.0,
+    "n_lemmas": 2,
+    "uncovered": [],
+    "k_used": [
+      1,
+      8
+    ],
+    "kinds": [
+      "affine",
+      "odd_part"
+    ]
+  }
+}

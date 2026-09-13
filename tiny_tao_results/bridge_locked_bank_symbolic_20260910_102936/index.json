@@ -1,0 +1,147 @@
+{
+  "status": "exploratory",
+  "run": "tiny_tao_results/bridge_locked_bank_symbolic_20260910_102936",
+  "preregistration": "tiny_tao_results/bridge_preregistration_locked_bank_symbolic.json",
+  "neural": false,
+  "score": {
+    "P1_thicker_level5": true,
+    "P2_medium_level5": true,
+    "P3_hard_level5": true,
+    "P4_control_fails": true,
+    "P5_thin_level5": true,
+    "P6_heads_not_required": true,
+    "preregistered_gate": true,
+    "thicker_r1": {
+      "M": 32,
+      "r": 1,
+      "k": 1,
+      "A": 28,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "exact_affine"
+    },
+    "medium_r1": {
+      "M": 16,
+      "r": 1,
+      "k": 2,
+      "A": 10,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 124,
+      "source": "exact_affine"
+    },
+    "hard_r9": {
+      "M": 16,
+      "r": 9,
+      "k": 1,
+      "A": 12,
+      "B": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 125,
+      "source": "exact_affine"
+    },
+    "thin_r1": {
+      "M": 32,
+      "r": 1,
+      "k": 1,
+      "A": 28,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "exact_affine"
+    },
+    "thin_M16_uncovered": [
+      1
+    ]
+  },
+  "maps": [
+    {
+      "map": "prospective_seven_and_three_mod_32",
+      "chosen_M": 32,
+      "level": "LEVEL_5_universal_descent",
+      "level5_gate": true,
+      "uncovered": [],
+      "M16_uncovered": [
+        1
+      ],
+      "oracle": {
+        "oracle_verified": true,
+        "oracle_M": 32,
+        "relation": "covering_found"
+      }
+    },
+    {
+      "map": "medium_five_on_1_mod_16",
+      "chosen_M": 16,
+      "level": "LEVEL_5_universal_descent",
+      "level5_gate": true,
+      "uncovered": [],
+      "M16_uncovered": [],
+      "oracle": {
+        "oracle_verified": true,
+        "oracle_M": 32,
+        "relation": "smaller_covering"
+      }
+    },
+    {
+      "map": "hard_five_on_1_mod_16",
+      "chosen_M": 16,
+      "level": "LEVEL_5_universal_descent",
+      "level5_gate": true,
+      "uncovered": [],
+      "M16_uncovered": [],
+      "oracle": {
+        "oracle_verified": false,
+        "oracle_M": 65536,
+        "relation": "discoverer_covered_oracle_did_not"
+      }
+    },
+    {
+      "map": "control_five_on_1_mod_4",
+      "chosen_M": 32,
+      "level": "LEVEL_1_survives_finite_testing",
+      "level5_gate": false,
+      "uncovered": [
+        5,
+        13,
+        21,
+        25,
+        29
+      ],
+      "M16_uncovered": [
+        5,
+        9,
+        13
+      ],
+      "oracle": {
+        "oracle_verified": false,
+        "oracle_M": 32,
+        "relation": "agreed_negative"
+      }
+    },
+    {
+      "map": "prospective_seven_on_1_mod_32",
+      "chosen_M": 32,
+      "level": "LEVEL_5_universal_descent",
+      "level5_gate": true,
+      "uncovered": [],
+      "M16_uncovered": [
+        1
+      ],
+      "oracle": {
+        "oracle_verified": true,
+        "oracle_M": 32,
+        "relation": "covering_found"
+      }
+    }
+  ]
+}

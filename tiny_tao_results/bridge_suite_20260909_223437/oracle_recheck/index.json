@@ -1,0 +1,67 @@
+[
+  {
+    "name": "trivial_plus_one",
+    "verified": true,
+    "modulus": 32,
+    "n_lemmas": 16,
+    "n_failures": 0,
+    "horizons": [
+      1
+    ],
+    "failures_head": []
+  },
+  {
+    "name": "easy_half_collatz",
+    "verified": true,
+    "modulus": 32,
+    "n_lemmas": 16,
+    "n_failures": 0,
+    "horizons": [
+      1
+    ],
+    "failures_head": []
+  },
+  {
+    "name": "medium_five_on_1_mod_16",
+    "verified": true,
+    "modulus": 32,
+    "n_lemmas": 16,
+    "n_failures": 0,
+    "horizons": [
+      1,
+      2
+    ],
+    "failures_head": []
+  },
+  {
+    "name": "hard_five_on_1_mod_16",
+    "verified": true,
+    "modulus": 32,
+    "n_lemmas": 16,
+    "n_failures": 0,
+    "horizons": [
+      1,
+      2
+    ],
+    "failures_head": []
+  },
+  {
+    "name": "control_five_on_1_mod_4",
+    "verified": false,
+    "modulus": 32,
+    "n_lemmas": 11,
+    "n_failures": 81,
+    "horizons": [
+      1,
+      2
+    ],
+    "failures_head": [
+      "r=5 mod 32: no k<=8 (A=80>M=32: expands for large q)",
+      "r=13 mod 32: no k<=8 (A=80>M=32: expands for large q)",
+      "r=21 mod 32: no k<=8 (A=80>M=32: expands for large q)",
+      "r=25 mod 32: no k<=8 (A=80>M=32: expands for large q)",
+      "r=29 mod 32: no k<=8 (A=80>M=32: expands for large q)",
+      "n=5: trajectory [5, 13, 33, 83, 21, 53, 133, 333, 833, 2083, 521, 1303]... never hit halt 1"
+    ]
+  }
+]

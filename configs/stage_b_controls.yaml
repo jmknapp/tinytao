@@ -1,0 +1,38 @@
+# Stage B control experiment. H=1 Model C. Do not train until preregistration
+# and verified tables are accepted. p is overwritten per job.
+task:
+  name: modular_multiplication_star
+  p: 11
+  split: held_row
+  train_frac: 0.7
+  split_seed: 0
+  held_operands: [-1]
+
+model:
+  hidden_dims: [1]
+  activation: identity
+  use_bias: true
+  init: xavier_uniform
+  init_scale: 1.0
+  interaction: complex
+
+population:
+  size: 1024
+  min_size: 64
+
+train:
+  epochs: 8000
+  batch_size: 0
+  lr: 0.003
+  optimizer: adam
+  weight_decay: 0.0
+  log_every: 50
+  eval_every: 50
+
+seed: 0
+device: cuda
+run_name: stage_b_controls
+notes: >
+  Stage B controls only. Preregister then generate tables before any GPU
+  training. No new primes, no Model D, no Collatz, no p=23, no exactness
+  relaxation. Instance 0 uses 1024 nets; instances 1-4 use 256.

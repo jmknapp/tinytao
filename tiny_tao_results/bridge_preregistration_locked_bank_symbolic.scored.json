@@ -1,0 +1,45 @@
+{
+  "status": "scored",
+  "preregistration": "tiny_tao_results/bridge_preregistration_locked_bank_symbolic.json",
+  "run": "tiny_tao_results/bridge_locked_bank_symbolic_20260910_102936",
+  "scored_after_training": true,
+  "changed_protocol_after_result": false,
+  "neural": false,
+  "preregistered_gate": true,
+  "predictions": {
+    "P1_thicker_level5": {
+      "verdict": "hold",
+      "chosen_M": 32,
+      "r1": {"k": 1, "A": 28, "B": 1, "source": "exact_affine"}
+    },
+    "P2_medium_level5": {
+      "verdict": "hold",
+      "chosen_M": 16,
+      "r1": {"k": 2, "A": 10, "B": 1, "source": "exact_affine"}
+    },
+    "P3_hard_level5": {
+      "verdict": "hold",
+      "chosen_M": 16,
+      "r9": {"k": 1, "A": 12, "B": 7, "source": "exact_affine"}
+    },
+    "P4_control_fails": {
+      "verdict": "hold",
+      "chosen_M": 32,
+      "uncovered": [5, 13, 21, 25, 29],
+      "relation": "agreed_negative"
+    },
+    "P5_thin_level5": {
+      "verdict": "hold",
+      "chosen_M": 32,
+      "M16_uncovered": [1],
+      "r1": {"k": 1, "A": 28, "B": 1, "source": "exact_affine"},
+      "note": "Closes the 15.2 energy-shortlist miss without raising TOP_K."
+    },
+    "P6_heads_not_required": {
+      "verdict": "hold",
+      "note": "Same Level 5 pattern as 15.5 with no Adam heads. Neural lemma heads are not load-bearing for certificates on this locked bank."
+    },
+    "P7_no_bank_no_topk": {"verdict": "applied"}
+  },
+  "lesson": "On the locked bank, exact affine + odd-part + Falsifier already produces the certificates. Energy ranking missed M=32. Adam+round missed expanding classes. Do not stack more neural lemma machinery on this catalog. Do not start Collatz. A neural Discoverer would have to earn its keep on a search space too large to sweep, not on FEATURE_MODULI of size 14."
+}

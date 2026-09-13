@@ -1,0 +1,437 @@
+{
+  "status": "exploratory",
+  "preregistration": "tiny_tao_results/bridge_preregistration_seven_on_1_mod_64.json",
+  "map": "prospective_seven_on_1_mod_64",
+  "neural": false,
+  "n_train": 2000,
+  "n_falsify": 20000,
+  "seed": 20260909,
+  "k_max": 4,
+  "feature_moduli": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    15,
+    16,
+    24,
+    32
+  ],
+  "moduli_cover": [
+    {
+      "M": 32,
+      "cover": 0.9375,
+      "uncovered": [
+        1
+      ]
+    },
+    {
+      "M": 16,
+      "cover": 0.875,
+      "uncovered": [
+        1
+      ]
+    },
+    {
+      "M": 8,
+      "cover": 0.75,
+      "uncovered": [
+        1
+      ]
+    },
+    {
+      "M": 24,
+      "cover": 0.75,
+      "uncovered": [
+        1,
+        9,
+        17
+      ]
+    },
+    {
+      "M": 4,
+      "cover": 0.5,
+      "uncovered": [
+        1
+      ]
+    },
+    {
+      "M": 12,
+      "cover": 0.5,
+      "uncovered": [
+        1,
+        5,
+        9
+      ]
+    },
+    {
+      "M": 2,
+      "cover": 0.0,
+      "uncovered": [
+        1
+      ]
+    },
+    {
+      "M": 3,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "M": 5,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "M": 6,
+      "cover": 0.0,
+      "uncovered": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "M": 7,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "M": 9,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "M": 10,
+      "cover": 0.0,
+      "uncovered": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ]
+    },
+    {
+      "M": 15,
+      "cover": 0.0,
+      "uncovered": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    }
+  ],
+  "M32_uncovered": [
+    1
+  ],
+  "chosen_M": 32,
+  "lemmas": [
+    {
+      "M": 32,
+      "r": 3,
+      "k": 1,
+      "A": 8,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 5,
+      "k": 1,
+      "A": 16,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 7,
+      "k": 1,
+      "A": 4,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 9,
+      "k": 1,
+      "A": 16,
+      "B": 5,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 11,
+      "k": 1,
+      "A": 8,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 13,
+      "k": 1,
+      "A": 16,
+      "B": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 15,
+      "k": 1,
+      "A": 2,
+      "B": 1,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 63,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 17,
+      "k": 1,
+      "A": 16,
+      "B": 9,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 19,
+      "k": 1,
+      "A": 8,
+      "B": 5,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 21,
+      "k": 1,
+      "A": 16,
+      "B": 11,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 23,
+      "k": 1,
+      "A": 4,
+      "B": 3,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 25,
+      "k": 1,
+      "A": 16,
+      "B": 13,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 27,
+      "k": 1,
+      "A": 8,
+      "B": 7,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 29,
+      "k": 1,
+      "A": 16,
+      "B": 15,
+      "kind": "affine",
+      "a": null,
+      "b": null,
+      "n_train": 62,
+      "source": "exact_affine"
+    },
+    {
+      "M": 32,
+      "r": 31,
+      "k": 1,
+      "A": 0,
+      "B": 0,
+      "kind": "odd_part",
+      "a": 1,
+      "b": 1,
+      "n_train": 62,
+      "source": "odd_part"
+    }
+  ],
+  "uncovered": [
+    1
+  ],
+  "verifier": {
+    "level": "LEVEL_1_survives_finite_testing",
+    "passed_falsifier": false,
+    "n_checked": 128,
+    "n_hits": 8,
+    "hits": [
+      {
+        "r": 1,
+        "k": 0,
+        "n": 33,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 65,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 97,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 129,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 161,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 193,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 225,
+        "reason": "uncovered residue",
+        "observed": null
+      },
+      {
+        "r": 1,
+        "k": 0,
+        "n": 257,
+        "reason": "uncovered residue",
+        "observed": null
+      }
+    ],
+    "cover_frac": 0.9375,
+    "uncovered": [
+      1
+    ],
+    "M": 32,
+    "n_lemmas": 15,
+    "universal": null
+  },
+  "falsifier_attempts": [],
+  "level5_gate": false,
+  "oracle": {
+    "oracle_verified": true,
+    "oracle_M": 64,
+    "relation": "discoverer_failed_oracle_verified"
+  }
+}

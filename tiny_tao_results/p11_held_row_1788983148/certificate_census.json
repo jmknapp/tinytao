@@ -1,0 +1,15 @@
+{
+  "p": 11,
+  "population": 1024,
+  "seed": 20260909,
+  "split": "held_row",
+  "n_exact": 557,
+  "n_family_f": 446,
+  "n_family_q": 111,
+  "n_unclassified": 0,
+  "n_composition_exact": 18,
+  "n_substitution_exact": 446,
+  "frac_exact": 0.5439453125,
+  "frac_f_among_exact": 0.800718132854578,
+  "frac_q_among_exact": 0.1992818671454219
+}

@@ -1,0 +1,976 @@
+I want to build a serious computational-mathematics research project using large populations of very small neural networks to search for mathematical structures that could conceivably contribute to a proof of the Collatz conjecture.
+
+The project is inspired by the idea of treating tiny neural networks as "experimental organisms": train enormous populations of independently initialized, highly constrained networks, identify unusual successful strategies, reverse-engineer them, and convert what they have learned into explicit mathematics.
+
+The central modification to the project is that it should operate as an adversarial loop:
+
+```
+DISCOVERER
+    ↓
+proposes a compact mathematical rule
+    ↓
+FALSIFIER
+    ↓
+aggressively searches for counterexamples
+    ↓
+counterexamples / exceptional classes
+    ↓
+DISCOVERER
+```
+
+The objective is NOT to predict Collatz trajectories accurately.
+
+The objective is to repeatedly propose, attack, refine, simplify, and ultimately attempt to prove explicit mathematical statements about Collatz trajectories.
+
+A neural network is never itself considered a proof.
+
+The ideal endpoint is that the neural networks disappear completely and leave behind a finite collection of definitions, lemmas, inequalities, transition rules, and an ordinary mathematical proof.
+
+# 1. Mathematical target
+
+Define
+
+```
+T(n) = n/2       if n is even
+       3n+1      if n is odd.
+```
+
+Also use the accelerated odd-only map
+
+```
+F(n) = (3n+1) / 2^v2(3n+1)
+```
+
+for odd n.
+
+The ultimate useful descent target is:
+
+```
+For every integer n > 1,
+there exists k > 0 such that
+
+    T^k(n) < n.
+```
+
+If this statement were proved universally, the Collatz conjecture would follow by strong induction.
+
+This should therefore be treated as an important north-star objective.
+
+However, DO NOT assume that a simple global descent function exists.
+
+The system should search for more general structures capable of establishing eventual descent.
+
+# 2. What would count as a possible proof mechanism?
+
+We are interested in discovering structures such as:
+
+## Potential / Lyapunov-like functions
+
+For example,
+
+```
+V(n) = alpha log(n) + correction(n)
+```
+
+where correction(n) might depend on residue classes, valuations, or a finite internal state.
+
+Perhaps individual Collatz steps can increase V, but every allowed path or cycle through an associated state graph has negative net change.
+
+## Residue-class descent
+
+For example, discover that
+
+```
+n = Mq + r
+```
+
+implies, after a finite symbolic sequence of Collatz operations,
+
+```
+T^k(n) = Aq + B
+```
+
+with
+
+```
+Aq + B < Mq + r
+```
+
+for all q >= 0.
+
+Such a statement proves descent for an infinite family of integers at once.
+
+## Finite-state certificates
+
+Perhaps every integer maps into one of finitely many states
+
+```
+S1,...,Sr
+```
+
+and transitions between states satisfy provable inequalities.
+
+If every possible infinite path through the state system necessarily forces descent, that could provide a proof mechanism.
+
+## Recursive residue structures
+
+Perhaps structures found modulo
+
+```
+2^8, 2^9, 2^10, ...
+```
+
+are generated recursively.
+
+A rule
+
+```
+S_(k+1) = G(S_k)
+```
+
+that can be proved inductively is far more valuable than a gigantic lookup table.
+
+## Other structures
+
+Do not constrain discovery to the above.
+
+If the networks repeatedly produce another compact structure, investigate it.
+
+# 3. Strict epistemic hierarchy
+
+Maintain the following hierarchy at all times:
+
+```
+neural observation
+    ↓
+empirical pattern
+    ↓
+explicit conjecture
+    ↓
+computational falsification
+    ↓
+symbolic statement
+    ↓
+proof of finite/infinite subcase
+    ↓
+theorem
+```
+
+Never skip levels.
+
+Checking a statement for 10^6, 10^15, or 10^100 integers does NOT establish a universal theorem.
+
+The project must clearly distinguish:
+
+```
+tested for many n
+```
+
+from
+
+```
+proved for all n in an infinite class.
+```
+
+# 4. Phase 0 — literature and duplication defense
+
+Before expensive experiments, review relevant known work involving:
+
+* parity vectors
+* accelerated Collatz maps
+* stopping times
+* residue classes
+* 2-adic formulations
+* modular approaches
+* finite-state/automata descriptions
+* probabilistic drift arguments
+* Lyapunov-like functions
+* known descent results
+* computational verification
+* Terence Tao's "almost all" result
+
+Maintain:
+
+```
+docs/known_results.md
+```
+
+Whenever something appears novel, attempt to identify whether it is already known or equivalent to a known formulation.
+
+Do not call something novel merely because the neural network rediscovered it independently.
+
+# 5. Build an exact Collatz laboratory
+
+Implement both T and F.
+
+Support exact arbitrary-precision integer arithmetic for verification.
+
+Compute quantities such as:
+
+```
+n
+T^k(n)
+F^k(n)
+log(T^k(n)/n)
+v2(3n+1)
+parity sequence
+valuation sequence
+stopping time
+maximum excursion
+```
+
+GPU code may use fixed-width arithmetic only where overflow cannot occur.
+
+Maintain an independent slow reference implementation for validation.
+
+# 6. Calibration experiment
+
+Before attempting discovery, choose a known Collatz structure and determine whether populations of tiny networks can rediscover it.
+
+The complete pipeline should demonstrate that we can go from:
+
+```
+tiny NN
+    ↓
+hidden representation
+    ↓
+recognizable structure
+    ↓
+explicit formula
+    ↓
+exact verification.
+```
+
+If we cannot reverse-engineer networks on known mathematics, we should not trust interpretations of unknown mathematics.
+
+# 7. DISCOVERER
+
+The Discoverer consists of large populations of tiny neural networks.
+
+I have an NVIDIA RTX 5060 Ti with 16 GB VRAM.
+
+Vectorize the population dimension on the GPU.
+
+Do NOT train 10,000 networks in a Python loop.
+
+Use parameter tensors such as:
+
+```
+W1:
+    [population, input_dim, hidden_width]
+```
+
+and batched PyTorch operations.
+
+Start around:
+
+```
+population = 10,000
+```
+
+and benchmark upward.
+
+Explore extremely small widths:
+
+```
+1
+2
+3
+4
+5
+6
+8
+12
+16
+```
+
+Interpretability is more important than predictive performance.
+
+The Discoverer should search for candidate objects such as:
+
+```
+V(n)
+
+V_state(n)
+
+residue partitions
+
+state transition rules
+
+recursive representations
+
+finite automata
+
+symbolic correction terms
+
+candidate descent certificates.
+```
+
+# 8. Reward mathematical compressibility
+
+Do NOT simply optimize predictive accuracy.
+
+Prefer candidate structures that are:
+
+* simple
+* sparse
+* low-dimensional
+* stable
+* quantizable
+* rationalizable
+* residue-based
+* recursively describable
+* symbolically extractable.
+
+A tiny network satisfying 99% of cases with an obvious mathematical representation may be more useful than a larger network satisfying 99.999999% with no interpretable structure.
+
+Penalize unnecessary complexity.
+
+Explore pruning and minimum-description-length-like objectives.
+
+# 9. The FALSIFIER
+
+Every promising candidate produced by the Discoverer must immediately be attacked.
+
+The Falsifier should NOT simply sample random integers.
+
+It should actively search for inputs and residue classes most likely to violate the proposed rule.
+
+Use several independent approaches:
+
+* exhaustive search over feasible ranges
+* targeted residue-class search
+* large random integers
+* arbitrary-precision testing
+* boundary cases
+* evolutionary search
+* optimization against the candidate inequality
+* SAT/SMT solving where applicable
+* symbolic manipulation
+* modular analysis
+* search over parity/valuation sequences.
+
+The Falsifier should attempt to maximize violation.
+
+For a candidate inequality
+
+```
+V(T^k(n)) < V(n),
+```
+
+search for n maximizing
+
+```
+V(T^k(n)) - V(n).
+```
+
+The most severe counterexamples are particularly valuable.
+
+# 10. Counterexamples become training data
+
+Every counterexample should be stored with:
+
+```
+n
+residue information
+parity sequence
+valuation sequence
+trajectory segment
+magnitude of violation
+candidate rule that failed.
+```
+
+Maintain:
+
+```
+counterexamples/
+```
+
+Feed these cases back into the next Discoverer generation.
+
+The system should therefore perform:
+
+```
+conjecture
+    ↓
+counterexample
+    ↓
+revised conjecture
+    ↓
+stronger counterexample
+    ↓
+revised conjecture
+    ↓
+...
+```
+
+This is analogous to experimental conjecture formation followed by adversarial mathematical criticism.
+
+# 11. Study the exceptional set
+
+Do not merely count failures.
+
+The structure of the exceptions may be more important than the successes.
+
+Suppose a candidate descent rule works for 99.99% of tested integers.
+
+Ask:
+
+```
+What characterizes the remaining 0.01%?
+```
+
+Cluster them according to:
+
+```
+n mod 2^k
+n mod 3^j
+valuation sequence
+parity sequence
+trajectory behavior.
+```
+
+Then ask whether the exceptional set itself has a compact description.
+
+Perhaps:
+
+```
+exceptions to rule A
+    ↓
+belong to five residue families
+    ↓
+those families obey rule B.
+```
+
+The goal is to compress the exceptional set rather than merely make its empirical frequency small.
+
+# 12. Exception complexity as a metric
+
+Track two different quantities:
+
+```
+exception frequency
+```
+
+and
+
+```
+exception description complexity.
+```
+
+A rule failing for only 10^-9 of tested integers is not necessarily mathematically useful if those failures have arbitrary structure.
+
+Conversely, a rule failing for 10% of integers could be extremely useful if all failures are captured by three recursively describable classes.
+
+Therefore emphasize:
+
+```
+Can the exceptions themselves be finitely described?
+```
+
+# 13. Search for finite closure
+
+A major target is a collection of rules that closes.
+
+For example:
+
+```
+Rule A handles state A except transitions to B.
+Rule B handles state B except transitions to C.
+Rule C forces descent.
+```
+
+If every possible integer enters this finite system and every possible path eventually decreases some well-founded measure, investigate whether the system constitutes a descent certificate.
+
+Represent this as a directed graph.
+
+Analyze:
+
+* cycles
+* strongly connected components
+* cycle weights
+* potential differences
+* termination properties.
+
+A particularly interesting condition would be:
+
+```
+every directed cycle has strictly negative total potential change.
+```
+
+Determine precisely what additional assumptions would be required for such a result to imply Collatz descent.
+
+# 14. Symbolic residue-class verification
+
+Whenever possible, replace testing individual integers with symbolic classes.
+
+For example, if
+
+```
+n = 128q + 37,
+```
+
+derive the relevant Collatz trajectory symbolically.
+
+If after k steps:
+
+```
+T^k(n) = 96q + 28,
+```
+
+then verify algebraically:
+
+```
+96q + 28 < 128q + 37
+```
+
+for every q >= 0.
+
+That establishes descent for an infinite class.
+
+Build tooling that automatically attempts this conversion:
+
+```
+empirical residue pattern
+    ↓
+symbolic parameterization n = Mq+r
+    ↓
+symbolic Collatz trajectory
+    ↓
+affine/rational expression in q
+    ↓
+inequality
+    ↓
+exact proof for the residue class.
+```
+
+# 15. Search for recursive closure
+
+Finite verification modulo 2^k is not sufficient if k must grow without bound.
+
+Therefore explicitly search for self-similarity.
+
+Compare discovered structures at:
+
+```
+k=8
+k=9
+k=10
+...
+k=20
+```
+
+Ask whether the transition structures satisfy a recursion.
+
+For example:
+
+```
+structure(k+1)
+    =
+transformation(structure(k)).
+```
+
+If such a transformation appears, attempt to state it exactly.
+
+Then attempt induction:
+
+```
+P(k) => P(k+1).
+```
+
+This is potentially one of the most important routes from finite computation to an infinite theorem.
+
+# 16. Rare-network analysis
+
+Suppose one million networks produce:
+
+```
+997,000 ordinary solutions
+2,950 unusual solutions
+50 extremely unusual solutions.
+```
+
+Preserve the 50.
+
+Do not average them away.
+
+Cluster networks according to functional behavior and internal representation rather than raw parameter distance.
+
+Investigate rare networks for:
+
+* lower-dimensional representations
+* unusual residue partitions
+* unexpected symmetries
+* recursive structure
+* unusually compact exception sets.
+
+The rarest successful strategy may be the scientifically interesting one.
+
+# 17. Reverse engineering
+
+For promising networks:
+
+1. Print every parameter.
+2. Enumerate activations over finite domains.
+3. Plot activation against number-theoretic variables.
+4. Perform PCA/SVD.
+5. Ablate neurons.
+6. Prune.
+7. Quantize weights.
+8. Rationally approximate weights.
+9. Search for integer relations.
+10. Fit symbolic expressions.
+11. Replace neurons with explicit formulas.
+12. Verify the replacement produces the same relevant behavior.
+
+The objective is eventually:
+
+```
+DELETE THE NEURAL NETWORK.
+```
+
+A successful discovery should survive as mathematics after the network is gone.
+
+# 18. Proof extraction pipeline
+
+For sufficiently promising candidates, attempt:
+
+```
+NN
+  ↓
+simplified NN
+  ↓
+discrete states / symbolic formula
+  ↓
+exact residue rules
+  ↓
+finite transition system
+  ↓
+lemmas
+  ↓
+theorem candidate.
+```
+
+Automatically generate human-readable statements such as:
+
+```
+Lemma candidate:
+For every q >= 0, integers n = Mq+r satisfy
+T^k(n) < n.
+```
+
+Then prove or falsify them independently.
+
+Where useful, use SymPy and/or SMT solvers, but do not treat numerical floating-point evaluation as proof.
+
+# 19. Proof-status labels
+
+Every result must receive an explicit status.
+
+Use:
+
+```
+OBSERVATION
+Tested computationally.
+
+CONJECTURE
+Explicit mathematical claim suggested by evidence.
+
+FINITE-VERIFIED
+Exhaustively verified on a finite domain.
+
+INFINITE-CLASS-PROVED
+Symbolically proved for a specified infinite class.
+
+CONDITIONAL-LEMMA
+Proven subject to clearly stated assumptions.
+
+THEOREM
+Fully proved mathematical statement.
+
+COLLATZ-PROOF-CANDIDATE
+Apparent chain implying universal Collatz descent, requiring independent verification.
+```
+
+Never label something a proof merely because automated tests cannot find a counterexample.
+
+# 20. Independent proof verifier
+
+If the system ever believes it has obtained universal descent, STOP neural training.
+
+Freeze the candidate.
+
+Create an entirely separate verification path that does not depend on the trained networks.
+
+Attempt to derive:
+
+```
+For every n > 1,
+there exists k > 0 such that
+
+    T^k(n) < n.
+```
+
+Verify every lemma independently.
+
+Search aggressively for:
+
+* missing residue classes
+* unjustified induction
+* hidden boundedness assumptions
+* integer overflow
+* floating-point assumptions
+* incorrect transition closure
+* cycles not considered
+* quantifier mistakes
+* confusion between density-one and universal statements.
+
+Act as if the claimed proof is probably wrong until every step survives independent scrutiny.
+
+# 21. Strong-induction endpoint
+
+If universal eventual descent is genuinely established:
+
+```
+forall n > 1,
+exists k > 0:
+    T^k(n) < n,
+```
+
+explicitly formulate the strong-induction argument:
+
+Base case:
+n=1 terminates.
+
+Inductive assumption:
+every positive m<n eventually reaches 1.
+
+For n:
+the descent theorem gives some k with
+
+```
+    T^k(n)=m<n.
+```
+
+By the inductive assumption, m reaches 1.
+
+Therefore n reaches 1.
+
+Only after all quantifiers and assumptions have been checked should this be considered a possible Collatz proof.
+
+# 22. Negative results are valuable
+
+Do not optimize the project narrative toward success.
+
+Examples of valuable results include:
+
+* all simple potential functions fail for a specific recursively defined family;
+* neural networks repeatedly rediscover known parity-vector mathematics;
+* increasing modulus does not converge toward finite structure;
+* apparent descent functions always develop increasingly complex exceptions;
+* rare networks turn out to be disguised lookup tables.
+
+Record these findings.
+
+A rigorous explanation of why a promising approach fails is scientifically useful.
+
+# 23. Project organization
+
+Use a structure approximately like:
+
+```
+collatz-discovery/
+    README.md
+    requirements.txt
+
+    configs/
+
+    src/
+        collatz/
+            maps.py
+            exact.py
+            trajectories.py
+            residues.py
+
+        discoverer/
+            population.py
+            training.py
+            objectives.py
+
+        falsifier/
+            exhaustive.py
+            adversarial.py
+            modular.py
+            smt.py
+
+        symbolic/
+            residue_proof.py
+            rationalize.py
+            extract.py
+
+        proof/
+            certificates.py
+            verifier.py
+            induction.py
+
+        analysis/
+            exceptions.py
+            clustering.py
+            state_graph.py
+
+        visualization/
+
+    experiments/
+    results/
+    counterexamples/
+
+    docs/
+        known_results.md
+        discoveries.md
+        failed_conjectures.md
+        proof_status.md
+```
+
+# 24. Reproducibility
+
+Record:
+
+* git commit
+* random seeds
+* Python version
+* PyTorch version
+* CUDA version
+* GPU
+* experiment configuration
+* population size
+* architecture
+* optimizer
+* training domain
+* falsification strategy
+* all counterexamples
+* symbolic extraction results.
+
+Never discard a failed conjecture.
+
+Maintain a searchable database of failed conjectures so the Discoverer does not repeatedly rediscover the same dead ends.
+
+# 25. Success hierarchy
+
+LEVEL 0:
+Accurate prediction of Collatz trajectories.
+
+Not important.
+
+LEVEL 1:
+Rediscovery of known parity/residue structure.
+
+Pipeline validation.
+
+LEVEL 2:
+New compact empirical representation.
+
+Interesting.
+
+LEVEL 3:
+Explicit new mathematical conjecture.
+
+Very interesting.
+
+LEVEL 4:
+New theorem covering an infinite family of integers.
+
+Potentially publishable.
+
+LEVEL 5:
+Finite/recursive structure covering all integers with a plausible universal descent argument.
+
+Major result requiring intensive scrutiny.
+
+LEVEL 6:
+Independently verified proof that every n>1 eventually reaches a smaller positive integer.
+
+This would imply Collatz by strong induction.
+
+Do not allow computational enthusiasm to promote a result to a higher level without satisfying its mathematical requirements.
+
+# 26. Central research philosophy
+
+Think of the project as:
+
+```
+millions of tiny mathematical hypothesis generators
+```
+
+rather than:
+
+```
+one neural network solving Collatz.
+```
+
+The neural population explores representations.
+
+The Falsifier attacks them.
+
+Counterexamples guide further exploration.
+
+Symbolic extraction turns successful representations into mathematics.
+
+Proof tools attempt to replace empirical statements with exact ones.
+
+The long-term loop is:
+
+```
+DISCOVER
+    ↓
+COMPRESS
+    ↓
+CONJECTURE
+    ↓
+FALSIFY
+    ↓
+STUDY EXCEPTIONS
+    ↓
+REFINE
+    ↓
+SYMBOLIZE
+    ↓
+PROVE
+    ↓
+FALSIFY AGAIN.
+```
+
+# 27. First response
+
+Do NOT immediately write the whole software project.
+
+First respond as a skeptical computational mathematician and research engineer.
+
+Give me:
+
+1. The exact calibration experiment you recommend.
+2. The first Discoverer objective.
+3. The first Falsifier strategy.
+4. The mathematical object the NN will actually output.
+5. The input encoding.
+6. The smallest network architectures worth trying.
+7. Population size.
+8. Expected RTX 5060 Ti memory/runtime requirements.
+9. How neural outputs will be converted into explicit conjectures.
+10. How counterexamples will be fed back into discovery.
+11. What would constitute evidence that the exception set is becoming mathematically simpler rather than merely rarer.
+12. How symbolic residue-class verification will work.
+13. What finite result could legitimately establish an infinite-class theorem.
+14. What additional step would be required to go from infinite-class results to universal Collatz descent.
+15. The most likely mathematical reason this entire strategy will fail.
+16. The most promising aspect that nevertheless makes it worth attempting.
+
+Then propose Phase 1 implementation.
+
+Throughout the project, actively try to disprove our ideas.
+
+If something looks like a proof, become MORE skeptical, not less.
+
+The ultimate goal is not to make a neural network that believes Collatz is true.
+
+The ultimate goal is to discover a finite mathematical reason that Collatz must be true—or to learn something rigorous and interesting about why this approach cannot supply one.
+
