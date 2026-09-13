@@ -8,8 +8,9 @@ results/runs/<timestamp>_<name>/
     metrics/summary.json
     checkpoints/successful.pt # parameters of exact solvers (capped)
     checkpoints/representatives.pt
-    nets.sqlite               # exact nets: 390 params + torus_crt classification
     figures/
+
+MySQL tinytao.nets (credentials from MYSQL_* env): exact nets, 390 params + classification.
 """
 
 from __future__ import annotations

@@ -1,4 +1,12 @@
-"""SQLite table of exact Model C nets: 390 learned parameters plus classification.
+"""MySQL table `tinytao.nets`: 390 learned parameters plus classification.
+
+Credentials from the environment (never hardcoded):
+
+    MYSQL_HOST       default 127.0.0.1
+    MYSQL_PORT       default 3306
+    MYSQL_USER       required
+    MYSQL_PASSWORD   or MYSQL_PWD
+    MYSQL_DATABASE   default tinytao
 
 Parameter order (length 390 for p=31, H=3):
     E[n, H, 2] row-major, then W_out[2H, n] row-major, then b_out[n].
@@ -8,11 +16,39 @@ Parameter order (length 390 for p=31, H=3):
 from __future__ import annotations
 
 import importlib.util
-import sqlite3
+import os
+import re
 from pathlib import Path
 from typing import Any, Iterator
 
 import numpy as np
+
+DEFAULT_RUN = "20260913_133152_p31_h3_three_torus_pop8192"
+DEFAULT_DATABASE = "tinytao"
+TABLE = "nets"
+
+SCHEMA = """
+CREATE TABLE IF NOT EXISTS nets (
+    id INT NOT NULL AUTO_INCREMENT,
+    run VARCHAR(128) NOT NULL,
+    net INT NOT NULL,
+    slice_idx INT NOT NULL,
+    classification VARCHAR(64) NOT NULL,
+    p INT NOT NULL,
+    heads INT NOT NULL,
+    n INT NOT NULL,
+    n_params INT NOT NULL,
+    lcm INT NULL,
+    break_at VARCHAR(64) NULL,
+    params MEDIUMBLOB NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_run_net (run, net),
+    KEY idx_class (classification),
+    KEY idx_run_class (run, classification)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+"""
+
+_TORUS = None
 
 
 def _load_torus_crt():
@@ -30,33 +66,8 @@ def _load_torus_crt():
     return mod
 
 
-_TORUS = None
-
-
 def _certify_torus_net(xy, p):
     return _load_torus_crt().certify_torus_net(xy, p)
-
-SCHEMA = """
-CREATE TABLE IF NOT EXISTS nets (
-    id INTEGER PRIMARY KEY,
-    run TEXT NOT NULL,
-    net INTEGER NOT NULL,
-    slice INTEGER NOT NULL,
-    classification TEXT NOT NULL,
-    p INTEGER NOT NULL,
-    heads INTEGER NOT NULL,
-    n INTEGER NOT NULL,
-    n_params INTEGER NOT NULL,
-    lcm INTEGER,
-    break_at TEXT,
-    params BLOB NOT NULL,
-    UNIQUE(run, net)
-);
-CREATE INDEX IF NOT EXISTS idx_nets_class ON nets(classification);
-CREATE INDEX IF NOT EXISTS idx_nets_run_class ON nets(run, classification);
-"""
-
-DEFAULT_RUN = "20260913_133152_p31_h3_three_torus_pop8192"
 
 
 def n_learned(n: int, heads: int) -> int:
@@ -91,17 +102,63 @@ def unpack_params(params: np.ndarray, n: int, heads: int) -> dict[str, np.ndarra
     return {"E": e, "W_out": w_out, "b_out": b_out}
 
 
-def connect(path: str | Path) -> sqlite3.Connection:
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(str(path))
-    conn.row_factory = sqlite3.Row
-    conn.executescript(SCHEMA)
+def mysql_settings() -> dict[str, Any]:
+    user = os.environ.get("MYSQL_USER") or os.environ.get("MYSQL_USERNAME")
+    if not user:
+        raise RuntimeError(
+            "MySQL user missing. Set MYSQL_USER and MYSQL_PASSWORD "
+            "(host MYSQL_HOST, port MYSQL_PORT, database MYSQL_DATABASE, default tinytao)."
+        )
+    database = os.environ.get("MYSQL_DATABASE", DEFAULT_DATABASE)
+    if not re.fullmatch(r"[A-Za-z0-9_]+", database):
+        raise ValueError(f"invalid MYSQL_DATABASE {database!r}")
+    port_raw = os.environ.get("MYSQL_PORT", "3306")
+    try:
+        port = int(port_raw)
+    except ValueError as exc:
+        raise ValueError(f"invalid MYSQL_PORT {port_raw!r}") from exc
+    return {
+        "host": os.environ.get("MYSQL_HOST", "127.0.0.1"),
+        "port": port,
+        "user": user,
+        "password": os.environ.get("MYSQL_PASSWORD") or os.environ.get("MYSQL_PWD") or "",
+        "database": database,
+        "unix_socket": os.environ.get("MYSQL_UNIX_SOCKET") or None,
+    }
+
+
+def connect():
+    """Connect, create database `tinytao` if needed, ensure table `nets`."""
+    import pymysql
+    from pymysql.cursors import DictCursor
+
+    cfg = mysql_settings()
+    kwargs: dict[str, Any] = {
+        "host": cfg["host"],
+        "port": cfg["port"],
+        "user": cfg["user"],
+        "password": cfg["password"],
+        "charset": "utf8mb4",
+        "autocommit": False,
+        "cursorclass": DictCursor,
+    }
+    if cfg["unix_socket"]:
+        kwargs["unix_socket"] = cfg["unix_socket"]
+        kwargs.pop("host", None)
+        kwargs.pop("port", None)
+    conn = pymysql.connect(**kwargs)
+    db = cfg["database"]
+    with conn.cursor() as cur:
+        cur.execute(f"CREATE DATABASE IF NOT EXISTS `{db}`")
+        cur.execute(f"USE `{db}`")
+        cur.execute(SCHEMA)
+    conn.commit()
+    conn.select_db(db)
     return conn
 
 
 def insert_net(
-    conn: sqlite3.Connection,
+    conn,
     *,
     run: str,
     net: int,
@@ -117,36 +174,38 @@ def insert_net(
     e = np.asarray(e)
     n, heads, _ = e.shape
     params = pack_params(e, w_out, b_out)
-    conn.execute(
-        """
-        INSERT INTO nets (
-            run, net, slice, classification, p, heads, n, n_params, lcm, break_at, params
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """,
-        (
-            run,
-            int(net),
-            int(slice_),
-            str(classification),
-            int(p),
-            int(heads),
-            int(n),
-            int(params.size),
-            None if lcm is None else int(lcm),
-            break_at,
-            params.tobytes(),
-        ),
-    )
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            INSERT INTO nets (
+                run, net, slice_idx, classification, p, heads, n, n_params, lcm, break_at, params
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """,
+            (
+                run,
+                int(net),
+                int(slice_),
+                str(classification),
+                int(p),
+                int(heads),
+                int(n),
+                int(params.size),
+                None if lcm is None else int(lcm),
+                break_at,
+                params.tobytes(),
+            ),
+        )
 
 
-def row_to_record(row: sqlite3.Row) -> dict[str, Any]:
+def row_to_record(row: dict[str, Any]) -> dict[str, Any]:
     n, heads = int(row["n"]), int(row["heads"])
-    params = np.frombuffer(row["params"], dtype=np.float32).copy()
+    raw = row["params"]
+    params = np.frombuffer(bytes(raw), dtype=np.float32).copy()
     tensors = unpack_params(params, n, heads)
     return {
         "run": row["run"],
         "net": int(row["net"]),
-        "slice": int(row["slice"]),
+        "slice": int(row["slice_idx"]),
         "classification": row["classification"],
         "p": int(row["p"]),
         "heads": heads,
@@ -159,36 +218,41 @@ def row_to_record(row: sqlite3.Row) -> dict[str, Any]:
     }
 
 
-def fetch_net(conn: sqlite3.Connection, run: str, net: int) -> dict[str, Any] | None:
-    cur = conn.execute("SELECT * FROM nets WHERE run = ? AND net = ?", (run, int(net)))
-    row = cur.fetchone()
+def fetch_net(conn, run: str, net: int) -> dict[str, Any] | None:
+    with conn.cursor() as cur:
+        cur.execute("SELECT * FROM nets WHERE run = %s AND net = %s", (run, int(net)))
+        row = cur.fetchone()
     return None if row is None else row_to_record(row)
 
 
-def iter_nets(conn: sqlite3.Connection, run: str | None = None) -> Iterator[dict[str, Any]]:
-    if run is None:
-        cur = conn.execute("SELECT * FROM nets ORDER BY run, net")
-    else:
-        cur = conn.execute("SELECT * FROM nets WHERE run = ? ORDER BY net", (run,))
-    for row in cur:
+def iter_nets(conn, run: str | None = None) -> Iterator[dict[str, Any]]:
+    with conn.cursor() as cur:
+        if run is None:
+            cur.execute("SELECT * FROM nets ORDER BY run, net")
+        else:
+            cur.execute("SELECT * FROM nets WHERE run = %s ORDER BY net", (run,))
+        rows = cur.fetchall()
+    for row in rows:
         yield row_to_record(row)
 
 
-def class_counts(conn: sqlite3.Connection, run: str | None = None) -> dict[str, int]:
-    if run is None:
-        cur = conn.execute(
-            "SELECT classification, COUNT(*) AS c FROM nets GROUP BY classification ORDER BY classification"
-        )
-    else:
-        cur = conn.execute(
-            "SELECT classification, COUNT(*) AS c FROM nets WHERE run = ? GROUP BY classification ORDER BY classification",
-            (run,),
-        )
-    return {str(r["classification"]): int(r["c"]) for r in cur}
+def class_counts(conn, run: str | None = None) -> dict[str, int]:
+    with conn.cursor() as cur:
+        if run is None:
+            cur.execute(
+                "SELECT classification, COUNT(*) AS c FROM nets GROUP BY classification ORDER BY classification"
+            )
+        else:
+            cur.execute(
+                "SELECT classification, COUNT(*) AS c FROM nets WHERE run = %s GROUP BY classification ORDER BY classification",
+                (run,),
+            )
+        rows = cur.fetchall()
+    return {str(r["classification"]): int(r["c"]) for r in rows}
 
 
 def replace_run_from_arrays(
-    conn: sqlite3.Connection,
+    conn,
     *,
     run: str,
     p: int,
@@ -207,7 +271,8 @@ def replace_run_from_arrays(
     pop = int(E.shape[0])
     if W_out.shape[0] != pop or b_out.shape[0] != pop or nets.shape[0] != pop:
         raise ValueError("E, W_out, b_out, nets must share leading dimension")
-    conn.execute("DELETE FROM nets WHERE run = ?", (run,))
+    with conn.cursor() as cur:
+        cur.execute("DELETE FROM nets WHERE run = %s", (run,))
     counts: dict[str, int] = {}
     for i in range(pop):
         if labels is not None:
