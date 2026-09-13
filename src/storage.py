@@ -9,6 +9,8 @@ results/runs/<timestamp>_<name>/
     checkpoints/successful.pt # parameters of exact solvers (capped)
     checkpoints/representatives.pt
     figures/
+
+MySQL tinytao.nets (credentials from MYSQL_* env): exact nets, 390 params + classification.
 """
 
 from __future__ import annotations
